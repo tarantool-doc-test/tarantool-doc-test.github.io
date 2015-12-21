@@ -1,0 +1,362 @@
+
+
+
+
+
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>3.4.8. Atomic execution</title>
+    <link rel="shortcut icon" href="/theme/favicon.ico" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.6.7-521-g0d75d50',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.pin.min.js"></script>
+    <script type="text/javascript" src="../../_static/headers.js"></script>
+    <link rel="stylesheet" href="/theme/design.css">
+    <link rel="stylesheet" href="/theme/pygmentize.css">
+    <link rel="stylesheet" href="../../_static/sphinx_design.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+     
+    <!--[if lt IE 9]>
+      <script src="/js/ie8.js"></script>
+      <link rel="stylesheet" href="/theme/ie8.css" />
+    <![endif]-->
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22120502-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+  var _tmr = _tmr || [];
+  _tmr.push({id: "2284916", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w) {
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+    ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window);
+</script>
+<noscript>
+  <div style="position:absolute;left:-10000px;">
+    <img src="//top-fwz1.mail.ru/counter?id=2284916;js=na" style="border:0;"
+         height="1" width="1" alt="Рейтинг@Mail.ru" />
+  </div>
+</noscript>
+<!-- //Rating@Mail.ru counter -->
+
+
+  </head>
+  
+  <body class="p-cols_design">
+  
+    <div class="b-wrapper">
+      <!-- HEADER > -->
+      <header class="b-header">
+        <div class="b-header-wrapper">
+          <nav class="b-header_menu">
+            
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          </nav>
+        </div>
+      </header>
+      <!-- < HEADER -->
+
+      <div class="b-content b-clearbox">
+        
+  
+  <section class="b-lightgray_block b-documentation_top b-clearbox p-documentation_in">
+  
+    <div class="b-block-wrapper">
+      <h2 class="b-section-title">3.4.8. Atomic execution</h2>
+      
+    </div>
+  </section>
+  <div class="b-cols_content b-clearbox">
+    <div class="b-cols_content_left">
+      
+      
+<form id="searchbox" role="search" class="search b-search" action="../../search.html" method="get">
+  <input class="b-search-text" name="q" type="text"/ placeholder="Search the manual">
+  <input class="b-search-but" type="submit" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+
+      
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">1. Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide_getting_started.html">2. Getting started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">3. Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../replication/index.html">4. Replication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html">5. Configuration reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../administration.html">6. Server administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connectors/index.html">7. Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/a_errcodes.html">8. Appendix A. List of error codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/b_proctitle.html">9. Appendix B. Process title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/c_lua_tutorial.html">10. Appendix C. Lua tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/d_plugins.html">11. Appendix D. Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/e_sophia/index.html">12. Appendix E. Sophia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_guide/index.html">Contributing</a></li>
+</ul>
+
+    </div>
+    <div class="b-cols_content_right">
+      <div class="b-cols_content_right-slot">
+  
+
+<div class="b-page_header">
+  <ul class="b-path-list">
+    <li class="b-path-list-item">
+      <a href="/doc/" class="b-path-list-item-url">Documentation</a>
+    </li>
+  
+    <li class="b-path-list-item">
+      <a href="../index.html" class="b-path-list-item-url">User Guide</a>
+    </li>
+  
+    <li class="b-path-list-item">
+      <a href="index.html" class="b-path-list-item-url">3. Database</a>
+    </li>
+  
+    <li class="b-path-list-item"><span class="b-path_current">3.4.8. Atomic execution</span></li>
+  </ul>
+</div>
+
+<article class="b-article">
+          
+          
+  <div class="section" id="atomic-execution">
+<h1>3.4.8. Atomic execution<a class="headerlink" href="#atomic-execution" title="Ссылка на этот заголовок">¶</a></h1>
+<p>In several places it's been noted that Lua processes occur in fibers on a
+single thread. That is why there can be a guarantee of execution atomicity.
+That requires emphasis.</p>
+<div class="section" id="cooperative-multitasking-environment">
+<h2>3.4.8.1. Cooperative multitasking environment<a class="headerlink" href="#cooperative-multitasking-environment" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Tarantool core is built around a cooperative multi-tasking paradigm: unless a
+running fiber deliberately yields control to some other fiber, it is not
+preempted. “Yield points” are built into all calls from Tarantool core to the
+operating system. Any system call which can block is performed in an
+asynchronous manner and the fiber waiting on the system call is preempted with
+a fiber ready to run. This model makes all programmatic locks unnecessary:
+cooperative multitasking ensures that there is no concurrency around a resource,
+no race conditions and no memory consistency issues.</p>
+<p>When requests are small, e.g. simple UPDATE, INSERT, DELETE, SELECT, fiber
+scheduling is fair: it takes only a little time to process the request, schedule
+a disk write, and yield to a fiber serving the next client.</p>
+<p>A function, however, can perform complex computations, or be written in such a
+way that control is not given away for a long time. This can lead to unfair
+scheduling, when a single client throttles the rest of the system, or to
+apparent stalls in request processing. Avoiding this situation is the
+responsibility of the function's author. Most of the box calls, such as
+<a class="reference internal" href="box_space.html#lua-function.space_object.insert" title="space_object.insert"><code class="xref lua lua-func docutils literal"><span class="pre">box.space...insert</span></code></a>,
+<a class="reference internal" href="box_space.html#lua-function.space_object.update" title="space_object.update"><code class="xref lua lua-func docutils literal"><span class="pre">box.space...update</span></code></a>,
+<a class="reference internal" href="box_space.html#lua-function.space_object.delete" title="space_object.delete"><code class="xref lua lua-func docutils literal"><span class="pre">box.space...delete</span></code></a> are yield points;
+<a class="reference internal" href="box_space.html#lua-function.space_object.select" title="space_object.select"><code class="xref lua lua-func docutils literal"><span class="pre">box.space...select</span></code></a>, however, is not.</p>
+<p>It should also be noted that, in the absence of transactions, any yield in a
+function is a potential change in the database state. Effectively, it's only
+possible to have CAS (compare-and-swap) -like atomic stored procedures: i.e.
+functions which select and then modify a record. Multiple data change requests
+always run through a built-in yield point.</p>
+<p>At this point an objection could arise: &quot;It's good that a single data-change
+request will commit and yield, but surely there are times when multiple
+data-change requests must happen without yielding.&quot; The standard example is the
+money-transfer, where $1 is withdrawn from account #1 and deposited into
+account #2. If something interrupted after the withdrawal, then the institution
+would be out of balance. For such cases, the <code class="docutils literal"><span class="pre">begin</span> <span class="pre">...</span> <span class="pre">commit|rollback</span></code>
+block was designed.</p>
+<dl class="function">
+<dt id="lua-function.box.begin">
+<em class="property"> </em><code class="descclassname">box.</code><code class="descname">begin</code><big>(</big><big>)</big><a class="headerlink" href="#lua-function.box.begin" title="Ссылка на это определение">¶</a></dt>
+<dd><p>From this point, implicit yields are suspended. In effect the fiber which
+executes <code class="docutils literal"><span class="pre">box.begin()</span></code> is starting an &quot;active multi-request transaction&quot;,
+blocking all other fibers until the transaction ends. All operations within
+this transaction should use the same storage engine.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="lua-function.box.commit">
+<em class="property"> </em><code class="descclassname">box.</code><code class="descname">commit</code><big>(</big><big>)</big><a class="headerlink" href="#lua-function.box.commit" title="Ссылка на это определение">¶</a></dt>
+<dd><p>End the currently active transaction, and make all its data-change
+operations permanent.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="lua-function.box.rollback">
+<em class="property"> </em><code class="descclassname">box.</code><code class="descname">rollback</code><big>(</big><big>)</big><a class="headerlink" href="#lua-function.box.rollback" title="Ссылка на это определение">¶</a></dt>
+<dd><p>End the currently active transaction, but cancel all its data-change
+operations. An explicit call to functions outside <code class="docutils literal"><span class="pre">box.space</span></code> that always
+yield, such as <code class="docutils literal"><span class="pre">fiber.yield</span></code> or <code class="docutils literal"><span class="pre">fiber.sleep</span></code>, will have the same effect.</p>
+</dd></dl>
+
+<p>The <strong>requests in a transaction must be sent to the server as a single block</strong>.
+It is not enough to enclose them between <code class="docutils literal"><span class="pre">begin</span></code> and <code class="docutils literal"><span class="pre">commit</span></code> or <code class="docutils literal"><span class="pre">rollback</span></code>.
+To ensure they are sent as a single block: put them in a function, or put them all
+on one line, or use a delimiter so that multi-line requests are handled together.</p>
+</div>
+<div class="section" id="example">
+<h2>3.4.8.2. Example<a class="headerlink" href="#example" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Assuming that in tuple set 'tester' there are tuples in which the third
+field represents a positive dollar amount ... Start a transaction, withdraw from
+tuple#1, deposit in tuple#2, and end the transaction, making its effects permanent.</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="k">function</span> <span class="nf">txn_example</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">amount_of_money</span><span class="p">)</span>
+<span class="gp">         &gt; </span>  <span class="n">box</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span>
+<span class="gp">         &gt; </span>  <span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="n">update</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="p">{{</span><span class="s1">&#39;</span><span class="s">-&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">amount_of_money</span><span class="p">}})</span>
+<span class="gp">         &gt; </span>  <span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="n">update</span><span class="p">(</span><span class="n">to</span><span class="p">,</span>   <span class="p">{{</span><span class="s1">&#39;</span><span class="s">+&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">amount_of_money</span><span class="p">}})</span>
+<span class="gp">         &gt; </span>  <span class="n">box</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="gp">         &gt; </span>  <span class="k">return</span> <span class="s2">&quot;</span><span class="s">ok&quot;</span>
+<span class="gp">         &gt; </span><span class="k">end</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">txn_example</span><span class="p">({</span><span class="mi">999</span><span class="p">},</span> <span class="p">{</span><span class="mi">1000</span><span class="p">},</span> <span class="mf">1.00</span><span class="p">)</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="s">&quot;ok&quot;</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+        </article>
+
+
+<div class="b-page_over-tail">
+
+    
+    <a href="admin.html" class="b-prev">3.4.7. Administrative requests</a>
+    
+    
+    <a href="authentication.html" class="b-next">3.4.9. Access control</a>
+    
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  
+
+      </div>
+    </div>
+
+    <!-- FOOTER > -->
+    <footer class="b-footer">
+      <div class="b-footer-wrapper">
+        <nav class="b-footer_menu">
+          
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          <div class="b-footer-other">
+            <a href="http://stable.tarantool.org">1.5 web site and downloads</a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+  <!-- < FOOTER -->
+  </body>
+</html>
+

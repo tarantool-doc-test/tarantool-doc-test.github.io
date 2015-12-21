@@ -1,0 +1,463 @@
+
+
+
+
+
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Building from source</title>
+    <link rel="shortcut icon" href="/theme/favicon.ico" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.6.7-521-g0d75d50',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../_static/jquery.pin.min.js"></script>
+    <script type="text/javascript" src="../_static/headers.js"></script>
+    <link rel="stylesheet" href="/theme/design.css">
+    <link rel="stylesheet" href="/theme/pygmentize.css">
+    <link rel="stylesheet" href="../_static/sphinx_design.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+     
+    <!--[if lt IE 9]>
+      <script src="/js/ie8.js"></script>
+      <link rel="stylesheet" href="/theme/ie8.css" />
+    <![endif]-->
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22120502-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+  var _tmr = _tmr || [];
+  _tmr.push({id: "2284916", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w) {
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+    ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window);
+</script>
+<noscript>
+  <div style="position:absolute;left:-10000px;">
+    <img src="//top-fwz1.mail.ru/counter?id=2284916;js=na" style="border:0;"
+         height="1" width="1" alt="Рейтинг@Mail.ru" />
+  </div>
+</noscript>
+<!-- //Rating@Mail.ru counter -->
+
+
+  </head>
+  
+  <body class="p-cols_design">
+  
+    <div class="b-wrapper">
+      <!-- HEADER > -->
+      <header class="b-header">
+        <div class="b-header-wrapper">
+          <nav class="b-header_menu">
+            
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          </nav>
+        </div>
+      </header>
+      <!-- < HEADER -->
+
+      <div class="b-content b-clearbox">
+        
+  
+  <section class="b-lightgray_block b-documentation_top b-clearbox p-documentation_in">
+  
+    <div class="b-block-wrapper">
+      <h2 class="b-section-title">Building from source</h2>
+      
+    </div>
+  </section>
+  <div class="b-cols_content b-clearbox">
+    <div class="b-cols_content_left">
+      
+      
+<form id="searchbox" role="search" class="search b-search" action="../search.html" method="get">
+  <input class="b-search-text" name="q" type="text"/ placeholder="Search the manual">
+  <input class="b-search-but" type="submit" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+
+      
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">What documentation there is</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Building from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_documentation.html">Building Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guidelines.html">Developer guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="box-protocol.html">IProto Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c_style_guide.html">C Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_style_guide.html">Python Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_management.html">Release management</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    <div class="b-cols_content_right">
+      <div class="b-cols_content_right-slot">
+  
+
+<div class="b-page_header">
+  <ul class="b-path-list">
+    <li class="b-path-list-item">
+      <a href="/doc/" class="b-path-list-item-url">Documentation</a>
+    </li>
+  
+    <li class="b-path-list-item">
+      <a href="index.html" class="b-path-list-item-url">Contributing</a>
+    </li>
+  
+    <li class="b-path-list-item"><span class="b-path_current">Building from source</span></li>
+  </ul>
+</div>
+
+<article class="b-article">
+          
+          
+  <div class="section" id="building-from-source">
+<span id="id1"></span><h1>Building from source<a class="headerlink" href="#building-from-source" title="Ссылка на этот заголовок">¶</a></h1>
+<p>For downloading Tarantool source and building it, the platforms can differ and the
+preferences can differ. But the steps are always the same. Here in the manual we'll
+explain what the steps are, then on the Internet you can look at some example scripts.</p>
+<ol class="arabic">
+<li><p class="first">Get tools and libraries that will be necessary for building
+and testing. The absolutely necessary ones are:</p>
+<ul class="simple">
+<li>A program for downloading source repositories. <br /> In this case the necessary program
+is <code class="docutils literal"><span class="pre">git</span></code>. Although tarantool.org/dist has source tarballs (the files whose names
+end in <cite>-src.tar.gz</cite>), the latest complete source downloads are on github.com, and
+from github one gets with git.</li>
+<li>A C/C++ compiler. <br /> Ordinarily the compiler is <cite>gcc</cite> and <code class="docutils literal"><span class="pre">g++</span></code> version 4.6 or later, on
+Mac OS X it should be <code class="docutils literal"><span class="pre">Clang</span></code> version 3.2 or later.</li>
+<li>A program for managing the build process. <br /> This is always <code class="docutils literal"><span class="pre">CMake</span></code>
+for GNU/Linux and FreeBSD. The CMake version should be 2.8 or later.</li>
+</ul>
+<p>Here are names of tools and libraries which may have to be installed in advance,
+using <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span></code> (for Ubuntu), <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span></code> (for CentOS), or the
+equivalent on other platforms. Different platforms may use slightly different
+names. Ignore the ones marked <cite>optional, only in Mac OS scripts</cite>
+unless the platform is Mac OS. Ignore the one marked <cite>optional,
+only for documentation</cite> unless the intent is to use the <code class="docutils literal"><span class="pre">-DENABLE_DOC</span></code> option in step 5.</p>
+<ul class="simple">
+<li><strong>gcc and g++, or clang</strong>                # see above</li>
+<li><strong>git</strong>                                  # see above</li>
+<li><strong>cmake</strong>                                # see above</li>
+<li><strong>libreadline-dev or libreadline6-dev or readline-devel</strong>  # for interactive mode</li>
+<li><strong>autoconf</strong>                             # optional, only in Mac OS scripts</li>
+<li><strong>zlib1g</strong> or <strong>zlib</strong>                   # optional, only in Mac OS scripts</li>
+<li><strong>doxygen</strong>                              # optional, only for documentation</li>
+</ul>
+</li>
+<li><p class="first">Set up python modules for running the test suite or creating documentation.
+This step is optional. Python modules are not necessary for building Tarantool
+itself, unless one intends to use the <code class="docutils literal"><span class="pre">-DENABLE_DOC</span></code> option in step 5 or the
+&quot;Run the test suite&quot; option in step 7. Say: <br />
+<code class="docutils literal"><span class="pre">python</span> <span class="pre">--version</span></code> <br />
+You should see that the python version is greater than 2.6 --
+preferably 2.7 -- and less than 3.0.
+It may be necessary to install python first.</p>
+<p>On Ubuntu you can get modules from the repository:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># For both test suite and documentation</span>
+sudo apt-get install python-pip python-dev python-yaml
+<span class="c"># For test suite</span>
+sudo apt-get install python-daemon
+<span class="c"># For documentation</span>
+sudo apt-get install python-sphinx python-pelican python-beautifulsoup
+</pre></div>
+</div>
+<p>On CentOS 6 too you can get modules from the repository:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo yum install python26 python26-PyYAML etc.
+</pre></div>
+</div>
+<p>If modules are not available on a repository,
+it is best to set up the modules by getting a tarball and
+doing the setup with <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span></code>, thus:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># On some machines this initial command may be necessary:</span>
+<span class="c"># wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python</span>
+
+<span class="c"># python module for parsing YAML (pyYAML): For test suite:</span>
+<span class="c"># (If wget fails, check the http://pyyaml.org/wiki/PyYAML</span>
+<span class="c"># to see what the current version is.)</span>
+<span class="nb">cd</span> ~
+wget http://pyyaml.org/download/pyyaml/PyYAML-3.10.tar.gz
+tar -xzf PyYAML-3.10.tar.gz
+<span class="nb">cd </span>PyYAML-3.10
+sudo python setup.py install
+
+<span class="c"># python module for helping programs become daemons (daemon):</span>
+<span class="c"># For test suite: (if wget fails, check the</span>
+<span class="c"># http://pypi.python.org/pypi/python-daemon</span>
+<span class="c"># to see what the current version is.)</span>
+<span class="nb">cd</span> ~
+wget http://pypi.python.org/packages/source/p/python-daemon/python-daemon-1.5.5.tar.gz
+tar -xzvf python-daemon-1.5.5.tar.gz
+<span class="nb">cd </span>python-daemon-1.5.5
+sudo python setup.py install
+
+<span class="c"># python module for HTML scraping: For documentation:</span>
+<span class="nb">cd</span> ~
+wget http://www.crummy.com/software/BeautifulSoup/bs3/download//3.x/BeautifulSoup-3.2.1.tar.gz
+tar -xzvf BeautifulSoup-3.2.1.tar.gz
+<span class="nb">cd </span>BeautifulSoup-3.2.1
+sudo python setup.py install
+</pre></div>
+</div>
+<p>Finally, use Python <code class="code docutils literal"><span class="pre">pip</span></code> to bring in Python packages
+that may not be up-to-date in the distro repositories.
+(On CentOS 7 it will be necessary to install pip first,
+with <code class="code docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">epel-release</span></code> followed by
+<code class="code docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">python-pip</span></code>.)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># For test suite</span>
+pip install tarantool<span class="se">\&gt;</span>0.4 --user
+<span class="c"># For documentation</span>
+sudo pip install pelican
+sudo pip install breathe
+sudo pip install -U sphinx
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use <code class="code docutils literal"><span class="pre">git</span></code> to download the latest source code from the
+Tarantool 1.6 master branch on github.com. <br /> <br />
+<code class="code docutils literal"><span class="pre">cd</span> <span class="pre">~</span></code> <br />
+<code class="code docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/tarantool/tarantool.git</span> <span class="pre">~/tarantool</span></code></p>
+</li>
+<li><p class="first">Use <code class="docutils literal"><span class="pre">git</span></code> again so that third-party contributions will be seen as well.
+This step is only necessary once, the first time you do a download. There
+is an alternative -- say <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span></code> in step 3 -- but we
+prefer this method because it works with older versions of <code class="docutils literal"><span class="pre">git</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/tarantool
+git submodule init
+git submodule update --recursive
+<span class="nb">cd</span> ../
+</pre></div>
+</div>
+<p>On rare occasions, the submodules will need to be updated again with the
+command: <code class="docutils literal"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span> <span class="pre">--recursive</span></code>.</p>
+</li>
+<li><p class="first">Use CMake to initiate the build.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/tarantool
+make clean         <span class="c"># unnecessary, added for good luck</span>
+rm CMakeCache.txt  <span class="c"># unnecessary, added for good luck</span>
+cmake .            <span class="c"># Start build with build type=Debug, no doc</span>
+</pre></div>
+</div>
+<p>On some platforms it may be necessary to specify the C and C++ versions,
+for example <br />
+<code class="code docutils literal"><span class="pre">CC=gcc-4.8</span> <span class="pre">CXX=g++-4.8</span> <span class="pre">cmake</span> <span class="pre">.</span></code> <br />
+The option for specifying build type is <code class="samp docutils literal"><span class="pre">-DCMAKE_BUILD_TYPE=</span><em><span class="pre">type</span></em></code> where
+<code class="samp docutils literal"><em><span class="pre">type</span></em> <span class="pre">=</span> <span class="pre">Debug</span> <span class="pre">|</span> <span class="pre">Release</span> <span class="pre">|</span> <span class="pre">RelWithDebInfo</span></code> and a
+reasonable choice for production is <code class="docutils literal"><span class="pre">-DCMAKE_BUILD_TYPE=RelWithDebInfo</span></code>
+(<code class="docutils literal"><span class="pre">Debug</span></code> is a default used by project maintainers and <code class="docutils literal"><span class="pre">Release</span></code> is used
+when the highest performance is required).</p>
+<p>The option for asking to build documentation is <code class="code docutils literal"><span class="pre">-DENABLE_DOC=true|false</span></code>,
+which outputs HTML documentation (such as what you're reading now) to the
+subdirectory doc/www/output/doc. Tarantool uses the <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>
+simplified markup system.
+Since most users do not need to rebuild the documentation,
+the reasonable option
+is <code class="docutils literal"><span class="pre">-DENABLE_DOC=false</span></code> or just don't use the <code class="docutils literal"><span class="pre">-DENABLE_DOC</span></code> clause at all.</p>
+</li>
+<li><p class="first">Use make to complete the build.</p>
+<div class="highlight-bash"><div class="highlight"><pre>make
+</pre></div>
+</div>
+<p>It's possible to say <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> too, but that's not generally done.</p>
+</li>
+<li><p class="first">Run the test suite. This step is optional. <br /> Tarantool's developers always
+run the test suite before they publish new versions. You should run the test
+suite too, if you make any changes in the code. Assuming you downloaded to
+<code class="docutils literal"><span class="pre">~/tarantool</span></code>, the principal steps are:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># make a subdirectory named `bin`</span>
+mkdir ~/tarantool/bin
+<span class="c"># link python to bin (this may require superuser privilege)</span>
+ln /usr/bin/python ~/tarantool/bin/python
+<span class="c"># get on the test subdirectory</span>
+<span class="nb">cd</span> ~/tarantool/test
+<span class="c"># run tests using python</span>
+<span class="nv">PATH</span><span class="o">=</span>~/tarantool/bin:<span class="nv">$PATH</span> ./test-run.py
+</pre></div>
+</div>
+<p>The output should contain reassuring reports, for example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">======================================================================</span>
+TEST                                            RESULT
+------------------------------------------------------------
+box/bad_trigger.test.py                         <span class="o">[</span> pass <span class="o">]</span>
+box/call.test.py                                <span class="o">[</span> pass <span class="o">]</span>
+box/iproto.test.py                              <span class="o">[</span> pass <span class="o">]</span>
+box/xlog.test.py                                <span class="o">[</span> pass <span class="o">]</span>
+box/admin.test.lua                              <span class="o">[</span> pass <span class="o">]</span>
+box/auth_access.test.lua                        <span class="o">[</span> pass <span class="o">]</span>
+... etc.
+</pre></div>
+</div>
+<p>There are more than 70 tests in the suite.</p>
+<p>To prevent later confusion, clean up what's in the <cite>bin</cite>
+subdirectory:</p>
+<div class="highlight-bash"><div class="highlight"><pre>rm ~/tarantool/bin/python
+rmdir ~/tarantool/bin
+</pre></div>
+</div>
+</li>
+<li><p class="first">Make an rpm. <br /> This step is optional. It's only for people who want to
+redistribute Tarantool. Package maintainers who want to build with rpmbuild
+should consult the rpm-build instructions for the appropriate platform.</p>
+</li>
+</ol>
+<p>This is the end of the list of steps to take for source downloads.</p>
+<p>For your added convenience, github.com has README files with example scripts: <br />
+<a class="reference external" href="https://github.com/tarantool/tarantool/blob/master/README.CentOS">README.CentOS</a> for CentOS 5.8, <br />
+<a class="reference external" href="https://github.com/tarantool/tarantool/blob/master/README.FreeBSD">README.FreeBSD</a> for FreeBSD 10.1, <br />
+<a class="reference external" href="https://github.com/tarantool/tarantool/blob/master/README.MacOSX">README.MacOSX</a> for Mac OS X <cite>Lion</cite>, <br />
+<a class="reference external" href="https://github.com/tarantool/tarantool/blob/master/README.md">README.md</a> for generic GNU/Linux. <br />
+These example scripts assume that the intent is to download from the master
+branch, build the server (but not the documentation), and run tests after build.</p>
+<p>The python connector can be installed with <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">easy_install</span> <span class="pre">pip</span></code> and <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tarantool</span></code>.</p>
+</div>
+
+
+        </article>
+
+
+<div class="b-page_over-tail">
+
+    
+    <a href="intro.html" class="b-prev">What documentation there is</a>
+    
+    
+    <a href="building_documentation.html" class="b-next">Building Documentation</a>
+    
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  
+
+      </div>
+    </div>
+
+    <!-- FOOTER > -->
+    <footer class="b-footer">
+      <div class="b-footer-wrapper">
+        <nav class="b-footer_menu">
+          
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          <div class="b-footer-other">
+            <a href="http://stable.tarantool.org">1.5 web site and downloads</a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+  <!-- < FOOTER -->
+  </body>
+</html>
+

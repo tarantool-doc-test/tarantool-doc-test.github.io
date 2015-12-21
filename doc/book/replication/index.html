@@ -1,0 +1,1383 @@
+
+
+
+
+
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>4. Replication</title>
+    <link rel="shortcut icon" href="/theme/favicon.ico" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.6.7-521-g0d75d50',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.pin.min.js"></script>
+    <script type="text/javascript" src="../../_static/headers.js"></script>
+    <link rel="stylesheet" href="/theme/design.css">
+    <link rel="stylesheet" href="/theme/pygmentize.css">
+    <link rel="stylesheet" href="../../_static/sphinx_design.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+     
+    <!--[if lt IE 9]>
+      <script src="/js/ie8.js"></script>
+      <link rel="stylesheet" href="/theme/ie8.css" />
+    <![endif]-->
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22120502-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+  var _tmr = _tmr || [];
+  _tmr.push({id: "2284916", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w) {
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+    ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window);
+</script>
+<noscript>
+  <div style="position:absolute;left:-10000px;">
+    <img src="//top-fwz1.mail.ru/counter?id=2284916;js=na" style="border:0;"
+         height="1" width="1" alt="Рейтинг@Mail.ru" />
+  </div>
+</noscript>
+<!-- //Rating@Mail.ru counter -->
+
+
+  </head>
+  
+  <body class="p-cols_design">
+  
+    <div class="b-wrapper">
+      <!-- HEADER > -->
+      <header class="b-header">
+        <div class="b-header-wrapper">
+          <nav class="b-header_menu">
+            
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          </nav>
+        </div>
+      </header>
+      <!-- < HEADER -->
+
+      <div class="b-content b-clearbox">
+        
+  
+  <section class="b-lightgray_block b-documentation_top b-clearbox p-documentation_in">
+  
+    <div class="b-block-wrapper">
+      <h2 class="b-section-title">4. Replication</h2>
+      
+    </div>
+  </section>
+  <div class="b-cols_content b-clearbox">
+    <div class="b-cols_content_left">
+      
+      
+<form id="searchbox" role="search" class="search b-search" action="../../search.html" method="get">
+  <input class="b-search-text" name="q" type="text"/ placeholder="Search the manual">
+  <input class="b-search-but" type="submit" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+
+      
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">1. Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide_getting_started.html">2. Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../box/index.html">3. Database</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">4. Replication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html">5. Configuration reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../administration.html">6. Server administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connectors/index.html">7. Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/a_errcodes.html">8. Appendix A. List of error codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/b_proctitle.html">9. Appendix B. Process title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/c_lua_tutorial.html">10. Appendix C. Lua tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/d_plugins.html">11. Appendix D. Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/e_sophia/index.html">12. Appendix E. Sophia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_guide/index.html">Contributing</a></li>
+</ul>
+
+    </div>
+    <div class="b-cols_content_right">
+      <div class="b-cols_content_right-slot">
+  
+
+<div class="b-page_header">
+  <ul class="b-path-list">
+    <li class="b-path-list-item">
+      <a href="/doc/" class="b-path-list-item-url">Documentation</a>
+    </li>
+  
+    <li class="b-path-list-item">
+      <a href="../index.html" class="b-path-list-item-url">User Guide</a>
+    </li>
+  
+    <li class="b-path-list-item"><span class="b-path_current">4. Replication</span></li>
+  </ul>
+</div>
+
+<article class="b-article">
+          
+          
+  <div class="section" id="replication">
+<span id="box-replication"></span><h1>4. Replication<a class="headerlink" href="#replication" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Replication allows multiple Tarantool servers to work on copies of the same
+databases. The databases are kept in synch because each server can communicate
+its changes to all the other servers. Servers which share the same databases
+are a &quot;cluster&quot;. Each server in a cluster also has a numeric identifier which
+is unique within the cluster, known as the &quot;server id&quot;.</p>
+<p>To set up replication, it's necessary to set up the master servers which
+make the original data-change requests, set up the replica servers which
+copy data-change requests from masters, and establish procedures for
+recovery from a degraded state.</p>
+<div class="section" id="replication-architecture">
+<h2>4.1. Replication architecture<a class="headerlink" href="#replication-architecture" title="Ссылка на этот заголовок">¶</a></h2>
+<p>A replica gets all updates from the master by continuously fetching and
+applying its write-ahead log (WAL). Each record in the WAL represents a
+single Tarantool data-change request such as INSERT or UPDATE or DELETE,
+and is assigned a monotonically growing log sequence number (LSN). In
+essence, Tarantool replication is row-based: each data change command is
+fully deterministic and operates on a single tuple.</p>
+<p>A stored program invocation is not written to the write-ahead log. Instead,
+log events for actual data-change requests, performed by the Lua code, are
+written to the log. This ensures that possible non-determinism of Lua does
+not cause replication to go out of sync.</p>
+</div>
+<div class="section" id="setting-up-the-master">
+<h2>4.2. Setting up the master<a class="headerlink" href="#setting-up-the-master" title="Ссылка на этот заголовок">¶</a></h2>
+<p>To prepare the master for connections from the replica, it's only necessary
+to include &quot;listen&quot; in the initial <code class="docutils literal"><span class="pre">box.cfg</span></code> request, for example
+<code class="docutils literal"><span class="pre">box.cfg{listen=3301}</span></code>. A master with enabled &quot;listen&quot; URI can accept
+connections from as many replicas as necessary on that URI. Each replica
+has its own replication state.</p>
+</div>
+<div class="section" id="setting-up-a-replica">
+<h2>4.3. Setting up a replica<a class="headerlink" href="#setting-up-a-replica" title="Ссылка на этот заголовок">¶</a></h2>
+<p>A server requires a valid snapshot (.snap) file. A snapshot file is created
+for a server the first time that <code class="docutils literal"><span class="pre">box.cfg</span></code> occurs for it. If this first
+<code class="docutils literal"><span class="pre">box.cfg</span></code> request occurs without a &quot;replication source&quot; clause, then the
+server is a master and starts its own new cluster with a new unique UUID.
+If this first <code class="docutils literal"><span class="pre">box.cfg</span></code> request occurs with a &quot;replication source&quot; clause,
+then the server is a replica and its snapshot file, along with the cluster
+information, is constructed from the write-ahead logs of the master.
+Therefore, to start replication, specify <a class="reference internal" href="../configuration/index.html#confval-replication_source"><code class="xref std std-confval docutils literal"><span class="pre">replication_source</span></code></a>
+in a <code class="docutils literal"><span class="pre">box.cfg</span></code> request. When a replica contacts a master for the first time,
+it becomes part of a cluster. On subsequent occasions, it should always contact
+a master in the same cluster.</p>
+<p>Once connected to the master, the replica requests all changes that happened
+after the latest local LSN. It is therefore necessary to keep WAL files on
+the master host as long as there are replicas that haven't applied them yet.
+A replica can be &quot;re-seeded&quot; by deleting all its files (the snapshot .snap
+file and the WAL .xlog files), then starting replication again - the replica
+will then catch up with the master by retrieving all the master's tuples.
+Again, this procedure works only if the master's WAL files are present.</p>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Replication parameters are &quot;dynamic&quot;, which allows the replica to become
+a master and vice versa with the help of the <a class="reference internal" href="../box/box_introspection.html#lua-module.box.cfg" title="box.cfg"><code class="xref lua lua-func docutils literal"><span class="pre">box.cfg()</span></code></a> statement.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">The replica does not inherit the master's configuration parameters, such
+as the ones that cause the <a class="reference internal" href="../configuration/index.html#book-cfg-snapshot-daemon"><span>snapshot daemon</span></a> to run on the master.
+To get the same behavior, one would have to set the relevant parameters explicitly
+so that they are the same on both master and replica.</p>
+</div>
+</div>
+<div class="section" id="recovering-from-a-degraded-state">
+<h2>4.4. Recovering from a degraded state<a class="headerlink" href="#recovering-from-a-degraded-state" title="Ссылка на этот заголовок">¶</a></h2>
+<p>&quot;Degraded state&quot; is a situation when the master becomes unavailable - due to
+hardware or network failure, or due to a programming bug. There is no automatic
+way for a replica to detect that the master is gone for good, since sources of
+failure and replication environments vary significantly. So the detection of
+degraded state requires a human inspection.</p>
+<p>However, once a master failure is detected, the recovery is simple: declare
+that the replica is now the new master, by saying <code class="docutils literal"><span class="pre">box.cfg{...</span> <span class="pre">listen=URI}</span></code>.
+Then, if there are updates on the old master that were not propagated before
+the old master went down, they would have to be re-applied manually.</p>
+</div>
+<div class="section" id="instructions-for-quick-startup-of-a-new-two-server-simple-cluster">
+<h2>4.5. Instructions for quick startup of a new two-server simple cluster<a class="headerlink" href="#instructions-for-quick-startup-of-a-new-two-server-simple-cluster" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Step 1. Start the first server thus:</p>
+<pre class="highlight literal-block">
+box.cfg{listen = <em>uri#1</em>}
+-- replace with more restrictive request
+box.schema.user.grant('guest', 'read,write,execute', 'universe')
+box.snapshot()
+</pre>
+<p>... Now a new cluster exists.</p>
+<p>Step 2. Check where the second server's files will go by looking at its
+directories (<a class="reference internal" href="../configuration/index.html#confval-snap_dir"><code class="xref std std-confval docutils literal"><span class="pre">snap_dir</span></code></a> for snapshot files, <a class="reference internal" href="../configuration/index.html#confval-wal_dir"><code class="xref std std-confval docutils literal"><span class="pre">wal_dir</span></code></a> for .xlog files).
+They must be empty - when the second server joins for the first time, it
+has to be working with a clean slate so that the initial copy of the first
+server's databases can happen without conflicts.</p>
+<p>Step 3. Start the second server thus:</p>
+<pre class="highlight literal-block">
+box.cfg{
+  listen = <em>uri#2</em>,
+  replication_source = <em>uri#1</em>
+}
+</pre>
+<p>... where <code class="docutils literal"><span class="pre">uri#1</span></code> = the <a class="reference internal" href="../configuration/index.html#uri"><span>URI</span></a> that the first server is listening on.</p>
+<p>That's all.</p>
+<p>In this configuration, the first server is the &quot;master&quot; and the second server
+is the &quot;replica&quot;. Henceforth every change that happens on the master will be
+visible on the replica. A simple two-server cluster with the master on one
+computer and the replica on a different computer is very common and provides
+two benefits: FAILOVER (because if the master goes down then the replica can
+take over), or LOAD BALANCING (because clients can connect to either the master
+or the replica for select requests).</p>
+</div>
+<div class="section" id="monitoring-a-replica-s-actions">
+<h2>4.6. Monitoring a Replica's Actions<a class="headerlink" href="#monitoring-a-replica-s-actions" title="Ссылка на этот заголовок">¶</a></h2>
+<p>In <a class="reference internal" href="../box/box_introspection.html#lua-function.box.info" title="box.info"><code class="xref lua lua-func docutils literal"><span class="pre">box.info()</span></code></a> there is a <code class="code docutils literal"><span class="pre">box.info.replication.status</span></code> field:
+&quot;off&quot;, &quot;stopped&quot;, &quot;connecting&quot;, &quot;connected&quot;, or &quot;disconnected&quot;. <br />
+If a replica's status is &quot;connected&quot;, then there will be two more fields: <br />
+<code class="code docutils literal"><span class="pre">box.info.replication.idle</span></code> = the number of seconds the replica has been idle, <br />
+<code class="code docutils literal"><span class="pre">box.info.replication.lag</span></code> = the number of seconds the replica is behind the master.</p>
+<p>In the <a class="reference internal" href="../../reference/log.html#lua-module.log" title="log"><code class="xref lua lua-mod docutils literal"><span class="pre">log</span></code></a> there is a record of replication activity.
+If a primary server is started with:</p>
+<pre class="highlight literal-block">
+box.cfg{
+  &lt;...&gt;,
+  logger = <em>log file name</em>,
+  &lt;...&gt;
+}
+</pre>
+<p>then there will be lines in the log file, containing the word &quot;relay&quot;,
+when a replica connects or disconnects.</p>
+</div>
+<div class="section" id="preventing-duplicate-actions">
+<h2>4.7. Preventing Duplicate Actions<a class="headerlink" href="#preventing-duplicate-actions" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Suppose that the replica tries to do something that the master has already done.
+For example: <br />
+<code class="code docutils literal"><span class="pre">box.schema.space.create('X')</span></code> <br />
+This would cause an error, &quot;Space X exists&quot;.
+For this particular situation, the code could be changed to: <br />
+<code class="code docutils literal"><span class="pre">box.schema.space.create('X',</span> <span class="pre">{if_not_exists=true})</span></code> <br />
+But there is a more general solution: the
+<code class="samp docutils literal"><span class="pre">box.once(</span><em><span class="pre">key</span></em><span class="pre">,</span> <em><span class="pre">function</span></em><span class="pre">)</span></code> method.
+If <code class="code docutils literal"><span class="pre">box.once()</span></code> has been called before with the
+same <code class="samp docutils literal"><em><span class="pre">key</span></em></code> value, then <code class="samp docutils literal"><em><span class="pre">function</span></em></code>
+is ignored; otherwise <code class="samp docutils literal"><em><span class="pre">function</span></em></code> is executed.
+Therefore, actions which should only occur once during the
+life of a replicated session should be placed in a function
+which is executed via <code class="code docutils literal"><span class="pre">box.once()</span></code>. For example:</p>
+<div class="highlight-lua"><div class="highlight"><pre><span class="k">function</span> <span class="nf">f</span><span class="p">()</span>
+  <span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">X&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">box</span><span class="p">.</span><span class="n">once</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">space_creator&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="master-master-replication">
+<h2>4.8. Master-Master Replication<a class="headerlink" href="#master-master-replication" title="Ссылка на этот заголовок">¶</a></h2>
+<p>In the simple master-replica configuration, the master's changes are seen by
+the replica, but not vice versa, because the master was specified as the sole
+replication source. Starting with Tarantool 1.6, it's possible to go both ways.
+Starting with the simple configuration, the first server has to say:</p>
+<pre class="highlight literal-block">
+box.cfg{ replication_source = <em>uri#2</em> }
+</pre>
+<p>This request can be performed at any time.</p>
+<p>In this configuration, both servers are &quot;masters&quot; and both servers are
+&quot;replicas&quot;. Henceforth every change that happens on either server will
+be visible on the other. The failover benefit is still present, and the
+load-balancing benefit is enhanced (because clients can connect to either
+server for data-change requests as well as select requests).</p>
+<p>If two operations for the same tuple take place &quot;concurrently&quot; (which can
+involve a long interval because replication is asynchronous), and one of
+the operations is <code class="docutils literal"><span class="pre">delete</span></code> or <code class="docutils literal"><span class="pre">replace</span></code>, there is a possibility that
+servers will end up with different contents.</p>
+</div>
+<div class="section" id="all-the-what-if-questions">
+<h2>4.9. All the &quot;What If?&quot; Questions<a class="headerlink" href="#all-the-what-if-questions" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="faq container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if there are more than two servers with master-master?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first">On each server, specify the <a class="reference internal" href="../configuration/index.html#confval-replication_source"><code class="xref std std-confval docutils literal"><span class="pre">replication_source</span></code></a> for all the
+others. For example, server #3 would have a request:</p>
+<pre class="highlight literal-block">
+box.cfg{
+    replication_source = <em>uri#1</em>,
+    replication_source = <em>uri#2</em>
+}
+</pre>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if a server should be taken out of the cluster?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first">Run <code class="docutils literal"><span class="pre">box.cfg{}</span></code> again specifying a blank replication source:
+<code class="docutils literal"><span class="pre">box.cfg{replication_source=''}</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if a server leaves the cluster?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first">The other servers carry on. If the wayward server rejoins, it will
+receive all the updates that the other servers made while it was away.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if two servers both change the same tuple?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first">The last changer wins. For example, suppose that server#1 changes the
+tuple, then server#2 changes the tuple. In that case server#2's change
+overrides whatever server#1 did. In order to keep track of who came last,
+Tarantool implements a <a class="reference external" href="https://en.wikipedia.org/wiki/Vector_clock">vector clock</a>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if two servers both insert the same tuple?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first">If a master tries to insert a tuple which a replica has inserted
+already, this is an example of a severe error. Replication stops.
+It will have to be restarted manually.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if a master disappears and the replica must take over?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first">A message will appear on the replica stating that the connection is
+lost. The replica must now become independent, which can be done by
+saying <code class="docutils literal"><span class="pre">box.cfg{replication_source=''}</span></code>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if it's necessary to know what cluster a server is in?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first">The identification of the cluster is a UUID which is generated when the
+first master starts for the first time. This UUID is stored in a tuple
+of the <a class="reference internal" href="../box/box_space.html#lua-data.box.space._cluster" title="box.space._cluster"><code class="xref lua lua-data docutils literal"><span class="pre">box.space._cluster</span></code></a> system space, and in a tuple of the
+<a class="reference internal" href="../box/box_space.html#lua-data.box.space._schema" title="box.space._schema"><code class="xref lua lua-data docutils literal"><span class="pre">box.space._schema</span></code></a> system space. So to see it, say:
+<code class="docutils literal"><span class="pre">box.space._schema:select{'cluster'}</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if one of the server's files is corrupted or deleted?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first">Stop the server, destroy all the database files (the ones with extension
+&quot;snap&quot; or &quot;xlog&quot; or &quot;.inprogress&quot;), restart the server, and catch up
+with the master by contacting it again (just say
+<code class="docutils literal"><span class="pre">box.cfg{...replication_source=...}</span></code>).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Q:</th><td class="field-body"><p class="first">What if replication causes security concerns?</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">A:</th><td class="field-body"><p class="first last">Prevent unauthorized replication sources by associating a password with
+every user that has access privileges for the relevant spaces. That way,
+the <a class="reference internal" href="../configuration/index.html#uri"><span>URI</span></a> for the <a class="reference internal" href="../configuration/index.html#confval-replication_source"><code class="xref std std-confval docutils literal"><span class="pre">replication_source</span></code></a> parameter will
+always have to have the long form
+<code class="docutils literal"><span class="pre">replication_source='username:password&#64;host:port'</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="hands-on-replication-tutorial">
+<h2>4.10. Hands-On Replication Tutorial<a class="headerlink" href="#hands-on-replication-tutorial" title="Ссылка на этот заголовок">¶</a></h2>
+<p>After following the steps here, an administrator will have experience creating
+a cluster and adding a replica.</p>
+<p>Start two shells. Put them side by side on the screen. (This manual has a tabbed
+display showing &quot;Terminal #1&quot;. Click the &quot;Terminal #2&quot; tab to switch to the
+display of the other shell.)</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-1">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-1-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-1-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-1-content">
+<div class="b-documentation-tab container" id="terminal-1-1">
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-1-2">
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-1 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-1 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-1-1').height(), $('#terminal-1-2').height());
+            $('#catalog-1-content').height(maxHeight + 10);
+            $('#terminal-1-1').height(maxHeight);
+            $('#terminal-1-2').height(maxHeight);
+            $('#terminal-1-1').show();
+            $('#terminal-1-2').hide();
+        });
+    })();
+</script></div>
+<p>On the first shell, which we'll call Terminal #1, execute these commands:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">$</span> <span class="c"># Terminal 1</span>
+<span class="gp">$</span> mkdir -p ~/tarantool_test_node_1
+<span class="gp">$</span> <span class="nb">cd</span> ~/tarantool_test_node_1
+<span class="gp">$</span> rm -R ~/tarantool_test_node_1/*
+<span class="gp">$</span> ~/tarantool/src/tarantool
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span><span class="n">listen</span> <span class="o">=</span> <span class="mi">3301</span><span class="p">}</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">replicator&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">password&#39;</span><span class="p">})</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">grant</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">replicator&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">read,write&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">universe&#39;</span><span class="p">)</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">_cluster</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The result is that a new cluster is set up, and the UUID is displayed. Now the
+screen looks like this: (except that UUID values are always different):</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-2">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-2-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-2-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-2-content">
+<div class="b-documentation-tab container" id="terminal-2-1">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">$</span> <span class="c"># Terminal 1</span>
+<span class="gp">$</span> mkdir -p ~/tarantool_test_node_1
+<span class="gp">$</span> <span class="nb">cd</span> ~/tarantool_test_node_1
+<span class="gp">$</span> rm -R ./*
+<span class="gp">$</span> ~/tarantool/src/tarantool
+<span class="gp">$</span> ~/tarantool/src/tarantool: version 1.6.3-1724-g033ed69
+<span class="go">type &#39;help&#39; for interactive help</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span><span class="n">listen</span> <span class="o">=</span> <span class="mi">3301</span><span class="p">}</span>
+<span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">replicator&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">password&#39;</span><span class="p">})</span>
+<span class="go">&lt;...&gt; I&gt; creating ./00000000000000000000.xlog.inprogress&#39;</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">grant</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">replicator&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">read,write&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">universe&#39;</span><span class="p">)</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">_cluster</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;6190d919-1133-4452-b123-beca0b178b32&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-2-2">
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-2 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-2 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-2-1').height(), $('#terminal-2-2').height());
+            $('#catalog-2-content').height(maxHeight + 10);
+            $('#terminal-2-1').height(maxHeight);
+            $('#terminal-2-2').height(maxHeight);
+            $('#terminal-2-1').show();
+            $('#terminal-2-2').hide();
+        });
+    })();
+</script></div>
+<p>On the second shell, which we'll call Terminal #2, execute these commands:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">$</span> <span class="c"># Terminal 2</span>
+<span class="gp">$</span> mkdir -p ~/tarantool_test_node_2
+<span class="gp">$</span> <span class="nb">cd</span> ~/tarantool_test_node_2
+<span class="gp">$</span> rm -R ~/tarantool_test_node_2/*
+<span class="gp">$</span> ~/tarantool/src/tarantool
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span>
+<span class="gp">         &gt; </span>  <span class="n">listen</span> <span class="o">=</span> <span class="mi">3302</span><span class="p">,</span>
+<span class="gp">         &gt; </span>  <span class="n">replication_source</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">replicator:password@localhost:3301&#39;</span>
+<span class="gp">         &gt; </span><span class="p">}</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">_cluster</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The result is that a replica is set up. Messages appear on Terminal #1
+confirming that the replica has connected and that the WAL contents have
+been shipped to the replica. Messages appear on Terminal #2 showing that
+replication is starting. Also on Terminal#2 the _cluster UUID value is
+displayed, and it is the same as the _cluster UUID value that was displayed
+on Terminal #1, because both servers are in the same cluster.</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-3">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-3-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-3-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-3-content">
+<div class="b-documentation-tab container" id="terminal-3-1">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">$</span> <span class="c"># Terminal 1</span>
+<span class="gp">$</span> mkdir -p ~/tarantool_test_node_1
+<span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">_cluster</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;6190d919-1133-4452-b123-beca0b178b32&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="go">tarantool&gt;</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; created a replication relay: pid = 25583</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; recovery start</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; recovering from ./00000000000000000000.snap&#39;</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; snapshot sent</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; created a replication relay: pid = 25585</span>
+<span class="go">&lt;...&gt; [25585] main/101/relay/127.0.0.1:50884 I&gt; recover from ./00000000000000000000.xlog&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-3-2">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">$</span> <span class="c"># Terminal 2</span>
+<span class="gp">$</span> mkdir -p ~/tarantool_test_node_2
+<span class="gp">$</span> <span class="nb">cd</span> ~/tarantool_test_node_2
+<span class="gp">$</span> rm -R ./*
+<span class="gp">$</span> ~/tarantool/src/tarantool
+<span class="go">/home/username/tarantool/src/tarantool: version 1.6.3-1724-g033ed69</span>
+<span class="go">type &#39;help&#39; for interactive help</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span>
+<span class="gp">         &gt; </span>  <span class="n">listen</span> <span class="o">=</span> <span class="mi">3302</span><span class="p">,</span>
+<span class="gp">         &gt; </span>  <span class="n">replication_source</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">replicator:password@localhost:3301&#39;</span>
+<span class="gp">         &gt; </span><span class="p">}</span>
+<span class="go">&lt;... ...&gt;</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">_cluster</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 C&gt; connected to 127.0.0.1:3301</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; authenticated</span>
+<span class="go">&lt;...&gt; [25579] wal I&gt; creating ./00000000000000000000.xlog.inprogress&#39;</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;6190d919-1133-4452-b123-beca0b178b32&#39;</span><span class="p-Indicator">]</span>
+  <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;236230b8-af3e-406b-b709-15a60b44c20c&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-3 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-3 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-3-1').height(), $('#terminal-3-2').height());
+            $('#catalog-3-content').height(maxHeight + 10);
+            $('#terminal-3-1').height(maxHeight);
+            $('#terminal-3-2').height(maxHeight);
+            $('#terminal-3-1').show();
+            $('#terminal-3-2').hide();
+        });
+    })();
+</script></div>
+<p>On Terminal #1, execute these requests:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">tester&#39;</span><span class="p">)</span>
+<span class="gp">tarantool&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">create_index</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">primary&#39;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #1&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now the screen looks like this:</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-4">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-4-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-4-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-4-content">
+<div class="b-documentation-tab container" id="terminal-4-1">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="go">tarantool&gt;</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; created a replication relay: pid = 25583</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; recovery start</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; recovering from ./00000000000000000000.snap&#39;</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; snapshot sent</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; created a replication relay: pid = 25585</span>
+<span class="go">&lt;...&gt; [25585] main/101/relay/127.0.0.1:50884 I&gt; recover from ./00000000000000000000.xlog&#39;</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">tester&#39;</span><span class="p">)</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">create_index</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">primary&#39;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #1&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-4-2">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">$</span> <span class="c"># Terminal 2</span>
+<span class="gp">$</span> mkdir -p ~/tarantool_test_node_2
+<span class="gp">$</span> <span class="nb">cd</span> ~/tarantool_test_node_2
+<span class="gp">$</span> rm -R ./*
+<span class="gp">$</span> ~/tarantool/src/tarantool
+<span class="go">/home/username/tarantool/src/tarantool: version 1.6.3-1724-g033ed69</span>
+<span class="go">type &#39;help&#39; for interactive help</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span>
+<span class="gp">         &gt; </span>  <span class="n">listen</span> <span class="o">=</span> <span class="mi">3302</span><span class="p">,</span>
+<span class="gp">         &gt; </span>  <span class="n">replication_source</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">replicator:password@localhost:3301&#39;</span>
+<span class="gp">         &gt; </span><span class="p">}</span>
+<span class="go">&lt;... ...&gt;</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">_cluster</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 C&gt; connected to 127.0.0.1:3301</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; authenticated</span>
+<span class="go">&lt;...&gt; [25579] wal I&gt; creating ./00000000000000000000.xlog.inprogress&#39;</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;6190d919-1133-4452-b123-beca0b178b32&#39;</span><span class="p-Indicator">]</span>
+  <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;236230b8-af3e-406b-b709-15a60b44c20c&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-4 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-4 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-4-1').height(), $('#terminal-4-2').height());
+            $('#catalog-4-content').height(maxHeight + 10);
+            $('#terminal-4-1').height(maxHeight);
+            $('#terminal-4-2').height(maxHeight);
+            $('#terminal-4-1').show();
+            $('#terminal-4-2').hide();
+        });
+    })();
+</script></div>
+<p>The creation and insertion were successful on Terminal #1. Nothing has happened
+on Terminal #2.</p>
+<p>On Terminal #2, execute these requests:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #2&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now the screen looks like this:</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-5">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-5-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-5-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-5-content">
+<div class="b-documentation-tab container" id="terminal-5-1">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="go">tarantool&gt;</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; created a replication relay: pid = 25583</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; recovery start</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; recovering from ./00000000000000000000.snap&#39;</span>
+<span class="go">&lt;...&gt; [25583] main/101/relay/127.0.0.1:50883 I&gt; snapshot sent</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; created a replication relay: pid = 25585</span>
+<span class="go">&lt;...&gt; [25585] main/101/relay/127.0.0.1:50884 I&gt; recover from ./00000000000000000000.xlog&#39;</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">tester&#39;</span><span class="p">)</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">create_index</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">primary&#39;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #1&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-5-2">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">_cluster</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 C&gt; connected to 127.0.0.1:3301</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; authenticated</span>
+<span class="go">&lt;...&gt; [25579] wal I&gt; creating ./00000000000000000000.xlog.inprogress&#39;</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;6190d919-1133-4452-b123-beca0b178b32&#39;</span><span class="p-Indicator">]</span>
+  <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;236230b8-af3e-406b-b709-15a60b44c20c&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #2&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-5 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-5 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-5-1').height(), $('#terminal-5-2').height());
+            $('#catalog-5-content').height(maxHeight + 10);
+            $('#terminal-5-1').height(maxHeight);
+            $('#terminal-5-2').height(maxHeight);
+            $('#terminal-5-1').show();
+            $('#terminal-5-2').hide();
+        });
+    })();
+</script></div>
+<p>The selection and insertion were successful on Terminal #2. Nothing has
+happened on Terminal #1.</p>
+<p>On Terminal #1, execute these Tarantool requests and shell commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> os.exit<span class="o">()</span>
+<span class="gp">$</span> ls -l ~/tarantool_test_node_1
+<span class="gp">$</span> ls -l ~/tarantool_test_node_2
+</pre></div>
+</div>
+<p>Now Tarantool #1 is stopped. Messages appear on Terminal #2 announcing that fact.
+The <code class="docutils literal"><span class="pre">ls</span> <span class="pre">-l</span></code> commands show that both servers have made snapshots, which have the
+same size because they both contain the same tuples.</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-6">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-6-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-6-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-6-content">
+<div class="b-documentation-tab container" id="terminal-6-1">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #1&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="nb">os.exit</span><span class="p">()</span>
+<span class="go">&lt;...&gt; [25585] main/101/relay/127.0.0.1:50884 I&gt; done ./00000000000000000000.xlog&#39;</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; Exiting: master shutdown</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; sending signal 15 to 1 children</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; waiting for children for up to 5 seconds</span>
+<span class="gp">$</span> ls -l ~/tarantool_test_node_1
+<span class="go">total 8</span>
+<span class="go">-rw-rw-r-- 1  1781 Oct 13 11:12 00000000000000000000.snap</span>
+<span class="go">-rw-rw-r-- 1   518 Oct 13 11:45 00000000000000000000.xlog</span>
+<span class="gp">$</span> ls -l ~/tarantool_test_node_2/
+<span class="go">total 8</span>
+<span class="go">-rw-rw-r-- 1  1781 Oct 13 11:20 00000000000000000000.snap</span>
+<span class="go">-rw-rw-r-- 1   588 Oct 13 11:38 00000000000000000000.xlog</span>
+<span class="go">$</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-6-2">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #2&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="go">tarantool&gt;</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; can&#39;t read row</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 !&gt; SystemError</span>
+<span class="go">  unexpected EOF when reading from socket,</span>
+<span class="go">  called on fd 10, aka 127.0.0.1:50884, peer of 127.0.0.1:3301: Broken pipe</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; will retry every 1 second</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-6 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-6 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-6-1').height(), $('#terminal-6-2').height());
+            $('#catalog-6-content').height(maxHeight + 10);
+            $('#terminal-6-1').height(maxHeight);
+            $('#terminal-6-2').height(maxHeight);
+            $('#terminal-6-1').show();
+            $('#terminal-6-2').hide();
+        });
+    })();
+</script></div>
+<p>On Terminal #2, ignore the repeated messages saying &quot;failed to connect&quot;,
+and execute these requests:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Another&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now the screen looks like this (ignoring the repeated messages saying
+&quot;failed to connect&quot;):</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-7">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-7-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-7-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-7-content">
+<div class="b-documentation-tab container" id="terminal-7-1">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #1&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="nb">os.exit</span><span class="p">()</span>
+<span class="go">&lt;...&gt; [25585] main/101/relay/127.0.0.1:50884 I&gt; done ./00000000000000000000.xlog&#39;</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; Exiting: master shutdown</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; sending signal 15 to 1 children</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; waiting for children for up to 5 seconds</span>
+<span class="gp">$</span> ls -l ~/tarantool_test_node_1
+<span class="go">total 8</span>
+<span class="go">-rw-rw-r-- 1  1781 Oct 13 11:12 00000000000000000000.snap</span>
+<span class="go">-rw-rw-r-- 1   518 Oct 13 11:45 00000000000000000000.xlog</span>
+<span class="gp">$</span> ls -l ~/tarantool_test_node_2/
+<span class="go">total 8</span>
+<span class="go">-rw-rw-r-- 1  1781 Oct 13 11:20 00000000000000000000.snap</span>
+<span class="go">-rw-rw-r-- 1   588 Oct 13 11:38 00000000000000000000.xlog</span>
+<span class="go">$</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-7-2">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #2&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="go">tarantool&gt;</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; can&#39;t read row</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 !&gt; SystemError</span>
+<span class="go">  unexpected EOF when reading from socket,</span>
+<span class="go">  called on fd 10, aka 127.0.0.1:50884, peer of 127.0.0.1:3301: Broken pipe</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; will retry every 1 second</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+  <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Another&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">3</span><span class="p-Indicator">,</span> <span class="s">&#39;Another&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-7 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-7 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-7-1').height(), $('#terminal-7-2').height());
+            $('#catalog-7-content').height(maxHeight + 10);
+            $('#terminal-7-1').height(maxHeight);
+            $('#terminal-7-2').height(maxHeight);
+            $('#terminal-7-1').show();
+            $('#terminal-7-2').hide();
+        });
+    })();
+</script></div>
+<p>Terminal #2 has done a select and an insert, even though Terminal #1 is down.</p>
+<p>On Terminal #1 execute these commands:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">$</span> ~/tarantool/src/tarantool
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span><span class="n">listen</span> <span class="o">=</span> <span class="mi">3301</span><span class="p">}</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iteratir</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Now the screen looks like this (ignoring the repeated messages on terminal #2
+saying &quot;failed to connect&quot;):</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-8">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-8-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-8-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-8-content">
+<div class="b-documentation-tab container" id="terminal-8-1">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #1&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="nb">os.exit</span><span class="p">()</span>
+<span class="go">&lt;...&gt; [25585] main/101/relay/127.0.0.1:50884 I&gt; done ./00000000000000000000.xlog&#39;</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; Exiting: master shutdown</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; sending signal 15 to 1 children</span>
+<span class="go">&lt;...&gt; [25020] main/101/spawner I&gt; waiting for children for up to 5 seconds</span>
+<span class="gp">$</span> ls -l ~/tarantool_test_node_1
+<span class="go">total 8</span>
+<span class="go">-rw-rw-r-- 1  1781 Oct 13 11:12 00000000000000000000.snap</span>
+<span class="go">-rw-rw-r-- 1   518 Oct 13 11:45 00000000000000000000.xlog</span>
+<span class="gp">$</span> ls -l ~/tarantool_test_node_2/
+<span class="go">total 8</span>
+<span class="go">-rw-rw-r-- 1  1781 Oct 13 11:20 00000000000000000000.snap</span>
+<span class="go">-rw-rw-r-- 1   588 Oct 13 11:38 00000000000000000000.xlog</span>
+<span class="gp">$</span> ~/tarantool/src/tarantool
+<span class="go">/home/username/tarantool/src/tarantool: version 1.6.3-515-g0a06cce</span>
+<span class="go">type &#39;help&#39; for interactive help</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span><span class="n">listen</span> <span class="o">=</span> <span class="mi">3301</span><span class="p">}</span>
+<span class="go">&lt;... ...&gt;</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="go">&lt;...&gt; [28989] main/101/spawner I&gt; created a replication relay: pid = 28992</span>
+<span class="go">&lt;...&gt; [28992] main/101/relay/127.0.0.1:51892 I&gt; recover from ./00000000000000000000.xlog&#39;</span>
+<span class="go">&lt;...&gt; [28992] main/101/relay/127.0.0.1:51892 I&gt; done ./00000000000000000000.xlog&#39;</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-8-2">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #2&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="go">tarantool&gt;</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; can&#39;t read row</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 !&gt; SystemError</span>
+<span class="go">  unexpected EOF when reading from socket,</span>
+<span class="go">  called on fd 10, aka 127.0.0.1:50884, peer of 127.0.0.1:3301: Broken pipe</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; will retry every 1 second</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+  <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Another&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">3</span><span class="p-Indicator">,</span> <span class="s">&#39;Another&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 C&gt; connected to 127.0.0.1:3301</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; authenticated</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-8 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-8 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-8-1').height(), $('#terminal-8-2').height());
+            $('#catalog-8-content').height(maxHeight + 10);
+            $('#terminal-8-1').height(maxHeight);
+            $('#terminal-8-2').height(maxHeight);
+            $('#terminal-8-1').show();
+            $('#terminal-8-2').hide();
+        });
+    })();
+</script></div>
+<p>The master has reconnected to the cluster, and has NOT found what the replica
+wrote while the master was away. That is not a surprise -- the replica has not
+been asked to act as a replication source.</p>
+<p>On Terminal #1, say:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span>
+<span class="gp">         &gt; </span>  <span class="n">replication_source</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">replicator:password@localhost:3302&#39;</span>
+<span class="gp">         &gt; </span><span class="p">}</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The screen now looks like this:</p>
+<div class="b-block-wrapper-doc container">
+<div class="b-doc-catalog container" id="catalog-9">
+<ul class="b-tab_switcher">
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-9-1" class="b-tab_switcher-item-url p-active">Terminal #1</a>
+    </li>
+    <li class="b-tab_switcher-item">
+        <a href="#terminal-9-2" class="b-tab_switcher-item-url">Terminal #2</a>
+    </li>
+</ul></div>
+<div class="b-documentation-tab-content container" id="catalog-9-content">
+<div class="b-documentation-tab container" id="terminal-9-1">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">$</span> ~/tarantool/src/tarantool
+<span class="go">/home/username/tarantool/src/tarantool: version 1.6.3-515-g0a06cce</span>
+<span class="go">type &#39;help&#39; for interactive help</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span><span class="n">listen</span> <span class="o">=</span> <span class="mi">3301</span><span class="p">}</span>
+<span class="go">&lt;... ...&gt;</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="go">&lt;...&gt; [28989] main/101/spawner I&gt; created a replication relay: pid = 28992</span>
+<span class="go">&lt;...&gt; [28992] main/101/relay/127.0.0.1:51892 I&gt; recover from ./00000000000000000000.xlog&#39;</span>
+<span class="go">&lt;...&gt; [28992] main/101/relay/127.0.0.1:51892 I&gt; done ./00000000000000000000.xlog&#39;</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span>
+<span class="gp">         &gt; </span>  <span class="n">replication_source</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">replicator:password@localhost:3302&#39;</span>
+<span class="gp">         &gt; </span><span class="p">}</span>
+<span class="go"> [28987] main/101/interactive C&gt; starting replication from localhost:3302</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="go">&lt;...&gt; [28987] main/104/replica/localhost:3302 C&gt; connected to 127.0.0.1:3302</span>
+<span class="go">&lt;...&gt; [28987] main/104/replica/localhost:3302 I&gt; authenticated</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="go">&lt;...&gt; [28987] wal I&gt; creating ./00000000000000000006.xlog.inprogress&#39;</span>
+<span class="go">&lt;...&gt; [28992] main/101/relay/127.0.0.1:51892 I&gt; recover from ./00000000000000000006.xlog&#39;</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+  <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+  <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">3</span><span class="p-Indicator">,</span> <span class="s">&#39;Another&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+<div class="b-documentation-tab container" id="terminal-9-2">
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="go">&lt;... ...&gt;</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Tuple inserted on Terminal #2&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="go">tarantool&gt;</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; can&#39;t read row</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 !&gt; SystemError</span>
+<span class="go">  unexpected EOF when reading from socket,</span>
+<span class="go">  called on fd 10, aka 127.0.0.1:50884, peer of 127.0.0.1:3301: Broken pipe</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; will retry every 1 second</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">({</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="n">iterator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">GE&#39;</span><span class="p">})</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#1&#39;</span><span class="p-Indicator">]</span>
+  <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="s">&#39;Tuple</span><span class="nv"> </span><span class="s">inserted</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Terminal</span><span class="nv"> </span><span class="s">#2&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Another&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">3</span><span class="p-Indicator">,</span> <span class="s">&#39;Another&#39;</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 C&gt; connected to 127.0.0.1:3301</span>
+<span class="go">&lt;...&gt; [25579] main/103/replica/localhost:3301 I&gt; authenticated</span>
+<span class="go">&lt;...&gt; [25581] main/101/spawner I&gt; created a replication relay: pid = 29632</span>
+<span class="go">&lt;...&gt; [29632] main/101/relay/127.0.0.1:45908 I&gt; recover from ./00000000000000000000.xlog&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<script>
+    (function(){
+        var dOn = $(document);
+        dOn.on({
+            click: function(event) {
+                event.preventDefault();
+                link = $(this).children('a');
+                target = link.attr('href');
+                if (!(link.hasClass('p-active'))) {
+                    active = $('#catalog-9 .b-tab_switcher-item-url.p-active');
+                    $(active.attr('href')).hide();
+                    active.removeClass('p-active');
+                    link.addClass('p-active');
+                    $(link.attr('href')).show();
+                }
+            }
+        }, '#catalog-9 .b-tab_switcher-item');
+        dOn.ready(function(event) {
+            maxHeight = Math.max($('#terminal-9-1').height(), $('#terminal-9-2').height());
+            $('#catalog-9-content').height(maxHeight + 10);
+            $('#terminal-9-1').height(maxHeight);
+            $('#terminal-9-2').height(maxHeight);
+            $('#terminal-9-1').show();
+            $('#terminal-9-2').hide();
+        });
+    })();
+</script></div>
+<p>This shows that the two servers are once again in synch, and that each server
+sees what the other server wrote.</p>
+<p>To clean up, say &quot;<code class="docutils literal"><span class="pre">os.exit()</span></code>&quot; on both Terminal #1 and Terminal #2, and then
+on either terminal say:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">cd</span> ~
+<span class="gp">$</span> rm -R ~/tarantool_test_node_1
+<span class="gp">$</span> rm -R ~/tarantool_test_node_2
+</pre></div>
+</div>
+</div>
+</div>
+
+
+        </article>
+
+
+<div class="b-page_over-tail">
+
+    
+    <a href="../box/triggers.html" class="b-prev">3.4.11. Triggers</a>
+    
+    
+    <a href="../configuration/index.html" class="b-next">5. Configuration reference</a>
+    
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  
+
+      </div>
+    </div>
+
+    <!-- FOOTER > -->
+    <footer class="b-footer">
+      <div class="b-footer-wrapper">
+        <nav class="b-footer_menu">
+          
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          <div class="b-footer-other">
+            <a href="http://stable.tarantool.org">1.5 web site and downloads</a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+  <!-- < FOOTER -->
+  </body>
+</html>
+

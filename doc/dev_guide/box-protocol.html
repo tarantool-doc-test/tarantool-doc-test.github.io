@@ -1,0 +1,793 @@
+
+
+
+
+
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>IProto Protocol</title>
+    <link rel="shortcut icon" href="/theme/favicon.ico" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.6.7-521-g0d75d50',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../_static/jquery.pin.min.js"></script>
+    <script type="text/javascript" src="../_static/headers.js"></script>
+    <link rel="stylesheet" href="/theme/design.css">
+    <link rel="stylesheet" href="/theme/pygmentize.css">
+    <link rel="stylesheet" href="../_static/sphinx_design.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+     
+    <!--[if lt IE 9]>
+      <script src="/js/ie8.js"></script>
+      <link rel="stylesheet" href="/theme/ie8.css" />
+    <![endif]-->
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22120502-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+  var _tmr = _tmr || [];
+  _tmr.push({id: "2284916", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w) {
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+    ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window);
+</script>
+<noscript>
+  <div style="position:absolute;left:-10000px;">
+    <img src="//top-fwz1.mail.ru/counter?id=2284916;js=na" style="border:0;"
+         height="1" width="1" alt="Рейтинг@Mail.ru" />
+  </div>
+</noscript>
+<!-- //Rating@Mail.ru counter -->
+
+
+  </head>
+  
+  <body class="p-cols_design">
+  
+    <div class="b-wrapper">
+      <!-- HEADER > -->
+      <header class="b-header">
+        <div class="b-header-wrapper">
+          <nav class="b-header_menu">
+            
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          </nav>
+        </div>
+      </header>
+      <!-- < HEADER -->
+
+      <div class="b-content b-clearbox">
+        
+  
+  <section class="b-lightgray_block b-documentation_top b-clearbox p-documentation_in">
+  
+    <div class="b-block-wrapper">
+      <h2 class="b-section-title">IProto Protocol</h2>
+      
+    </div>
+  </section>
+  <div class="b-cols_content b-clearbox">
+    <div class="b-cols_content_left">
+      
+      
+<form id="searchbox" role="search" class="search b-search" action="../search.html" method="get">
+  <input class="b-search-text" name="q" type="text"/ placeholder="Search the manual">
+  <input class="b-search-but" type="submit" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+
+      
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">What documentation there is</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_documentation.html">Building Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guidelines.html">Developer guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">IProto Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c_style_guide.html">C Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_style_guide.html">Python Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_management.html">Release management</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    <div class="b-cols_content_right">
+      <div class="b-cols_content_right-slot">
+  
+
+<div class="b-page_header">
+  <ul class="b-path-list">
+    <li class="b-path-list-item">
+      <a href="/doc/" class="b-path-list-item-url">Documentation</a>
+    </li>
+  
+    <li class="b-path-list-item">
+      <a href="index.html" class="b-path-list-item-url">Contributing</a>
+    </li>
+  
+    <li class="b-path-list-item"><span class="b-path_current">IProto Protocol</span></li>
+  </ul>
+</div>
+
+<article class="b-article">
+          
+          
+  <div class="section" id="iproto-protocol">
+<span id="id1"></span><h1>IProto Protocol<a class="headerlink" href="#iproto-protocol" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="notion-in-diagrams">
+<h2>Notion in diagrams<a class="headerlink" href="#notion-in-diagrams" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="m">0</span>    X
++----+
+<span class="p">|</span>    <span class="p">|</span> - X bytes
++----+
+ TYPE - <span class="nb">type </span>of MsgPack value <span class="o">(</span><span class="k">if</span> it is MsgPack object<span class="o">)</span>
+
++<span class="o">====</span>+
+<span class="p">|</span>    <span class="p">|</span> - Variable size MsgPack object
++<span class="o">====</span>+
+ TYPE - <span class="nb">type </span>of MsgPack value
+
++~~~~+
+<span class="p">|</span>    <span class="p">|</span> - Variable size MsgPack Array/Map
++~~~~+
+ TYPE - <span class="nb">type </span>of MsgPack value
+</pre></div>
+</div>
+<p>MsgPack data types:</p>
+<ul class="simple">
+<li><strong>MP_INT</strong> - Integer</li>
+<li><strong>MP_MAP</strong> - Map</li>
+<li><strong>MP_ARR</strong> - Array</li>
+<li><strong>MP_STRING</strong> - String</li>
+<li><strong>MP_FIXSTR</strong> - Fixed size string</li>
+<li><strong>MP_OBJECT</strong> - Any MsgPack object</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Ссылка на этот заголовок">¶</a></h2>
+<p>IPROTO is a binary request/response protocol.</p>
+</div>
+<div class="section" id="greeting-packet">
+<h2>Greeting Packet<a class="headerlink" href="#greeting-packet" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>TARANTOOL&#39;S GREETING:
+
+0                                     63
++--------------------------------------+
+|                                      |
+| Tarantool Greeting (server version)  |
+|               64 bytes               |
++---------------------+----------------+
+|                     |                |
+| BASE64 encoded SALT |      NULL      |
+|      44 bytes       |                |
++---------------------+----------------+
+64                  107              127
+</pre></div>
+</div>
+<p>The server begins the dialogue by sending a fixed-size (128 bytes) text greeting
+to the client. The first 64 bytes of the greeting contain server version. The
+second 44 bytes contain a base64-encoded random string, to use in authentication
+packet. And it ends with 20 bytes of spaces.</p>
+</div>
+<div class="section" id="unified-packet-structure">
+<h2>Unified packet structure<a class="headerlink" href="#unified-packet-structure" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Once a greeting is read, the protocol becomes pure request/response and features
+a complete access to Tarantool functionality, including:</p>
+<ul class="simple">
+<li>request multiplexing, e.g. ability to asynchronously issue multiple requests
+via the same connection</li>
+<li>response format that supports zero-copy writes</li>
+</ul>
+<p>For data structuring and encoding, the protocol uses msgpack data format, see
+<a class="reference external" href="http://msgpack.org">http://msgpack.org</a></p>
+<p>Tarantool protocol mandates use of a few integer constants serving as keys in
+maps used in the protocol. These constants are defined in <a class="reference external" href="https://github.com/tarantool/tarantool/blob/master/src/box/iproto_constants.h">src/box/iproto_constants.h</a></p>
+<p>Let's list them here too:</p>
+<div class="highlight-bash"><div class="highlight"><pre>-- user keys
+&lt;code&gt;          ::<span class="o">=</span> 0x00
+&lt;sync&gt;          ::<span class="o">=</span> 0x01
+&lt;space_id&gt;      ::<span class="o">=</span> 0x10
+&lt;index_id&gt;      ::<span class="o">=</span> 0x11
+&lt;limit&gt;         ::<span class="o">=</span> 0x12
+&lt;offset&gt;        ::<span class="o">=</span> 0x13
+&lt;iterator&gt;      ::<span class="o">=</span> 0x14
+&lt;key&gt;           ::<span class="o">=</span> 0x20
+&lt;tuple&gt;         ::<span class="o">=</span> 0x21
+&lt;function_name&gt; ::<span class="o">=</span> 0x22
+&lt;username&gt;      ::<span class="o">=</span> 0x23
+&lt;expression&gt;    ::<span class="o">=</span> 0x27
+&lt;ops&gt;           ::<span class="o">=</span> 0x28
+&lt;data&gt;          ::<span class="o">=</span> 0x30
+&lt;error&gt;         ::<span class="o">=</span> 0x31
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>-- -- Value <span class="k">for</span> &lt;code&gt; key in request can be:
+-- User <span class="nb">command </span>codes
+&lt;<span class="k">select</span>&gt;  ::<span class="o">=</span> 0x01
+&lt;insert&gt;  ::<span class="o">=</span> 0x02
+&lt;replace&gt; ::<span class="o">=</span> 0x03
+&lt;update&gt;  ::<span class="o">=</span> 0x04
+&lt;delete&gt;  ::<span class="o">=</span> 0x05
+&lt;call&gt;    ::<span class="o">=</span> 0x06
+&lt;auth&gt;    ::<span class="o">=</span> 0x07
+&lt;<span class="nb">eval</span>&gt;    ::<span class="o">=</span> 0x08
+&lt;upsert&gt;  ::<span class="o">=</span> 0x09
+-- Admin <span class="nb">command </span>codes
+&lt;ping&gt;    ::<span class="o">=</span> 0x40
+
+-- -- Value <span class="k">for</span> &lt;code&gt; key in response can be:
+&lt;OK&gt;      ::<span class="o">=</span> 0x00
+&lt;ERROR&gt;   ::<span class="o">=</span> 0x8XXX
+</pre></div>
+</div>
+<p>Both <code class="code docutils literal"><span class="pre">&lt;header&gt;</span></code> and <code class="code docutils literal"><span class="pre">&lt;body&gt;</span></code> are msgpack maps:</p>
+<div class="highlight-bash"><div class="highlight"><pre>Request/Response:
+
+<span class="m">0</span>      5
++------+ +<span class="o">============</span>+ +<span class="o">===================================</span>+
+<span class="p">|</span>BODY +<span class="p">|</span> <span class="p">|</span>            <span class="p">|</span> <span class="p">|</span>                                   <span class="p">|</span>
+<span class="p">|</span>HEADER<span class="p">|</span> <span class="p">|</span>   HEADER   <span class="p">|</span> <span class="p">|</span>               BODY                <span class="p">|</span>
+<span class="p">|</span> SIZE <span class="p">|</span> <span class="p">|</span>            <span class="p">|</span> <span class="p">|</span>                                   <span class="p">|</span>
++------+ +<span class="o">============</span>+ +<span class="o">===================================</span>+
+ MP_INT      MP_MAP                     MP_MAP
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>UNIFIED HEADER:
+
++<span class="o">================</span>+<span class="o">================</span>+
+<span class="p">|</span>                <span class="p">|</span>                <span class="p">|</span>
+<span class="p">|</span>   0x00: CODE   <span class="p">|</span>   0x01: SYNC   <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_INT <span class="p">|</span> MP_INT: MP_INT <span class="p">|</span>
+<span class="p">|</span>                <span class="p">|</span>                <span class="p">|</span>
++<span class="o">================</span>+<span class="o">================</span>+
+               MP_MAP
+</pre></div>
+</div>
+<p>They only differ in the allowed set of keys and values, the key defines the
+type of value that follows. If a body has no keys, entire msgpack map for
+the body may be missing. Such is the case, for example, in &lt;ping&gt; request.</p>
+</div>
+<div class="section" id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Ссылка на этот заголовок">¶</a></h2>
+<p>When a client connects to the server, the server responds with a 128-byte
+text greeting message. Part of the greeting is base-64 encoded session salt -
+a random string which can be used for authentication. The length of decoded
+salt (44 bytes) exceeds the amount necessary to sign the authentication
+message (first 20 bytes). An excess is reserved for future authentication
+schemas.</p>
+<div class="highlight-bash"><div class="highlight"><pre>PREPARE SCRAMBLE:
+
+    LEN<span class="o">(</span>ENCODED_SALT<span class="o">)</span> <span class="o">=</span> 44<span class="p">;</span>
+    LEN<span class="o">(</span>SCRAMBLE<span class="o">)</span>     <span class="o">=</span> 20<span class="p">;</span>
+
+prepare <span class="s1">&#39;chap-sha1&#39;</span> scramble:
+
+    <span class="nv">salt</span> <span class="o">=</span> base64_decode<span class="o">(</span>encoded_salt<span class="o">)</span><span class="p">;</span>
+    <span class="nv">step_1</span> <span class="o">=</span> sha1<span class="o">(</span>password<span class="o">)</span><span class="p">;</span>
+    <span class="nv">step_2</span> <span class="o">=</span> sha1<span class="o">(</span>step_1<span class="o">)</span><span class="p">;</span>
+    <span class="nv">step_3</span> <span class="o">=</span> sha1<span class="o">(</span>salt, step_2<span class="o">)</span><span class="p">;</span>
+    <span class="nv">scramble</span> <span class="o">=</span> xor<span class="o">(</span>step_1, step_3<span class="o">)</span><span class="p">;</span>
+    <span class="k">return</span> scramble<span class="p">;</span>
+
+AUTHORIZATION BODY: <span class="nv">CODE</span> <span class="o">=</span> 0x07
+
++<span class="o">==================</span>+<span class="o">====================================</span>+
+<span class="p">|</span>                  <span class="p">|</span>        +-------------+-----------+ <span class="p">|</span>
+<span class="p">|</span>  <span class="o">(</span>KEY<span class="o">)</span>           <span class="p">|</span> <span class="o">(</span>TUPLE<span class="o">)</span><span class="p">|</span>  <span class="nv">len</span> <span class="o">==</span> <span class="m">9</span>   <span class="p">|</span> <span class="nv">len</span> <span class="o">==</span> <span class="m">20</span> <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span>   0x23:USERNAME  <span class="p">|</span>   0x21:<span class="p">|</span> <span class="s2">&quot;chap-sha1&quot;</span> <span class="p">|</span>  SCRAMBLE <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span> MP_INT:MP_STRING <span class="p">|</span> MP_INT:<span class="p">|</span>  MP_STRING  <span class="p">|</span> MP_STRING <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>        +-------------+-----------+ <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>                   MP_ARRAY         <span class="p">|</span>
++<span class="o">==================</span>+<span class="o">====================================</span>+
+                        MP_MAP
+</pre></div>
+</div>
+<p><code class="code docutils literal"><span class="pre">&lt;key&gt;</span></code> holds the user name. <code class="code docutils literal"><span class="pre">&lt;tuple&gt;</span></code> must be an array of 2 fields:
+authentication mechanism (&quot;chap-sha1&quot; is the only supported mechanism right now)
+and password, encrypted according to the specified mechanism. Authentication in
+Tarantool is optional, if no authentication is performed, session user is 'guest'.
+The server responds to authentication packet with a standard response with 0 tuples.</p>
+</div>
+<div class="section" id="requests">
+<h2>Requests<a class="headerlink" href="#requests" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li>SELECT: CODE - 0x01
+Find tuples matching the search pattern</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>SELECT BODY:
+
++<span class="o">==================</span>+<span class="o">==================</span>+<span class="o">==================</span>+
+<span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>
+<span class="p">|</span>   0x10: SPACE_ID <span class="p">|</span>   0x11: INDEX_ID <span class="p">|</span>   0x12: LIMIT    <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>
++<span class="o">==================</span>+<span class="o">==================</span>+<span class="o">==================</span>+
+<span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>
+<span class="p">|</span>   0x13: OFFSET   <span class="p">|</span>   0x14: ITERATOR <span class="p">|</span>   0x20: KEY      <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span> MP_INT: MP_ARRAY <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>
++<span class="o">==================</span>+<span class="o">==================</span>+<span class="o">==================</span>+
+                          MP_MAP
+</pre></div>
+</div>
+<ul class="simple">
+<li>INSERT:  CODE - 0x02
+Inserts tuple into the space, if no tuple with same unique keys exists. Otherwise throw <em>duplicate key</em> error.</li>
+<li>REPLACE: CODE - 0x03
+Insert a tuple into the space or replace an existing one.</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>INSERT/REPLACE BODY:
+
++<span class="o">==================</span>+<span class="o">==================</span>+
+<span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>
+<span class="p">|</span>   0x10: SPACE_ID <span class="p">|</span>   0x21: TUPLE    <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span> MP_INT: MP_ARRAY <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>
++<span class="o">==================</span>+<span class="o">==================</span>+
+                 MP_MAP
+</pre></div>
+</div>
+<ul class="simple">
+<li>UPDATE: CODE - 0x04
+Update a tuple</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>UPDATE BODY:
+
++<span class="o">==================</span>+<span class="o">=======================</span>+
+<span class="p">|</span>                  <span class="p">|</span>                       <span class="p">|</span>
+<span class="p">|</span>   0x10: SPACE_ID <span class="p">|</span>   0x11: INDEX_ID      <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span> MP_INT: MP_INT        <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>                       <span class="p">|</span>
++<span class="o">==================</span>+<span class="o">=======================</span>+
+<span class="p">|</span>                  <span class="p">|</span>          +~~~~~~~~~~+ <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>          <span class="p">|</span>          <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span> <span class="o">(</span>TUPLE<span class="o">)</span>  <span class="p">|</span>    OP    <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span>   0x20: KEY      <span class="p">|</span>    0x21: <span class="p">|</span>          <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_ARRAY <span class="p">|</span>  MP_INT: +~~~~~~~~~~+ <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>            MP_ARRAY   <span class="p">|</span>
++<span class="o">==================</span>+<span class="o">=======================</span>+
+                 MP_MAP
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>OP:
+    Works only <span class="k">for</span> integer fields:
+    * Addition    <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span> . space<span class="o">[</span>key<span class="o">][</span>field_no<span class="o">]</span> +<span class="o">=</span> argument
+    * Subtraction <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span> . space<span class="o">[</span>key<span class="o">][</span>field_no<span class="o">]</span> -<span class="o">=</span> argument
+    * Bitwise AND <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;&amp;&#39;</span> . space<span class="o">[</span>key<span class="o">][</span>field_no<span class="o">]</span> <span class="p">&amp;</span><span class="o">=</span> argument
+    * Bitwise XOR <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;^&#39;</span> . space<span class="o">[</span>key<span class="o">][</span>field_no<span class="o">]</span> ^<span class="o">=</span> argument
+    * Bitwise OR  <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span> . space<span class="o">[</span>key<span class="o">][</span>field_no<span class="o">]</span> <span class="p">|</span><span class="o">=</span> argument
+    Works on any fields:
+    * Delete      <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span>
+      delete &lt;argument&gt; fields starting
+      from &lt;field_no&gt; in the space<span class="o">[</span>&lt;key&gt;<span class="o">]</span>
+
+<span class="m">0</span>           2
++-----------+<span class="o">==========</span>+<span class="o">==========</span>+
+<span class="p">|</span>           <span class="p">|</span>          <span class="p">|</span>          <span class="p">|</span>
+<span class="p">|</span>    OP     <span class="p">|</span> FIELD_NO <span class="p">|</span> ARGUMENT <span class="p">|</span>
+<span class="p">|</span> MP_FIXSTR <span class="p">|</span>  MP_INT  <span class="p">|</span>  MP_INT  <span class="p">|</span>
+<span class="p">|</span>           <span class="p">|</span>          <span class="p">|</span>          <span class="p">|</span>
++-----------+<span class="o">==========</span>+<span class="o">==========</span>+
+              MP_ARRAY
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>    * Insert      <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;!&#39;</span>
+      insert &lt;argument&gt; before &lt;field_no&gt;
+    * Assign      <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span>
+      assign &lt;argument&gt; to field &lt;field_no&gt;.
+      will extend the tuple <span class="k">if</span> &lt;field_no&gt; <span class="o">==</span> &lt;max_field_no&gt; + 1
+
+<span class="m">0</span>           2
++-----------+<span class="o">==========</span>+<span class="o">===========</span>+
+<span class="p">|</span>           <span class="p">|</span>          <span class="p">|</span>           <span class="p">|</span>
+<span class="p">|</span>    OP     <span class="p">|</span> FIELD_NO <span class="p">|</span> ARGUMENT  <span class="p">|</span>
+<span class="p">|</span> MP_FIXSTR <span class="p">|</span>  MP_INT  <span class="p">|</span> MP_OBJECT <span class="p">|</span>
+<span class="p">|</span>           <span class="p">|</span>          <span class="p">|</span>           <span class="p">|</span>
++-----------+<span class="o">==========</span>+<span class="o">===========</span>+
+              MP_ARRAY
+
+    Works on string fields:
+    * Splice      <span class="nv">OP</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span>
+      take the string from space<span class="o">[</span>key<span class="o">][</span>field_no<span class="o">]</span> and
+      substitute &lt;offset&gt; bytes from &lt;position&gt; with &lt;argument&gt;
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="m">0</span>           2
++-----------+<span class="o">==========</span>+<span class="o">==========</span>+<span class="o">========</span>+<span class="o">==========</span>+
+<span class="p">|</span>           <span class="p">|</span>          <span class="p">|</span>          <span class="p">|</span>        <span class="p">|</span>          <span class="p">|</span>
+<span class="p">|</span>    <span class="s1">&#39;:&#39;</span>    <span class="p">|</span> FIELD_NO <span class="p">|</span> POSITION <span class="p">|</span> OFFSET <span class="p">|</span> ARGUMENT <span class="p">|</span>
+<span class="p">|</span> MP_FIXSTR <span class="p">|</span>  MP_INT  <span class="p">|</span>  MP_INT  <span class="p">|</span> MP_INT <span class="p">|</span>  MP_STR  <span class="p">|</span>
+<span class="p">|</span>           <span class="p">|</span>          <span class="p">|</span>          <span class="p">|</span>        <span class="p">|</span>          <span class="p">|</span>
++-----------+<span class="o">==========</span>+<span class="o">==========</span>+<span class="o">========</span>+<span class="o">==========</span>+
+                         MP_ARRAY
+</pre></div>
+</div>
+<p>It's an error to specify an argument of a type that differs from expected type.</p>
+<ul class="simple">
+<li>DELETE: CODE - 0x05
+Delete a tuple</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>DELETE BODY:
+
++<span class="o">==================</span>+<span class="o">==================</span>+<span class="o">==================</span>+
+<span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>
+<span class="p">|</span>   0x10: SPACE_ID <span class="p">|</span>   0x11: INDEX_ID <span class="p">|</span>   0x20: KEY      <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span> MP_INT: MP_INT   <span class="p">|</span> MP_INT: MP_ARRAY <span class="p">|</span>
+<span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>                  <span class="p">|</span>
++<span class="o">==================</span>+<span class="o">==================</span>+<span class="o">==================</span>+
+                          MP_MAP
+</pre></div>
+</div>
+<ul class="simple">
+<li>CALL: CODE - 0x06
+Call a stored function</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>CALL BODY:
+
++<span class="o">=======================</span>+<span class="o">==================</span>+
+<span class="p">|</span>                       <span class="p">|</span>                  <span class="p">|</span>
+<span class="p">|</span>   0x22: FUNCTION_NAME <span class="p">|</span>   0x21: TUPLE    <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_STRING     <span class="p">|</span> MP_INT: MP_ARRAY <span class="p">|</span>
+<span class="p">|</span>                       <span class="p">|</span>                  <span class="p">|</span>
++<span class="o">=======================</span>+<span class="o">==================</span>+
+                    MP_MAP
+</pre></div>
+</div>
+<ul class="simple">
+<li>EVAL: CODE - 0x08
+Evaulate Lua expression</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>EVAL BODY:
+
++<span class="o">=======================</span>+<span class="o">==================</span>+
+<span class="p">|</span>                       <span class="p">|</span>                  <span class="p">|</span>
+<span class="p">|</span>   0x27: EXPRESSION    <span class="p">|</span>   0x21: TUPLE    <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_STRING     <span class="p">|</span> MP_INT: MP_ARRAY <span class="p">|</span>
+<span class="p">|</span>                       <span class="p">|</span>                  <span class="p">|</span>
++<span class="o">=======================</span>+<span class="o">==================</span>+
+                    MP_MAP
+</pre></div>
+</div>
+<ul class="simple">
+<li>UPSERT: CODE - 0x09
+Update tuple if it would be found elsewhere try to insert tuple. Always use primary index for key.</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>UPSERT BODY:
+
++==================+==================+==========================+
+|                  |                  |             +~~~~~~~~~~+ |
+|                  |                  |             |          | |
+|   0x10: SPACE_ID |   0x21: TUPLE    |       (OPS) |    OP    | |
+| MP_INT: MP_INT   | MP_INT: MP_ARRAY |       0x28: |          | |
+|                  |                  |     MP_INT: +~~~~~~~~~~+ |
+|                  |                  |               MP_ARRAY   |
++==================+==================+==========================+
+                                MP_MAP
+
+Operations structure same as for UPDATE operation.
+   0           2
++-----------+==========+==========+
+|           |          |          |
+|    OP     | FIELD_NO | ARGUMENT |
+| MP_FIXSTR |  MP_INT  |  MP_INT  |
+|           |          |          |
++-----------+==========+==========+
+              MP_ARRAY
+
+Supported operations:
+
+&#39;+&#39; - add a value to a numeric field. If the filed is not numeric, it&#39;s
+      changed to 0 first. If the field does not exist, the operation is
+      skipped. There is no error in case of overflow either, the value
+      simply wraps around in C style. The range of the integer is MsgPack:
+      from -2^63 to 2^64-1
+&#39;-&#39; - same as the previous, but subtract a value
+&#39;=&#39; - assign a field to a value. The field must exist, if it does not exist,
+      the operation is skipped.
+&#39;!&#39; - insert a field. It&#39;s only possible to insert a field if this create no
+      nil &quot;gaps&quot; between fields. E.g. it&#39;s possible to add a field between
+      existing fields or as the last field of the tuple.
+&#39;#&#39; - delete a field. If the field does not exist, the operation is skipped.
+      It&#39;s not possible to change with update operations a part of the primary
+      key (this is validated before performing upsert).
+</pre></div>
+</div>
+</div>
+<div class="section" id="response-packet-structure">
+<h2>Response packet structure<a class="headerlink" href="#response-packet-structure" title="Ссылка на этот заголовок">¶</a></h2>
+<p>We'll show whole packets here:</p>
+<div class="highlight-bash"><div class="highlight"><pre>OK:    LEN + HEADER + BODY
+
+<span class="m">0</span>      <span class="m">5</span>                                          OPTIONAL
++------++<span class="o">================</span>+<span class="o">================</span>++<span class="o">===================</span>+
+<span class="p">|</span>      <span class="o">||</span>                <span class="p">|</span>                <span class="o">||</span>                   <span class="p">|</span>
+<span class="p">|</span> BODY <span class="o">||</span>   0x00: 0x00   <span class="p">|</span>   0x01: SYNC   <span class="o">||</span>   0x30: DATA      <span class="p">|</span>
+<span class="p">|</span>HEADER<span class="o">||</span> MP_INT: MP_INT <span class="p">|</span> MP_INT: MP_INT <span class="o">||</span> MP_INT: MP_OBJECT <span class="p">|</span>
+<span class="p">|</span> SIZE <span class="o">||</span>                <span class="p">|</span>                <span class="o">||</span>                   <span class="p">|</span>
++------++<span class="o">================</span>+<span class="o">================</span>++<span class="o">===================</span>+
+ MP_INT                MP_MAP                      MP_MAP
+</pre></div>
+</div>
+<p>Set of tuples in the response <code class="code docutils literal"><span class="pre">&lt;data&gt;</span></code> expects a msgpack array of tuples as value
+EVAL command returns arbitrary <cite>MP_ARRAY</cite> with arbitrary MsgPack values.</p>
+<div class="highlight-bash"><div class="highlight"><pre>ERROR: LEN + HEADER + BODY
+
+<span class="m">0</span>      5
++------++<span class="o">================</span>+<span class="o">================</span>++<span class="o">===================</span>+
+<span class="p">|</span>      <span class="o">||</span>                <span class="p">|</span>                <span class="o">||</span>                   <span class="p">|</span>
+<span class="p">|</span> BODY <span class="o">||</span>   0x00: 0x8XXX <span class="p">|</span>   0x01: SYNC   <span class="o">||</span>   0x31: ERROR     <span class="p">|</span>
+<span class="p">|</span>HEADER<span class="o">||</span> MP_INT: MP_INT <span class="p">|</span> MP_INT: MP_INT <span class="o">||</span> MP_INT: MP_STRING <span class="p">|</span>
+<span class="p">|</span> SIZE <span class="o">||</span>                <span class="p">|</span>                <span class="o">||</span>                   <span class="p">|</span>
++------++<span class="o">================</span>+<span class="o">================</span>++<span class="o">===================</span>+
+ MP_INT                MP_MAP                      MP_MAP
+
+Where 0xXXX is ERRCODE.
+</pre></div>
+</div>
+<p>Error message is present in the response only if there is an error <code class="code docutils literal"><span class="pre">&lt;error&gt;</span></code>
+expects as value a msgpack string</p>
+<p>Convenience macros which define hexadecimal constants for return codes
+can be found in <a class="reference external" href="https://github.com/tarantool/tarantool/blob/master/src/box/errcode.h">src/box/errcode.h</a></p>
+</div>
+<div class="section" id="replication-packet-structure">
+<h2>Replication packet structure<a class="headerlink" href="#replication-packet-structure" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>-- replication keys
+&lt;server_id&gt;     ::<span class="o">=</span> 0x02
+&lt;lsn&gt;           ::<span class="o">=</span> 0x03
+&lt;timestamp&gt;     ::<span class="o">=</span> 0x04
+&lt;server_uuid&gt;   ::<span class="o">=</span> 0x24
+&lt;cluster_uuid&gt;  ::<span class="o">=</span> 0x25
+&lt;vclock&gt;        ::<span class="o">=</span> 0x26
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>-- replication codes
+&lt;join&gt;      ::<span class="o">=</span> 0x41
+&lt;subscribe&gt; ::<span class="o">=</span> 0x42
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>JOIN:
+
+In the beginning you must send JOIN
+                         HEADER                          BODY
++<span class="o">================</span>+<span class="o">================</span>+<span class="o">===================</span>++-------+
+<span class="p">|</span>                <span class="p">|</span>                <span class="p">|</span>    SERVER_UUID    <span class="o">||</span>       <span class="p">|</span>
+<span class="p">|</span>   0x00: 0x41   <span class="p">|</span>   0x01: SYNC   <span class="p">|</span>   0x24: UUID      <span class="o">||</span> EMPTY <span class="p">|</span>
+<span class="p">|</span> MP_INT: MP_INT <span class="p">|</span> MP_INT: MP_INT <span class="p">|</span> MP_INT: MP_STRING <span class="o">||</span>       <span class="p">|</span>
+<span class="p">|</span>                <span class="p">|</span>                <span class="p">|</span>                   <span class="o">||</span>       <span class="p">|</span>
++<span class="o">================</span>+<span class="o">================</span>+<span class="o">===================</span>++-------+
+               MP_MAP                                   MP_MAP
+
+Then server, which we connect to, will send last SNAP file by, simply,
+creating a number of INSERTs <span class="o">(</span>with additional LSN and ServerID<span class="o">)</span>
+<span class="o">(</span>don<span class="s1">&#39;t reply). Then it&#39;</span>ll send a vclock<span class="s1">&#39;s MP_MAP and close a socket.</span>
+
+<span class="s1">+================+================++============================+</span>
+<span class="s1">|                |                ||        +~~~~~~~~~~~~~~~~~+ |</span>
+<span class="s1">|                |                ||        |                 | |</span>
+<span class="s1">|   0x00: 0x00   |   0x01: SYNC   ||   0x26:| SRV_ID: SRV_LSN | |</span>
+<span class="s1">| MP_INT: MP_INT | MP_INT: MP_INT || MP_INT:| MP_INT: MP_INT  | |</span>
+<span class="s1">|                |                ||        +~~~~~~~~~~~~~~~~~+ |</span>
+<span class="s1">|                |                ||               MP_MAP       |</span>
+<span class="s1">+================+================++============================+</span>
+<span class="s1">               MP_MAP                      MP_MAP</span>
+
+<span class="s1">SUBSCRIBE:</span>
+
+<span class="s1">Then you must send SUBSCRIBE:</span>
+
+<span class="s1">                              HEADER</span>
+<span class="s1">+===================+===================+</span>
+<span class="s1">|                   |                   |</span>
+<span class="s1">|     0x00: 0x41    |    0x01: SYNC     |</span>
+<span class="s1">|   MP_INT: MP_INT  |  MP_INT: MP_INT   |</span>
+<span class="s1">|                   |                   |</span>
+<span class="s1">+===================+===================+</span>
+<span class="s1">|    SERVER_UUID    |    CLUSTER_UUID   |</span>
+<span class="s1">|   0x24: UUID      |   0x25: UUID      |</span>
+<span class="s1">| MP_INT: MP_STRING | MP_INT: MP_STRING |</span>
+<span class="s1">|                   |                   |</span>
+<span class="s1">+===================+===================+</span>
+<span class="s1">                 MP_MAP</span>
+
+<span class="s1">      BODY</span>
+<span class="s1">+================+</span>
+<span class="s1">|                |</span>
+<span class="s1">|   0x26: VCLOCK |</span>
+<span class="s1">| MP_INT: MP_INT |</span>
+<span class="s1">|                |</span>
+<span class="s1">+================+</span>
+<span class="s1">      MP_MAP</span>
+
+<span class="s1">Then you must process every query that&#39;</span>ll came through other masters.
+Every request between masters will have Additional LSN and SERVER_ID.
+</pre></div>
+</div>
+</div>
+<div class="section" id="xlog-snap">
+<h2>XLOG / SNAP<a class="headerlink" href="#xlog-snap" title="Ссылка на этот заголовок">¶</a></h2>
+<p>XLOG and SNAP have the same format. They start with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>SNAP<span class="se">\n</span>
+0.12<span class="se">\n</span>
+Server: e6eda543-eda7-4a82-8bf4-7ddd442a9275<span class="se">\n</span>
+VClock: <span class="o">{</span>1: 0<span class="o">}</span><span class="se">\n</span>
+<span class="se">\n</span>
+...
+</pre></div>
+</div>
+<p>So, <strong>Header</strong> of an SNAP/XLOG consists of:</p>
+<div class="highlight-bash"><div class="highlight"><pre>&lt;format&gt;<span class="se">\n</span>
+&lt;format_version&gt;<span class="se">\n</span>
+Server: &lt;server_uuid&gt;<span class="se">\n</span>
+VClock: &lt;vclock_map&gt;<span class="se">\n</span>
+<span class="se">\n</span>
+</pre></div>
+</div>
+<p>There are two markers: tuple beginning - <strong>0xd5ba0bab</strong> and EOF marker - <strong>0xd510aded</strong>. So, next, between <strong>Header</strong> and EOF marker there's data with the following schema:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="m">0</span>            <span class="m">3</span> <span class="m">4</span>                                         17
++-------------+<span class="o">========</span>+<span class="o">============</span>+<span class="o">===========</span>+<span class="o">=========</span>+
+<span class="p">|</span>             <span class="p">|</span>        <span class="p">|</span>            <span class="p">|</span>           <span class="p">|</span>         <span class="p">|</span>
+<span class="p">|</span> 0xd5ba0bab  <span class="p">|</span> LENGTH <span class="p">|</span> CRC32 PREV <span class="p">|</span> CRC32 CUR <span class="p">|</span> PADDING <span class="p">|</span>
+<span class="p">|</span>             <span class="p">|</span>        <span class="p">|</span>            <span class="p">|</span>           <span class="p">|</span>         <span class="p">|</span>
++-------------+<span class="o">========</span>+<span class="o">============</span>+<span class="o">===========</span>+<span class="o">=========</span>+
+  MP_FIXEXT2    MP_INT     MP_INT       MP_INT      ---
+
++<span class="o">============</span>+ +<span class="o">===================================</span>+
+<span class="p">|</span>            <span class="p">|</span> <span class="p">|</span>                                   <span class="p">|</span>
+<span class="p">|</span>   HEADER   <span class="p">|</span> <span class="p">|</span>                BODY               <span class="p">|</span>
+<span class="p">|</span>            <span class="p">|</span> <span class="p">|</span>                                   <span class="p">|</span>
++<span class="o">============</span>+ +<span class="o">===================================</span>+
+    MP_MAP                     MP_MAP
+</pre></div>
+</div>
+</div>
+</div>
+
+
+        </article>
+
+
+<div class="b-page_over-tail">
+
+    
+    <a href="developer_guidelines.html" class="b-prev">Developer guidelines</a>
+    
+    
+    <a href="c_style_guide.html" class="b-next">C Style Guide</a>
+    
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  
+
+      </div>
+    </div>
+
+    <!-- FOOTER > -->
+    <footer class="b-footer">
+      <div class="b-footer-wrapper">
+        <nav class="b-footer_menu">
+          
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          <div class="b-footer-other">
+            <a href="http://stable.tarantool.org">1.5 web site and downloads</a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+  <!-- < FOOTER -->
+  </body>
+</html>
+

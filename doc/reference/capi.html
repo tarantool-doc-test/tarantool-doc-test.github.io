@@ -1,0 +1,2922 @@
+
+
+
+
+
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Module C API</title>
+    <link rel="shortcut icon" href="/theme/favicon.ico" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.6.7-521-g0d75d50',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../_static/jquery.pin.min.js"></script>
+    <script type="text/javascript" src="../_static/headers.js"></script>
+    <link rel="stylesheet" href="/theme/design.css">
+    <link rel="stylesheet" href="/theme/pygmentize.css">
+    <link rel="stylesheet" href="../_static/sphinx_design.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+     
+    <!--[if lt IE 9]>
+      <script src="/js/ie8.js"></script>
+      <link rel="stylesheet" href="/theme/ie8.css" />
+    <![endif]-->
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22120502-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+  var _tmr = _tmr || [];
+  _tmr.push({id: "2284916", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w) {
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+    ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window);
+</script>
+<noscript>
+  <div style="position:absolute;left:-10000px;">
+    <img src="//top-fwz1.mail.ru/counter?id=2284916;js=na" style="border:0;"
+         height="1" width="1" alt="Рейтинг@Mail.ru" />
+  </div>
+</noscript>
+<!-- //Rating@Mail.ru counter -->
+
+
+  </head>
+  
+  <body class="p-cols_design">
+  
+    <div class="b-wrapper">
+      <!-- HEADER > -->
+      <header class="b-header">
+        <div class="b-header-wrapper">
+          <nav class="b-header_menu">
+            
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          </nav>
+        </div>
+      </header>
+      <!-- < HEADER -->
+
+      <div class="b-content b-clearbox">
+        
+  
+  <section class="b-lightgray_block b-documentation_top b-clearbox p-documentation_in">
+  
+    <div class="b-block-wrapper">
+      <h2 class="b-section-title">Module C API</h2>
+      
+    </div>
+  </section>
+  <div class="b-cols_content b-clearbox">
+    <div class="b-cols_content_left">
+      
+      
+<form id="searchbox" role="search" class="search b-search" action="../search.html" method="get">
+  <input class="b-search-text" name="q" type="text"/ placeholder="Search the manual">
+  <input class="b-search-but" type="submit" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+
+      
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/index.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="box.html">Package <cite>box</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="box_error.html">Package <cite>box.error</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="clock.html">Package <cite>clock</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Package <cite>console</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="csv.html">Package <cite>csv</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="digest.html">Package <cite>digest</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="expirationd.html">Package <cite>expirationd</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fiber.html">Package <cite>fiber</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fiber-ipc.html">Package <cite>fiber-ipc</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fio.html">Package <cite>fio</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fun.html">Package <cite>fun</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit.html">Package <cite>jit</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="json.html">Package <cite>json</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html">Package <cite>log</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="msgpack.html">Package <cite>msgpack</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="net_box.html">Package <cite>net.box</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pickle.html">Package <cite>pickle</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="shard.html">Package <cite>shard</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="socket.html">Package <cite>socket</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="strict.html">Package <cite>strict</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tap.html">Package <cite>tap</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tarantool.html">Package <cite>tarantool</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="uuid.html">Package <cite>uuid</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yaml.html">Package <cite>yaml</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html">Miscellaneous</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Module C API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Contributing</a></li>
+</ul>
+
+    </div>
+    <div class="b-cols_content_right">
+      <div class="b-cols_content_right-slot">
+  
+
+<div class="b-page_header">
+  <ul class="b-path-list">
+    <li class="b-path-list-item">
+      <a href="/doc/" class="b-path-list-item-url">Documentation</a>
+    </li>
+  
+    <li class="b-path-list-item">
+      <a href="index.html" class="b-path-list-item-url">Reference Manual</a>
+    </li>
+  
+    <li class="b-path-list-item"><span class="b-path_current">Module C API</span></li>
+  </ul>
+</div>
+
+<article class="b-article">
+          
+          
+  <div class="section" id="module-c-api">
+<h1>Module C API<a class="headerlink" href="#module-c-api" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="breathe-sectiondef container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="macro">
+<dt id="c.API_EXPORT">
+<span class="target" id="apimodule_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0"></span><code class="descname">API_EXPORT</code><a class="headerlink" href="#c.API_EXPORT" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Extern modifier for all public functions. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.PACKAGE_VERSION_MAJOR">
+<span class="target" id="apimodule_8h_1ac5f2c7580fd5bf200c5027443420902f"></span><code class="descname">PACKAGE_VERSION_MAJOR</code><a class="headerlink" href="#c.PACKAGE_VERSION_MAJOR" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Package major version - 1 for 1.6.7. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.PACKAGE_VERSION_MINOR">
+<span class="target" id="apimodule_8h_1a4ab155eaff0a115e522c1faae631196e"></span><code class="descname">PACKAGE_VERSION_MINOR</code><a class="headerlink" href="#c.PACKAGE_VERSION_MINOR" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Package minor version - 6 for 1.6.7. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.PACKAGE_VERSION_PATCH">
+<span class="target" id="apimodule_8h_1abd1dbec4fd6761084d3e0c05afe2b138"></span><code class="descname">PACKAGE_VERSION_PATCH</code><a class="headerlink" href="#c.PACKAGE_VERSION_PATCH" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Package patch version - 7 for 1.6.7. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.PACKAGE_VERSION">
+<span class="target" id="apimodule_8h_1aa326a05d5e30f9e9a4bb0b4469d5d0c0"></span><code class="descname">PACKAGE_VERSION</code><a class="headerlink" href="#c.PACKAGE_VERSION" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A string with major-minor-patch-commit-id identifier of the release, e.g. </p>
+<p>1.6.6-113-g8399d0e. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.SYSCONF_DIR">
+<span class="target" id="apimodule_8h_1adb6d1259777e8f56c6260be6faed183e"></span><code class="descname">SYSCONF_DIR</code><a class="headerlink" href="#c.SYSCONF_DIR" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p>System configuration dir (e.g /etc) </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.INSTALL_PREFIX">
+<span class="target" id="apimodule_8h_1a643b6b7ac15874197420e2adbea8b6bb"></span><code class="descname">INSTALL_PREFIX</code><a class="headerlink" href="#c.INSTALL_PREFIX" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Install prefix (e.g. </p>
+<p>/usr) </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.BUILD_TYPE">
+<span class="target" id="apimodule_8h_1a040141d0f88e012c0b915e3531fef5cc"></span><code class="descname">BUILD_TYPE</code><a class="headerlink" href="#c.BUILD_TYPE" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Build type, e.g. </p>
+<p>Debug or Release </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.BUILD_INFO">
+<span class="target" id="apimodule_8h_1ac8c9f90a1d4b7435c509fd2020e4aa88"></span><code class="descname">BUILD_INFO</code><a class="headerlink" href="#c.BUILD_INFO" title="Ссылка на это определение">¶</a></dt>
+<dd><p>CMake build type signature, e.g. </p>
+<p>Linux-x86_64-Debug </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.BUILD_OPTIONS">
+<span class="target" id="apimodule_8h_1a2863d95c06ae4d073ea443a8ae48c5b6"></span><code class="descname">BUILD_OPTIONS</code><a class="headerlink" href="#c.BUILD_OPTIONS" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Command line used to run CMake. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.COMPILER_INFO">
+<span class="target" id="apimodule_8h_1a835dbb7b4216a8258c588d9781a3b66b"></span><code class="descname">COMPILER_INFO</code><a class="headerlink" href="#c.COMPILER_INFO" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Pathes to C and CXX compilers. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.TARANTOOL_C_FLAGS">
+<span class="target" id="apimodule_8h_1adc01d1a8b018ef75d112a8f51dde4e27"></span><code class="descname">TARANTOOL_C_FLAGS</code><a class="headerlink" href="#c.TARANTOOL_C_FLAGS" title="Ссылка на это определение">¶</a></dt>
+<dd><p>C compile flags used to build Tarantool. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.TARANTOOL_CXX_FLAGS">
+<span class="target" id="apimodule_8h_1a2118c0a1a997878f04f860b4049ca934"></span><code class="descname">TARANTOOL_CXX_FLAGS</code><a class="headerlink" href="#c.TARANTOOL_CXX_FLAGS" title="Ссылка на это определение">¶</a></dt>
+<dd><p>CXX compile flags used to build Tarantool. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.MODULE_LIBDIR">
+<span class="target" id="apimodule_8h_1a44bca7e3d39f063be25a9d61a0a9d421"></span><code class="descname">MODULE_LIBDIR</code><a class="headerlink" href="#c.MODULE_LIBDIR" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A path to install *.lua module files. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.MODULE_LUADIR">
+<span class="target" id="apimodule_8h_1a8114e8df5bc35951db601268ec25d600"></span><code class="descname">MODULE_LUADIR</code><a class="headerlink" href="#c.MODULE_LUADIR" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A path to install *.so / *.dylib module files. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.MODULE_INCLUDEDIR">
+<span class="target" id="apimodule_8h_1a516a42b6eee771a85d83b371c0f22337"></span><code class="descname">MODULE_INCLUDEDIR</code><a class="headerlink" href="#c.MODULE_INCLUDEDIR" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A path to Lua includes (the same directory where this file is contained) </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.MODULE_LUAPATH">
+<span class="target" id="apimodule_8h_1a5e471f2a326d5e86e09a56f9da3d383f"></span><code class="descname">MODULE_LUAPATH</code><a class="headerlink" href="#c.MODULE_LUAPATH" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A constant added to package.path in Lua to find *.lua module files. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.MODULE_LIBPATH">
+<span class="target" id="apimodule_8h_1a83a0a80ad0559e26298ce670050609e2"></span><code class="descname">MODULE_LIBPATH</code><a class="headerlink" href="#c.MODULE_LIBPATH" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A constant added to package.cpath in Lua to find *.so module files. </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.say">
+<span class="target" id="apimodule_8h_1a2b3e4833d863a0756e8820ac07ad8b68"></span><code class="descname">say</code><big>(</big>level, format, ...<big>)</big><a class="headerlink" href="#c.say" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Format and print a message to Tarantool log file. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><p class="first">printf() </p>
+<p class="last">enum <a class="reference internal" href="#apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82"><span>say_level</span></a> </p>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">level</span></code> - <p>(int) - log level (see enum <a class="reference internal" href="#apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82"><span>say_level</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">format</span></code> - <p>(const char * ) - printf()-like format string </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">...</span></code> - <p>- format arguments </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.say_error">
+<span class="target" id="apimodule_8h_1a0a7d66a81cb7c12fdb2bf2c16b9c563e"></span><code class="descname">say_error</code><big>(</big>format, ...<big>)</big><a class="headerlink" href="#c.say_error" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Format and print a message to Tarantool log file. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><p class="first">printf() </p>
+<p class="last">enum <a class="reference internal" href="#apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82"><span>say_level</span></a> Example:  <div class="highlight-python"><div class="highlight"><pre><span class="n">say_info</span><span class="p">(</span><span class="s">&quot;Some useful information: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">format</span></code> - <p>(const char * ) - printf()-like format string </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">...</span></code> - <p>- format arguments </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.say_crit">
+<span class="target" id="apimodule_8h_1a7971b0f41c615be5a0b7100b5e42dcb3"></span><code class="descname">say_crit</code><big>(</big>format, ...<big>)</big><a class="headerlink" href="#c.say_crit" title="Ссылка на это определение">¶</a></dt>
+<dd><p> </p>
+<p> </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.say_warn">
+<span class="target" id="apimodule_8h_1ac1ea95f80b8aa81fe56ca4291814b8a3"></span><code class="descname">say_warn</code><big>(</big>format, ...<big>)</big><a class="headerlink" href="#c.say_warn" title="Ссылка на это определение">¶</a></dt>
+<dd><p> </p>
+<p> </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.say_info">
+<span class="target" id="apimodule_8h_1ae02d530f5d4ff18fd7786c3648dac2cf"></span><code class="descname">say_info</code><big>(</big>format, ...<big>)</big><a class="headerlink" href="#c.say_info" title="Ссылка на это определение">¶</a></dt>
+<dd><p> </p>
+<p> </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.say_debug">
+<span class="target" id="apimodule_8h_1ab318c2435df2b04c7180df57a3c217ae"></span><code class="descname">say_debug</code><big>(</big>format, ...<big>)</big><a class="headerlink" href="#c.say_debug" title="Ссылка на это определение">¶</a></dt>
+<dd><p> </p>
+<p> </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.say_syserror">
+<span class="target" id="apimodule_8h_1a39929109aefade22a76048b9ac73bd8d"></span><code class="descname">say_syserror</code><big>(</big>format, ...<big>)</big><a class="headerlink" href="#c.say_syserror" title="Ссылка на это определение">¶</a></dt>
+<dd><p>. </p>
+<p>. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="type">
+<dt id="_CPPv29sayfunc_t">
+<span id="sayfunc_t"></span><span class="target" id="apimodule_8h_1a2438a3ce21f046f993b9d174de162617"></span><em class="property">typedef </em>void (*<code class="descname">sayfunc_t</code>)<big>(</big>int, <em class="property">const</em> char *, int, <em class="property">const</em> char *, <em class="property">const</em> char *, ...<big>)</big><a class="headerlink" href="#_CPPv29sayfunc_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv210fiber_func">
+<span id="fiber_func"></span><span class="target" id="apimodule_8h_1a43cc04d7d049e9af9f2f0cd479c425e8"></span><em class="property">typedef </em>void (*<code class="descname">fiber_func</code>)<big>(</big>va_list<big>)</big><a class="headerlink" href="#_CPPv210fiber_func" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Fiber - contains information about fiber. </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv218box_tuple_format_t">
+<span id="box_tuple_format_t"></span><span class="target" id="apimodule_8h_1ab230ff08fb24d580407126fc905cc271"></span><em class="property">typedef </em><em class="property">struct</em> tuple_format <code class="descname">box_tuple_format_t</code><a class="headerlink" href="#_CPPv218box_tuple_format_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv211box_tuple_t">
+<span id="box_tuple_t"></span><span class="target" id="apimodule_8h_1a880c3e1e8e63b9a12353853fb6aefa3f"></span><em class="property">typedef </em><em class="property">struct</em> tuple <code class="descname">box_tuple_t</code><a class="headerlink" href="#_CPPv211box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Tuple. </p>
+<p>public </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv220box_tuple_iterator_t">
+<span id="box_tuple_iterator_t"></span><span class="target" id="apimodule_8h_1aa289ab037764b9f065d4b683cb186bda"></span><em class="property">typedef </em><em class="property">struct</em> tuple_iterator <code class="descname">box_tuple_iterator_t</code><a class="headerlink" href="#_CPPv220box_tuple_iterator_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Tuple iterator. </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv218box_function_ctx_t">
+<span id="box_function_ctx_t"></span><span class="target" id="apimodule_8h_1aa37ca06842be0fe827d5272493e2311f"></span><em class="property">typedef </em><em class="property">struct</em> box_function_ctx <code class="descname">box_function_ctx_t</code><a class="headerlink" href="#_CPPv218box_function_ctx_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv214box_iterator_t">
+<span id="box_iterator_t"></span><span class="target" id="apimodule_8h_1a2b04d0397e455b7ed42b530c1c1ea9e6"></span><em class="property">typedef </em><em class="property">struct</em> iterator <code class="descname">box_iterator_t</code><a class="headerlink" href="#_CPPv214box_iterator_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A space iterator. </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv211box_error_t">
+<span id="box_error_t"></span><span class="target" id="apimodule_8h_1ad49d5e355555804f6b46b79513715be8"></span><em class="property">typedef </em><em class="property">struct</em> error <code class="descname">box_error_t</code><a class="headerlink" href="#_CPPv211box_error_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Error - contains information about error. </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv211box_latch_t">
+<span id="box_latch_t"></span><span class="target" id="apimodule_8h_1a923d13f137e4bdb8c852ea04637da58d"></span><em class="property">typedef </em><em class="property">struct</em> box_latch <code class="descname">box_latch_t</code><a class="headerlink" href="#_CPPv211box_latch_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p>A lock for cooperative multitasking environment </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef container">
+<p class="breathe-sectiondef-title rubric">Enums</p>
+<dl class="type">
+<dt id="_CPPv29say_level">
+<span id="say_level"></span><span class="target" id="apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82"></span><em class="property">enum </em><code class="descname">say_level</code><a class="headerlink" href="#_CPPv29say_level" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p>Log levels </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv27S_FATAL">
+<span id="S_FATAL"></span><span class="target" id="apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82ad9bdef35e63680685491cabd5243d786"></span><code class="descname">S_FATAL</code><a class="headerlink" href="#_CPPv27S_FATAL" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv210S_SYSERROR">
+<span id="S_SYSERROR"></span><span class="target" id="apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82ad0c2c7d381ce3e0b9f57baabeebf2de6"></span><code class="descname">S_SYSERROR</code><a class="headerlink" href="#_CPPv210S_SYSERROR" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv27S_ERROR">
+<span id="S_ERROR"></span><span class="target" id="apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82aa09fa5ed5be816eeb89a11be5a00c477"></span><code class="descname">S_ERROR</code><a class="headerlink" href="#_CPPv27S_ERROR" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv26S_CRIT">
+<span id="S_CRIT"></span><span class="target" id="apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82aeb9d5f7b228ac56db758b2c3ac1e88b1"></span><code class="descname">S_CRIT</code><a class="headerlink" href="#_CPPv26S_CRIT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv26S_WARN">
+<span id="S_WARN"></span><span class="target" id="apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82a73a2d2de70f4b2251dd160cc4318b559"></span><code class="descname">S_WARN</code><a class="headerlink" href="#_CPPv26S_WARN" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv26S_INFO">
+<span id="S_INFO"></span><span class="target" id="apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82a563669ac6b6a356e9e8d2725859dc153"></span><code class="descname">S_INFO</code><a class="headerlink" href="#_CPPv26S_INFO" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv27S_DEBUG">
+<span id="S_DEBUG"></span><span class="target" id="apimodule_8h_1af667a90dfe6a8cc25b510af73d98bb82a2320c9e0ae890f89c4ed2de201eb8101"></span><code class="descname">S_DEBUG</code><a class="headerlink" href="#_CPPv27S_DEBUG" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv212__anonymous0">
+<span id="__anonymous0"></span><span class="target" id="apimodule_8h_1a06fc87d81c62e9abb8790b6e5713c55b"></span><em class="property">enum </em><code class="descname"><strong>[anonymous]</strong></code><a class="headerlink" href="#_CPPv212__anonymous0" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv29COIO_READ">
+<span id="COIO_READ"></span><span class="target" id="apimodule_8h_1a06fc87d81c62e9abb8790b6e5713c55ba4e556d3f75a54e162feaa8e9451cfce7"></span><code class="descname">COIO_READ</code> = 0x1<a class="headerlink" href="#_CPPv29COIO_READ" title="Ссылка на это определение">¶</a></dt>
+<dd><p>READ event. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv210COIO_WRITE">
+<span id="COIO_WRITE"></span><span class="target" id="apimodule_8h_1a06fc87d81c62e9abb8790b6e5713c55ba9ccd504861956d107f717efa66b3f1b7"></span><code class="descname">COIO_WRITE</code> = 0x2<a class="headerlink" href="#_CPPv210COIO_WRITE" title="Ссылка на это определение">¶</a></dt>
+<dd><p>WRITE event. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv212__anonymous1">
+<span id="__anonymous1"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7"></span><em class="property">enum </em><code class="descname"><strong>[anonymous]</strong></code><a class="headerlink" href="#_CPPv212__anonymous1" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv217BOX_SYSTEM_ID_MIN">
+<span id="BOX_SYSTEM_ID_MIN"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a05cae1bfc9671a38779ffd9dde4d7f58"></span><code class="descname">BOX_SYSTEM_ID_MIN</code> = 256<a class="headerlink" href="#_CPPv217BOX_SYSTEM_ID_MIN" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Start of the reserved range of system spaces. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213BOX_SCHEMA_ID">
+<span id="BOX_SCHEMA_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a97f8ff937bc22208ebe19175eb0016a0"></span><code class="descname">BOX_SCHEMA_ID</code> = 272<a class="headerlink" href="#_CPPv213BOX_SCHEMA_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _schema. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212BOX_SPACE_ID">
+<span id="BOX_SPACE_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a2f5e17bb60cab866ec35b516c75c686a"></span><code class="descname">BOX_SPACE_ID</code> = 280<a class="headerlink" href="#_CPPv212BOX_SPACE_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _space. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213BOX_VSPACE_ID">
+<span id="BOX_VSPACE_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7abd4d512ca7fdebf9ec1a6bf7f11e1840"></span><code class="descname">BOX_VSPACE_ID</code> = 281<a class="headerlink" href="#_CPPv213BOX_VSPACE_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _vspace view. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212BOX_INDEX_ID">
+<span id="BOX_INDEX_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a482bf0fb6fc52ff01f40edb92705c95f"></span><code class="descname">BOX_INDEX_ID</code> = 288<a class="headerlink" href="#_CPPv212BOX_INDEX_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _index. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213BOX_VINDEX_ID">
+<span id="BOX_VINDEX_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7ac27ac3d0508d4e5f19f91053f7971cb7"></span><code class="descname">BOX_VINDEX_ID</code> = 289<a class="headerlink" href="#_CPPv213BOX_VINDEX_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _vindex view. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211BOX_FUNC_ID">
+<span id="BOX_FUNC_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a744b39a5e9efc8559776daba88b01dd3"></span><code class="descname">BOX_FUNC_ID</code> = 296<a class="headerlink" href="#_CPPv211BOX_FUNC_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _func. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212BOX_VFUNC_ID">
+<span id="BOX_VFUNC_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a8cb7f39326f7dfc0afcf9dc32f5314da"></span><code class="descname">BOX_VFUNC_ID</code> = 297<a class="headerlink" href="#_CPPv212BOX_VFUNC_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _vfunc view. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211BOX_USER_ID">
+<span id="BOX_USER_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a0f673849e4f92136273e92af04637e81"></span><code class="descname">BOX_USER_ID</code> = 304<a class="headerlink" href="#_CPPv211BOX_USER_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _user. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212BOX_VUSER_ID">
+<span id="BOX_VUSER_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7ab508bf1accff87e8422bb32785e505bb"></span><code class="descname">BOX_VUSER_ID</code> = 305<a class="headerlink" href="#_CPPv212BOX_VUSER_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _vuser view. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211BOX_PRIV_ID">
+<span id="BOX_PRIV_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a1bbd73fc6936dfa1977c7ea18677c4f9"></span><code class="descname">BOX_PRIV_ID</code> = 312<a class="headerlink" href="#_CPPv211BOX_PRIV_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _priv. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212BOX_VPRIV_ID">
+<span id="BOX_VPRIV_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a37bb51c69ca47d95c4ce5777c9640613"></span><code class="descname">BOX_VPRIV_ID</code> = 313<a class="headerlink" href="#_CPPv212BOX_VPRIV_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _vpriv view. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214BOX_CLUSTER_ID">
+<span id="BOX_CLUSTER_ID"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7ab05d38e39c97e255ecaf3e48db943d62"></span><code class="descname">BOX_CLUSTER_ID</code> = 320<a class="headerlink" href="#_CPPv214BOX_CLUSTER_ID" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Space id of _cluster. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217BOX_SYSTEM_ID_MAX">
+<span id="BOX_SYSTEM_ID_MAX"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7abb87df1b61192ee3aea178534071b9cd"></span><code class="descname">BOX_SYSTEM_ID_MAX</code> = 511<a class="headerlink" href="#_CPPv217BOX_SYSTEM_ID_MAX" title="Ссылка на это определение">¶</a></dt>
+<dd><p>End of the reserved range of system spaces. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv210BOX_ID_NIL">
+<span id="BOX_ID_NIL"></span><span class="target" id="apimodule_8h_1adf764cbdea00d65edcd07bb9953ad2b7a4816eb59cfbc3b8d480e61cab1cf26d4"></span><code class="descname">BOX_ID_NIL</code> = 2147483647<a class="headerlink" href="#_CPPv210BOX_ID_NIL" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv213iterator_type">
+<span id="iterator_type"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17e"></span><em class="property">enum </em><code class="descname">iterator_type</code><a class="headerlink" href="#_CPPv213iterator_type" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Controls how to iterate over tuples in an index. </p>
+<p>Different index types support different iterator types. For example, one can start iteration from a particular value (request key) and then retrieve all tuples where keys are greater or equal (= GE) to this key.</p>
+<p>If iterator type is not supported by the selected index type, iterator constructor must fail with ER_UNSUPPORTED. To be selectable for primary key, an index must support at least ITER_EQ and ITER_GE types.</p>
+<p>NULL value of request key corresponds to the first or last key in the index, depending on iteration direction. (first key for GE and GT types, and last key for LE and LT). Therefore, to iterate over all tuples in an index, one can use ITER_GE or ITER_LE iteration types with start key equal to NULL. For ITER_EQ, the key must not be NULL. </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv27ITER_EQ">
+<span id="ITER_EQ"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea8396fa34bbd5b7136bbbb9686f5e5615"></span><code class="descname">ITER_EQ</code> =  0<a class="headerlink" href="#_CPPv27ITER_EQ" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv28ITER_REQ">
+<span id="ITER_REQ"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea99186231b0ac5ec676a71afc0612b934"></span><code class="descname">ITER_REQ</code> =  1<a class="headerlink" href="#_CPPv28ITER_REQ" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv28ITER_ALL">
+<span id="ITER_ALL"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17eae09d7cec3013e9257317edec9b0a84f5"></span><code class="descname">ITER_ALL</code> =  2<a class="headerlink" href="#_CPPv28ITER_ALL" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv27ITER_LT">
+<span id="ITER_LT"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17eadac2b1ae459e929b958e8d9e16d597fd"></span><code class="descname">ITER_LT</code> =  3<a class="headerlink" href="#_CPPv27ITER_LT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv27ITER_LE">
+<span id="ITER_LE"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea30fcfd7a077493529639a79b6ef65f26"></span><code class="descname">ITER_LE</code> =  4<a class="headerlink" href="#_CPPv27ITER_LE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv27ITER_GE">
+<span id="ITER_GE"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea77cb460ef7655f96706db717c7da4978"></span><code class="descname">ITER_GE</code> =  5<a class="headerlink" href="#_CPPv27ITER_GE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv27ITER_GT">
+<span id="ITER_GT"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea8d1b8656e9dcc74659ca3be3bc9853b9"></span><code class="descname">ITER_GT</code> =  6<a class="headerlink" href="#_CPPv27ITER_GT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217ITER_BITS_ALL_SET">
+<span id="ITER_BITS_ALL_SET"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea36639c9296e659aa5327291341d5c684"></span><code class="descname">ITER_BITS_ALL_SET</code> =  7<a class="headerlink" href="#_CPPv217ITER_BITS_ALL_SET" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217ITER_BITS_ANY_SET">
+<span id="ITER_BITS_ANY_SET"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea414a9f1e27fd3107a08a6d4ae82d487c"></span><code class="descname">ITER_BITS_ANY_SET</code> =  8<a class="headerlink" href="#_CPPv217ITER_BITS_ANY_SET" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv221ITER_BITS_ALL_NOT_SET">
+<span id="ITER_BITS_ALL_NOT_SET"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea7932b409a1ac013cf61882260176e7b7"></span><code class="descname">ITER_BITS_ALL_NOT_SET</code> =  9<a class="headerlink" href="#_CPPv221ITER_BITS_ALL_NOT_SET" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ITER_OVERLAPS">
+<span id="ITER_OVERLAPS"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea7061ef582ade83934ff59be90e9d2506"></span><code class="descname">ITER_OVERLAPS</code> = 10<a class="headerlink" href="#_CPPv213ITER_OVERLAPS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ITER_NEIGHBOR">
+<span id="ITER_NEIGHBOR"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea5ba34edc565f08fc941fa73e517bc413"></span><code class="descname">ITER_NEIGHBOR</code> = 11<a class="headerlink" href="#_CPPv213ITER_NEIGHBOR" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217iterator_type_MAX">
+<span id="iterator_type_MAX"></span><span class="target" id="apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17ea092f494fc2a6fa3346a2b3a322efc66e"></span><code class="descname">iterator_type_MAX</code> = ITER_NEIGHBOR + 1<a class="headerlink" href="#_CPPv217iterator_type_MAX" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv214box_error_code">
+<span id="box_error_code"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adce"></span><em class="property">enum </em><code class="descname">box_error_code</code><a class="headerlink" href="#_CPPv214box_error_code" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv210ER_UNKNOWN">
+<span id="ER_UNKNOWN"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcead62756b0ef341430c318e631713512dc"></span><code class="descname">ER_UNKNOWN</code><a class="headerlink" href="#_CPPv210ER_UNKNOWN" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217ER_ILLEGAL_PARAMS">
+<span id="ER_ILLEGAL_PARAMS"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea083785e356837f4303efb5294c0fcf25"></span><code class="descname">ER_ILLEGAL_PARAMS</code><a class="headerlink" href="#_CPPv217ER_ILLEGAL_PARAMS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_MEMORY_ISSUE">
+<span id="ER_MEMORY_ISSUE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea3148df88f7c2ac93774e87f732aaa5ee"></span><code class="descname">ER_MEMORY_ISSUE</code><a class="headerlink" href="#_CPPv215ER_MEMORY_ISSUE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_TUPLE_FOUND">
+<span id="ER_TUPLE_FOUND"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea555ec8745bbad48c3ca3eacdc189c946"></span><code class="descname">ER_TUPLE_FOUND</code><a class="headerlink" href="#_CPPv214ER_TUPLE_FOUND" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv218ER_TUPLE_NOT_FOUND">
+<span id="ER_TUPLE_NOT_FOUND"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea915cf379edd725b9e2fca241275af237"></span><code class="descname">ER_TUPLE_NOT_FOUND</code><a class="headerlink" href="#_CPPv218ER_TUPLE_NOT_FOUND" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_UNSUPPORTED">
+<span id="ER_UNSUPPORTED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea18f0b006529c8960bc7afc8555c43118"></span><code class="descname">ER_UNSUPPORTED</code><a class="headerlink" href="#_CPPv214ER_UNSUPPORTED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212ER_NONMASTER">
+<span id="ER_NONMASTER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceab3758597613f16aeb557c3642e8b63ed"></span><code class="descname">ER_NONMASTER</code><a class="headerlink" href="#_CPPv212ER_NONMASTER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211ER_READONLY">
+<span id="ER_READONLY"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac1d18087eba24577c745d2f407216763"></span><code class="descname">ER_READONLY</code><a class="headerlink" href="#_CPPv211ER_READONLY" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212ER_INJECTION">
+<span id="ER_INJECTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea795138f05d99522d4d9164647e70cb54"></span><code class="descname">ER_INJECTION</code><a class="headerlink" href="#_CPPv212ER_INJECTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_CREATE_SPACE">
+<span id="ER_CREATE_SPACE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea7d5818c3d9be87d07d5ef4976f3bf171"></span><code class="descname">ER_CREATE_SPACE</code><a class="headerlink" href="#_CPPv215ER_CREATE_SPACE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_SPACE_EXISTS">
+<span id="ER_SPACE_EXISTS"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea1c51665a15567a23818bb9f9ae997592"></span><code class="descname">ER_SPACE_EXISTS</code><a class="headerlink" href="#_CPPv215ER_SPACE_EXISTS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ER_DROP_SPACE">
+<span id="ER_DROP_SPACE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea52847681ecc21b03359aee4e45561099"></span><code class="descname">ER_DROP_SPACE</code><a class="headerlink" href="#_CPPv213ER_DROP_SPACE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_ALTER_SPACE">
+<span id="ER_ALTER_SPACE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea522a6590530df738e72bef3ffffa4ceb"></span><code class="descname">ER_ALTER_SPACE</code><a class="headerlink" href="#_CPPv214ER_ALTER_SPACE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ER_INDEX_TYPE">
+<span id="ER_INDEX_TYPE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae035090b06ee956c3956e2ec3a80819a"></span><code class="descname">ER_INDEX_TYPE</code><a class="headerlink" href="#_CPPv213ER_INDEX_TYPE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_MODIFY_INDEX">
+<span id="ER_MODIFY_INDEX"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea22b12f501d3ba37794f49edb71272615"></span><code class="descname">ER_MODIFY_INDEX</code><a class="headerlink" href="#_CPPv215ER_MODIFY_INDEX" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212ER_LAST_DROP">
+<span id="ER_LAST_DROP"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea7331c3c0e9746481f46313638289bad9"></span><code class="descname">ER_LAST_DROP</code><a class="headerlink" href="#_CPPv212ER_LAST_DROP" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv221ER_TUPLE_FORMAT_LIMIT">
+<span id="ER_TUPLE_FORMAT_LIMIT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea22de5f99ce56a257db455ae1bec5ccc1"></span><code class="descname">ER_TUPLE_FORMAT_LIMIT</code><a class="headerlink" href="#_CPPv221ER_TUPLE_FORMAT_LIMIT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv219ER_DROP_PRIMARY_KEY">
+<span id="ER_DROP_PRIMARY_KEY"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea49ca969a2a007412fadf57209de4e83c"></span><code class="descname">ER_DROP_PRIMARY_KEY</code><a class="headerlink" href="#_CPPv219ER_DROP_PRIMARY_KEY" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_KEY_PART_TYPE">
+<span id="ER_KEY_PART_TYPE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea5a55ddcc3c2b1d7fd00c1d0e6b6e2f78"></span><code class="descname">ER_KEY_PART_TYPE</code><a class="headerlink" href="#_CPPv216ER_KEY_PART_TYPE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_EXACT_MATCH">
+<span id="ER_EXACT_MATCH"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea737d869ee35f9a30896f7a431fb7820e"></span><code class="descname">ER_EXACT_MATCH</code><a class="headerlink" href="#_CPPv214ER_EXACT_MATCH" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv218ER_INVALID_MSGPACK">
+<span id="ER_INVALID_MSGPACK"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea3bed78a895978f985c4175e5f7add9a4"></span><code class="descname">ER_INVALID_MSGPACK</code><a class="headerlink" href="#_CPPv218ER_INVALID_MSGPACK" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211ER_PROC_RET">
+<span id="ER_PROC_RET"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea089d7a2f7a86ca6b41c6d81daa93bed8"></span><code class="descname">ER_PROC_RET</code><a class="headerlink" href="#_CPPv211ER_PROC_RET" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv218ER_TUPLE_NOT_ARRAY">
+<span id="ER_TUPLE_NOT_ARRAY"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac95c00dd2a6e6b2c00f94f4c86827a60"></span><code class="descname">ER_TUPLE_NOT_ARRAY</code><a class="headerlink" href="#_CPPv218ER_TUPLE_NOT_ARRAY" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ER_FIELD_TYPE">
+<span id="ER_FIELD_TYPE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea8566015030ef6c9358d1c8de84997354"></span><code class="descname">ER_FIELD_TYPE</code><a class="headerlink" href="#_CPPv213ER_FIELD_TYPE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv222ER_FIELD_TYPE_MISMATCH">
+<span id="ER_FIELD_TYPE_MISMATCH"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae60d148fe673f77573408a64f68fc7f2"></span><code class="descname">ER_FIELD_TYPE_MISMATCH</code><a class="headerlink" href="#_CPPv222ER_FIELD_TYPE_MISMATCH" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv29ER_SPLICE">
+<span id="ER_SPLICE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea528573cf97ea6edb597af7cfaa75ad7f"></span><code class="descname">ER_SPLICE</code><a class="headerlink" href="#_CPPv29ER_SPLICE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211ER_ARG_TYPE">
+<span id="ER_ARG_TYPE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac784bf9b0fe19900b9c331c6ce9364f6"></span><code class="descname">ER_ARG_TYPE</code><a class="headerlink" href="#_CPPv211ER_ARG_TYPE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220ER_TUPLE_IS_TOO_LONG">
+<span id="ER_TUPLE_IS_TOO_LONG"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceacbbbe7c9c2ccf5a44b75c5254d9f12b5"></span><code class="descname">ER_TUPLE_IS_TOO_LONG</code><a class="headerlink" href="#_CPPv220ER_TUPLE_IS_TOO_LONG" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220ER_UNKNOWN_UPDATE_OP">
+<span id="ER_UNKNOWN_UPDATE_OP"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaa9c66a7cade20a35b8488725a8ce820e"></span><code class="descname">ER_UNKNOWN_UPDATE_OP</code><a class="headerlink" href="#_CPPv220ER_UNKNOWN_UPDATE_OP" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_UPDATE_FIELD">
+<span id="ER_UPDATE_FIELD"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea6e8d29c4e259e5a054a78a6f941bb6e0"></span><code class="descname">ER_UPDATE_FIELD</code><a class="headerlink" href="#_CPPv215ER_UPDATE_FIELD" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_FIBER_STACK">
+<span id="ER_FIBER_STACK"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea5d8abf521a250d35e8066ce1214f2df3"></span><code class="descname">ER_FIBER_STACK</code><a class="headerlink" href="#_CPPv214ER_FIBER_STACK" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217ER_KEY_PART_COUNT">
+<span id="ER_KEY_PART_COUNT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea42a453366abe6ac41fbdbcaa66e6f5bc"></span><code class="descname">ER_KEY_PART_COUNT</code><a class="headerlink" href="#_CPPv217ER_KEY_PART_COUNT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211ER_PROC_LUA">
+<span id="ER_PROC_LUA"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceab4ad4d4958b12e8781c8487e40e8f74e"></span><code class="descname">ER_PROC_LUA</code><a class="headerlink" href="#_CPPv211ER_PROC_LUA" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_NO_SUCH_PROC">
+<span id="ER_NO_SUCH_PROC"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac017215ce215ee8a12639c8b7c81aac9"></span><code class="descname">ER_NO_SUCH_PROC</code><a class="headerlink" href="#_CPPv215ER_NO_SUCH_PROC" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv218ER_NO_SUCH_TRIGGER">
+<span id="ER_NO_SUCH_TRIGGER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea472ad97a11cef075c155134e4cda5902"></span><code class="descname">ER_NO_SUCH_TRIGGER</code><a class="headerlink" href="#_CPPv218ER_NO_SUCH_TRIGGER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_NO_SUCH_INDEX">
+<span id="ER_NO_SUCH_INDEX"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea2fb7636c0582f822bbfca4b369f1dbc9"></span><code class="descname">ER_NO_SUCH_INDEX</code><a class="headerlink" href="#_CPPv216ER_NO_SUCH_INDEX" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_NO_SUCH_SPACE">
+<span id="ER_NO_SUCH_SPACE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaf6a8ea01c74a4403c565d0658f9f4129"></span><code class="descname">ER_NO_SUCH_SPACE</code><a class="headerlink" href="#_CPPv216ER_NO_SUCH_SPACE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_NO_SUCH_FIELD">
+<span id="ER_NO_SUCH_FIELD"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea27561f5101e36df112bd2e0cbeb1da74"></span><code class="descname">ER_NO_SUCH_FIELD</code><a class="headerlink" href="#_CPPv216ER_NO_SUCH_FIELD" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220ER_SPACE_FIELD_COUNT">
+<span id="ER_SPACE_FIELD_COUNT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceafb1cfe8c3c6c31dc0f4b440235afa06c"></span><code class="descname">ER_SPACE_FIELD_COUNT</code><a class="headerlink" href="#_CPPv220ER_SPACE_FIELD_COUNT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220ER_INDEX_FIELD_COUNT">
+<span id="ER_INDEX_FIELD_COUNT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea556967f48c37611cae140fb92d2b2630"></span><code class="descname">ER_INDEX_FIELD_COUNT</code><a class="headerlink" href="#_CPPv220ER_INDEX_FIELD_COUNT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv29ER_WAL_IO">
+<span id="ER_WAL_IO"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaa6ff6ed88c3f4bdb1b54677cae7655e6"></span><code class="descname">ER_WAL_IO</code><a class="headerlink" href="#_CPPv29ER_WAL_IO" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv222ER_MORE_THAN_ONE_TUPLE">
+<span id="ER_MORE_THAN_ONE_TUPLE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea1328ef0f8682f590ea0911db19cfc476"></span><code class="descname">ER_MORE_THAN_ONE_TUPLE</code><a class="headerlink" href="#_CPPv222ER_MORE_THAN_ONE_TUPLE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_ACCESS_DENIED">
+<span id="ER_ACCESS_DENIED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac4dcd43183c95741c9e77c7f889ca593"></span><code class="descname">ER_ACCESS_DENIED</code><a class="headerlink" href="#_CPPv216ER_ACCESS_DENIED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_CREATE_USER">
+<span id="ER_CREATE_USER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea64c45b86c425a4e26301274a52f69312"></span><code class="descname">ER_CREATE_USER</code><a class="headerlink" href="#_CPPv214ER_CREATE_USER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212ER_DROP_USER">
+<span id="ER_DROP_USER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea55679bb71c755ac0257ca128a297a984"></span><code class="descname">ER_DROP_USER</code><a class="headerlink" href="#_CPPv212ER_DROP_USER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_NO_SUCH_USER">
+<span id="ER_NO_SUCH_USER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea0c0deeaff648cf677945f747bd18ba7f"></span><code class="descname">ER_NO_SUCH_USER</code><a class="headerlink" href="#_CPPv215ER_NO_SUCH_USER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_USER_EXISTS">
+<span id="ER_USER_EXISTS"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcead4dff6d559cc784b715f1d877d49f843"></span><code class="descname">ER_USER_EXISTS</code><a class="headerlink" href="#_CPPv214ER_USER_EXISTS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220ER_PASSWORD_MISMATCH">
+<span id="ER_PASSWORD_MISMATCH"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceab1a4cc23e6ca3a9f7d40dbd4d043f38f"></span><code class="descname">ER_PASSWORD_MISMATCH</code><a class="headerlink" href="#_CPPv220ER_PASSWORD_MISMATCH" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv223ER_UNKNOWN_REQUEST_TYPE">
+<span id="ER_UNKNOWN_REQUEST_TYPE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea9ea6d40263cfa80cce7fbb0f5dbd8ae6"></span><code class="descname">ER_UNKNOWN_REQUEST_TYPE</code><a class="headerlink" href="#_CPPv223ER_UNKNOWN_REQUEST_TYPE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224ER_UNKNOWN_SCHEMA_OBJECT">
+<span id="ER_UNKNOWN_SCHEMA_OBJECT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea38d5a4bf290665417189dcb4f5de0e7d"></span><code class="descname">ER_UNKNOWN_SCHEMA_OBJECT</code><a class="headerlink" href="#_CPPv224ER_UNKNOWN_SCHEMA_OBJECT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv218ER_CREATE_FUNCTION">
+<span id="ER_CREATE_FUNCTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea00afe88d993452ecb57bd2f0be78606b"></span><code class="descname">ER_CREATE_FUNCTION</code><a class="headerlink" href="#_CPPv218ER_CREATE_FUNCTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv219ER_NO_SUCH_FUNCTION">
+<span id="ER_NO_SUCH_FUNCTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac84d49703711e511d91d49edd06154f5"></span><code class="descname">ER_NO_SUCH_FUNCTION</code><a class="headerlink" href="#_CPPv219ER_NO_SUCH_FUNCTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv218ER_FUNCTION_EXISTS">
+<span id="ER_FUNCTION_EXISTS"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea5f97d70b658bef8efd7d44e5336c8f50"></span><code class="descname">ER_FUNCTION_EXISTS</code><a class="headerlink" href="#_CPPv218ER_FUNCTION_EXISTS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv225ER_FUNCTION_ACCESS_DENIED">
+<span id="ER_FUNCTION_ACCESS_DENIED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcead5027ef9879bae116f0db7810e078485"></span><code class="descname">ER_FUNCTION_ACCESS_DENIED</code><a class="headerlink" href="#_CPPv225ER_FUNCTION_ACCESS_DENIED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_FUNCTION_MAX">
+<span id="ER_FUNCTION_MAX"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea77191ff9515a86d215add5812074aa7f"></span><code class="descname">ER_FUNCTION_MAX</code><a class="headerlink" href="#_CPPv215ER_FUNCTION_MAX" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv222ER_SPACE_ACCESS_DENIED">
+<span id="ER_SPACE_ACCESS_DENIED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea4a35e584ba31dcbc1dd97fdb175dbcd0"></span><code class="descname">ER_SPACE_ACCESS_DENIED</code><a class="headerlink" href="#_CPPv222ER_SPACE_ACCESS_DENIED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211ER_USER_MAX">
+<span id="ER_USER_MAX"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaf95ab9c663e55898207b85fd61872d60"></span><code class="descname">ER_USER_MAX</code><a class="headerlink" href="#_CPPv211ER_USER_MAX" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217ER_NO_SUCH_ENGINE">
+<span id="ER_NO_SUCH_ENGINE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae7e52ace70161560a252257435c081b2"></span><code class="descname">ER_NO_SUCH_ENGINE</code><a class="headerlink" href="#_CPPv217ER_NO_SUCH_ENGINE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ER_RELOAD_CFG">
+<span id="ER_RELOAD_CFG"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea732ca2c4d1eca1da0301ab6786c5eda0"></span><code class="descname">ER_RELOAD_CFG</code><a class="headerlink" href="#_CPPv213ER_RELOAD_CFG" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv26ER_CFG">
+<span id="ER_CFG"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae5865d06fcf35d099f775a77911cb1da"></span><code class="descname">ER_CFG</code><a class="headerlink" href="#_CPPv26ER_CFG" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv29ER_SOPHIA">
+<span id="ER_SOPHIA"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae4e1b6c6632705a350bdccd6f3b61d4a"></span><code class="descname">ER_SOPHIA</code><a class="headerlink" href="#_CPPv29ER_SOPHIA" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv229ER_LOCAL_SERVER_IS_NOT_ACTIVE">
+<span id="ER_LOCAL_SERVER_IS_NOT_ACTIVE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea29f749342e9e5b128f7fa9d43a628d12"></span><code class="descname">ER_LOCAL_SERVER_IS_NOT_ACTIVE</code><a class="headerlink" href="#_CPPv229ER_LOCAL_SERVER_IS_NOT_ACTIVE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217ER_UNKNOWN_SERVER">
+<span id="ER_UNKNOWN_SERVER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceab4441d6599059aa5de307b8c58768857"></span><code class="descname">ER_UNKNOWN_SERVER</code><a class="headerlink" href="#_CPPv217ER_UNKNOWN_SERVER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv222ER_CLUSTER_ID_MISMATCH">
+<span id="ER_CLUSTER_ID_MISMATCH"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceab71b1a901ac0316aa8728c841abf1cfd"></span><code class="descname">ER_CLUSTER_ID_MISMATCH</code><a class="headerlink" href="#_CPPv222ER_CLUSTER_ID_MISMATCH" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_INVALID_UUID">
+<span id="ER_INVALID_UUID"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea09b6b42b6817cd0bfdc6c889e440fa97"></span><code class="descname">ER_INVALID_UUID</code><a class="headerlink" href="#_CPPv215ER_INVALID_UUID" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv219ER_CLUSTER_ID_IS_RO">
+<span id="ER_CLUSTER_ID_IS_RO"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea0b9a27f237cf4f20aadf9eb0197cbd43"></span><code class="descname">ER_CLUSTER_ID_IS_RO</code><a class="headerlink" href="#_CPPv219ER_CLUSTER_ID_IS_RO" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ER_RESERVED66">
+<span id="ER_RESERVED66"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae7680b1bac9d3b75ebe99b5af2ccc9ff"></span><code class="descname">ER_RESERVED66</code><a class="headerlink" href="#_CPPv213ER_RESERVED66" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224ER_SERVER_ID_IS_RESERVED">
+<span id="ER_SERVER_ID_IS_RESERVED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea708ef19c1a31f303678dd5865e321f18"></span><code class="descname">ER_SERVER_ID_IS_RESERVED</code><a class="headerlink" href="#_CPPv224ER_SERVER_ID_IS_RESERVED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_INVALID_ORDER">
+<span id="ER_INVALID_ORDER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea17074dca146150d7c41ec9fc955d6b67"></span><code class="descname">ER_INVALID_ORDER</code><a class="headerlink" href="#_CPPv216ER_INVALID_ORDER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224ER_MISSING_REQUEST_FIELD">
+<span id="ER_MISSING_REQUEST_FIELD"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea3eb60fdf45a736a67bd1c4e379286ff9"></span><code class="descname">ER_MISSING_REQUEST_FIELD</code><a class="headerlink" href="#_CPPv224ER_MISSING_REQUEST_FIELD" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ER_IDENTIFIER">
+<span id="ER_IDENTIFIER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea58d6ae05846e90c0adc6da50b022c2ce"></span><code class="descname">ER_IDENTIFIER</code><a class="headerlink" href="#_CPPv213ER_IDENTIFIER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_DROP_FUNCTION">
+<span id="ER_DROP_FUNCTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea920a6d9e8fd17a2f16df53b6ca4f622b"></span><code class="descname">ER_DROP_FUNCTION</code><a class="headerlink" href="#_CPPv216ER_DROP_FUNCTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_ITERATOR_TYPE">
+<span id="ER_ITERATOR_TYPE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaf31717ec0b20bc4b4cdc28c704331da2"></span><code class="descname">ER_ITERATOR_TYPE</code><a class="headerlink" href="#_CPPv216ER_ITERATOR_TYPE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_REPLICA_MAX">
+<span id="ER_REPLICA_MAX"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea9616f6384423a5ede047dcb8a040cd01"></span><code class="descname">ER_REPLICA_MAX</code><a class="headerlink" href="#_CPPv214ER_REPLICA_MAX" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_INVALID_XLOG">
+<span id="ER_INVALID_XLOG"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea0109fd41527db809bb9a42c317cd9152"></span><code class="descname">ER_INVALID_XLOG</code><a class="headerlink" href="#_CPPv215ER_INVALID_XLOG" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220ER_INVALID_XLOG_NAME">
+<span id="ER_INVALID_XLOG_NAME"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea7a1a0c5f9ac263c0e9ec0be60a5aaf3d"></span><code class="descname">ER_INVALID_XLOG_NAME</code><a class="headerlink" href="#_CPPv220ER_INVALID_XLOG_NAME" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv221ER_INVALID_XLOG_ORDER">
+<span id="ER_INVALID_XLOG_ORDER"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac33adee25aff444453494e2fd91c3fe2"></span><code class="descname">ER_INVALID_XLOG_ORDER</code><a class="headerlink" href="#_CPPv221ER_INVALID_XLOG_ORDER" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_NO_CONNECTION">
+<span id="ER_NO_CONNECTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea1a7fd03f9987c782bd6aed5716efccf3"></span><code class="descname">ER_NO_CONNECTION</code><a class="headerlink" href="#_CPPv216ER_NO_CONNECTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv210ER_TIMEOUT">
+<span id="ER_TIMEOUT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac4c2c8fe486838aee543ee531df62f60"></span><code class="descname">ER_TIMEOUT</code><a class="headerlink" href="#_CPPv210ER_TIMEOUT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv221ER_ACTIVE_TRANSACTION">
+<span id="ER_ACTIVE_TRANSACTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea374a879f5062c4e25b06129a2c9030b6"></span><code class="descname">ER_ACTIVE_TRANSACTION</code><a class="headerlink" href="#_CPPv221ER_ACTIVE_TRANSACTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224ER_NO_ACTIVE_TRANSACTION">
+<span id="ER_NO_ACTIVE_TRANSACTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea62c36625f20710e5d32c83f1e7338244"></span><code class="descname">ER_NO_ACTIVE_TRANSACTION</code><a class="headerlink" href="#_CPPv224ER_NO_ACTIVE_TRANSACTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv227ER_CROSS_ENGINE_TRANSACTION">
+<span id="ER_CROSS_ENGINE_TRANSACTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea62de48ef00c6ebd24f8fd6ebe2bfc248"></span><code class="descname">ER_CROSS_ENGINE_TRANSACTION</code><a class="headerlink" href="#_CPPv227ER_CROSS_ENGINE_TRANSACTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_NO_SUCH_ROLE">
+<span id="ER_NO_SUCH_ROLE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea6e40f96042f5e46b51024400d9e0e58c"></span><code class="descname">ER_NO_SUCH_ROLE</code><a class="headerlink" href="#_CPPv215ER_NO_SUCH_ROLE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_ROLE_EXISTS">
+<span id="ER_ROLE_EXISTS"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea4a11282742a05bf1e57529b2189f1eb4"></span><code class="descname">ER_ROLE_EXISTS</code><a class="headerlink" href="#_CPPv214ER_ROLE_EXISTS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv214ER_CREATE_ROLE">
+<span id="ER_CREATE_ROLE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaea89ae2d186ceba5790899969558d940"></span><code class="descname">ER_CREATE_ROLE</code><a class="headerlink" href="#_CPPv214ER_CREATE_ROLE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_INDEX_EXISTS">
+<span id="ER_INDEX_EXISTS"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea90f6c2fcdbb2b411bdba75e1645b0f15"></span><code class="descname">ER_INDEX_EXISTS</code><a class="headerlink" href="#_CPPv215ER_INDEX_EXISTS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv221ER_TUPLE_REF_OVERFLOW">
+<span id="ER_TUPLE_REF_OVERFLOW"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea9c8bedfb81dd22369b12fdd642b4c37c"></span><code class="descname">ER_TUPLE_REF_OVERFLOW</code><a class="headerlink" href="#_CPPv221ER_TUPLE_REF_OVERFLOW" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv212ER_ROLE_LOOP">
+<span id="ER_ROLE_LOOP"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcead121cdef9ddd55d0e9b6eabf51bcee6d"></span><code class="descname">ER_ROLE_LOOP</code><a class="headerlink" href="#_CPPv212ER_ROLE_LOOP" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv28ER_GRANT">
+<span id="ER_GRANT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea95ef86782b0864d455507d1c5f6627b9"></span><code class="descname">ER_GRANT</code><a class="headerlink" href="#_CPPv28ER_GRANT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_PRIV_GRANTED">
+<span id="ER_PRIV_GRANTED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaedf54374271a016ac5ae60cc04d3d322"></span><code class="descname">ER_PRIV_GRANTED</code><a class="headerlink" href="#_CPPv215ER_PRIV_GRANTED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215ER_ROLE_GRANTED">
+<span id="ER_ROLE_GRANTED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcead95ff3ab7d7eafad1ecea0f6e999b213"></span><code class="descname">ER_ROLE_GRANTED</code><a class="headerlink" href="#_CPPv215ER_ROLE_GRANTED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv219ER_PRIV_NOT_GRANTED">
+<span id="ER_PRIV_NOT_GRANTED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea1afc5f6db602c0134e922bc5b84d93ba"></span><code class="descname">ER_PRIV_NOT_GRANTED</code><a class="headerlink" href="#_CPPv219ER_PRIV_NOT_GRANTED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv219ER_ROLE_NOT_GRANTED">
+<span id="ER_ROLE_NOT_GRANTED"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaf79a84184dc400b57904b2a5b9223db6"></span><code class="descname">ER_ROLE_NOT_GRANTED</code><a class="headerlink" href="#_CPPv219ER_ROLE_NOT_GRANTED" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv219ER_MISSING_SNAPSHOT">
+<span id="ER_MISSING_SNAPSHOT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaca35862162578745def43259c8cea9a7"></span><code class="descname">ER_MISSING_SNAPSHOT</code><a class="headerlink" href="#_CPPv219ER_MISSING_SNAPSHOT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv226ER_CANT_UPDATE_PRIMARY_KEY">
+<span id="ER_CANT_UPDATE_PRIMARY_KEY"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea3c2df12a782304296d68a46829166bf0"></span><code class="descname">ER_CANT_UPDATE_PRIMARY_KEY</code><a class="headerlink" href="#_CPPv226ER_CANT_UPDATE_PRIMARY_KEY" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv226ER_UPDATE_INTEGER_OVERFLOW">
+<span id="ER_UPDATE_INTEGER_OVERFLOW"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea29444ca5432c290c29bac32d8b140cbd"></span><code class="descname">ER_UPDATE_INTEGER_OVERFLOW</code><a class="headerlink" href="#_CPPv226ER_UPDATE_INTEGER_OVERFLOW" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv222ER_GUEST_USER_PASSWORD">
+<span id="ER_GUEST_USER_PASSWORD"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea03bc242c7dcdec40a3cc0d85e8bee350"></span><code class="descname">ER_GUEST_USER_PASSWORD</code><a class="headerlink" href="#_CPPv222ER_GUEST_USER_PASSWORD" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv223ER_TRANSACTION_CONFLICT">
+<span id="ER_TRANSACTION_CONFLICT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea42b4986788e6887f9120d6f1ee10db0a"></span><code class="descname">ER_TRANSACTION_CONFLICT</code><a class="headerlink" href="#_CPPv223ER_TRANSACTION_CONFLICT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224ER_UNSUPPORTED_ROLE_PRIV">
+<span id="ER_UNSUPPORTED_ROLE_PRIV"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae938c1607db3f4f3ab5dc98cacc7b30e"></span><code class="descname">ER_UNSUPPORTED_ROLE_PRIV</code><a class="headerlink" href="#_CPPv224ER_UNSUPPORTED_ROLE_PRIV" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv216ER_LOAD_FUNCTION">
+<span id="ER_LOAD_FUNCTION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea149c88e1407b23310ef5fb72b7574480"></span><code class="descname">ER_LOAD_FUNCTION</code><a class="headerlink" href="#_CPPv216ER_LOAD_FUNCTION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220ER_FUNCTION_LANGUAGE">
+<span id="ER_FUNCTION_LANGUAGE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea90078819e285c954279b732836440b52"></span><code class="descname">ER_FUNCTION_LANGUAGE</code><a class="headerlink" href="#_CPPv220ER_FUNCTION_LANGUAGE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv213ER_RTREE_RECT">
+<span id="ER_RTREE_RECT"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaa3086ed7c8c02c4f049dac180b318a9d"></span><code class="descname">ER_RTREE_RECT</code><a class="headerlink" href="#_CPPv213ER_RTREE_RECT" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv29ER_PROC_C">
+<span id="ER_PROC_C"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea1857821a588fc39761c07c29481080cf"></span><code class="descname">ER_PROC_C</code><a class="headerlink" href="#_CPPv29ER_PROC_C" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv236ER_UNKNOWN_RTREE_INDEX_DISTANCE_TYPE">
+<span id="ER_UNKNOWN_RTREE_INDEX_DISTANCE_TYPE"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae6b2172e36fabaf0af5246bcc92de31c"></span><code class="descname">ER_UNKNOWN_RTREE_INDEX_DISTANCE_TYPE</code><a class="headerlink" href="#_CPPv236ER_UNKNOWN_RTREE_INDEX_DISTANCE_TYPE" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv211ER_PROTOCOL">
+<span id="ER_PROTOCOL"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea45c1723eef247a5af5a119ab71c0043a"></span><code class="descname">ER_PROTOCOL</code><a class="headerlink" href="#_CPPv211ER_PROTOCOL" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv230ER_UPSERT_UNIQUE_SECONDARY_KEY">
+<span id="ER_UPSERT_UNIQUE_SECONDARY_KEY"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceac5833a6888748c8ef30c2f9f8e889d83"></span><code class="descname">ER_UPSERT_UNIQUE_SECONDARY_KEY</code><a class="headerlink" href="#_CPPv230ER_UPSERT_UNIQUE_SECONDARY_KEY" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv221ER_WRONG_INDEX_RECORD">
+<span id="ER_WRONG_INDEX_RECORD"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea9e9a7d636fba092f8a2fd1a35f12dd8a"></span><code class="descname">ER_WRONG_INDEX_RECORD</code><a class="headerlink" href="#_CPPv221ER_WRONG_INDEX_RECORD" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220ER_WRONG_INDEX_PARTS">
+<span id="ER_WRONG_INDEX_PARTS"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceae32d3117d0d019bdd04b8b0a8633bd00"></span><code class="descname">ER_WRONG_INDEX_PARTS</code><a class="headerlink" href="#_CPPv220ER_WRONG_INDEX_PARTS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv222ER_WRONG_INDEX_OPTIONS">
+<span id="ER_WRONG_INDEX_OPTIONS"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaeea5ee0f4101c259b2d06b8ea781938a"></span><code class="descname">ER_WRONG_INDEX_OPTIONS</code><a class="headerlink" href="#_CPPv222ER_WRONG_INDEX_OPTIONS" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv223ER_WRONG_SCHEMA_VERSION">
+<span id="ER_WRONG_SCHEMA_VERSION"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceab42a48e07d8d3d71adabbbff0839e816"></span><code class="descname">ER_WRONG_SCHEMA_VERSION</code><a class="headerlink" href="#_CPPv223ER_WRONG_SCHEMA_VERSION" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv217ER_SLAB_ALLOC_MAX">
+<span id="ER_SLAB_ALLOC_MAX"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adceaeec55a22bdd3451b3e1635fec2b3decb"></span><code class="descname">ER_SLAB_ALLOC_MAX</code><a class="headerlink" href="#_CPPv217ER_SLAB_ALLOC_MAX" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv218box_error_code_MAX">
+<span id="box_error_code_MAX"></span><span class="target" id="apimodule_8h_1a029e9d16d637a97b37560ccf24c4adcea933c5cc30c58e4840814727c74f96b57"></span><code class="descname">box_error_code_MAX</code><a class="headerlink" href="#_CPPv218box_error_code_MAX" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv29fiber_newPKc10fiber_func">
+<span id="fiber_new__cCP.fiber_func"></span><span class="target" id="apimodule_8h_1a8757a0f2f38964c8f1201768043c7a3c"></span><em class="property">struct</em> fiber *<code class="descname">fiber_new</code><big>(</big><em class="property">const</em> char *<em>name</em>, <a class="reference internal" href="#_CPPv210fiber_func" title="fiber_func">fiber_func</a> <em>f</em><big>)</big><a class="headerlink" href="#_CPPv29fiber_newPKc10fiber_func" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Create a new fiber. </p>
+<p>Takes a fiber from fiber cache, if it's not empty. Can fail only if there is not enough memory for the fiber structure or fiber stack.</p>
+<p>The created fiber automatically returns itself to the fiber cache when its &quot;main&quot; function completes.</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1abca18eb68ebf89507d4cf5eb3c402cb2"><span>fiber_start</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">name</span></code> - <p>string with fiber name </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">fiber_func</span></code> - <p>func for run inside fiber</p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv211fiber_yieldv">
+<span id="fiber_yield__void"></span><span class="target" id="apimodule_8h_1aaa5beb40f119b9400bb57b81820b24ff"></span>void <code class="descname">fiber_yield</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv211fiber_yieldv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return control to another fiber and wait until it'll be woken. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a661de7f72aa265ff6ffcb8b3acfafe40"><span>fiber_wakeup</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv211fiber_startP5fiberz">
+<span id="fiber_start__fiberP.z"></span><span class="target" id="apimodule_8h_1abca18eb68ebf89507d4cf5eb3c402cb2"></span>void <code class="descname">fiber_start</code><big>(</big><em class="property">struct</em> fiber *<em>callee</em>, ...<big>)</big><a class="headerlink" href="#_CPPv211fiber_startP5fiberz" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Start execution of created fiber. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a8757a0f2f38964c8f1201768043c7a3c"><span>fiber_new</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">callee</span></code> - <p>fiber to start </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">...</span></code> - <p>arguments to start the fiber with</p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv212fiber_wakeupP5fiber">
+<span id="fiber_wakeup__fiberP"></span><span class="target" id="apimodule_8h_1a661de7f72aa265ff6ffcb8b3acfafe40"></span>void <code class="descname">fiber_wakeup</code><big>(</big><em class="property">struct</em> fiber *<em>f</em><big>)</big><a class="headerlink" href="#_CPPv212fiber_wakeupP5fiber" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Interrupt a synchronous wait of a fiber. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">f</span></code> - <p>fiber to be woken up </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv212fiber_cancelP5fiber">
+<span id="fiber_cancel__fiberP"></span><span class="target" id="apimodule_8h_1a9a5b700b2122f08e6bc1298ac7eb0435"></span>void <code class="descname">fiber_cancel</code><big>(</big><em class="property">struct</em> fiber *<em>f</em><big>)</big><a class="headerlink" href="#_CPPv212fiber_cancelP5fiber" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Cancel the subject fiber. </p>
+<p>(set FIBER_IS_CANCELLED flag)</p>
+<p>If target fiber's flag FIBER_IS_CANCELLABLE set, then it would be woken up (maybe prematurely). Then current fiber yields until the target fiber is dead (or is woken up by <dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a661de7f72aa265ff6ffcb8b3acfafe40"><span>fiber_wakeup</span></a>).</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">f</span></code> - <p>fiber to be cancelled </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv221fiber_set_cancellableb">
+<span id="fiber_set_cancellable__b"></span><span class="target" id="apimodule_8h_1a4078cbddc22b0ed941548f86672224d9"></span>bool <code class="descname">fiber_set_cancellable</code><big>(</big>bool <em>yesno</em><big>)</big><a class="headerlink" href="#_CPPv221fiber_set_cancellableb" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Make it possible or not possible to wakeup the current fiber immediately when it's cancelled. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>previous state. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">yesno</span></code> - <p>status to set </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv218fiber_set_joinableP5fiberb">
+<span id="fiber_set_joinable__fiberP.b"></span><span class="target" id="apimodule_8h_1a8ee4e98a4e9c2239b5d7eb98c2b0b208"></span>void <code class="descname">fiber_set_joinable</code><big>(</big><em class="property">struct</em> fiber *<em>fiber</em>, bool <em>yesno</em><big>)</big><a class="headerlink" href="#_CPPv218fiber_set_joinableP5fiberb" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Set fiber to be joinable (false by default). </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">yesno</span></code> - <p>status to set </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv210fiber_joinP5fiber">
+<span id="fiber_join__fiberP"></span><span class="target" id="apimodule_8h_1a31b01e4ccfa2f421976e356b016f068c"></span>void <code class="descname">fiber_join</code><big>(</big><em class="property">struct</em> fiber *<em>f</em><big>)</big><a class="headerlink" href="#_CPPv210fiber_joinP5fiber" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Wait until the fiber is dead and then move its execution status to the caller. </p>
+<p>The fiber must not be detached (<dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a8ee4e98a4e9c2239b5d7eb98c2b0b208"><span>fiber_set_joinable()</span></a>). </dd>
+<dt><strong>Pre</strong></dt>
+<dd>FIBER_IS_JOINABLE flag is set.</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">f</span></code> - <p>fiber to be woken up </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv211fiber_sleepd">
+<span id="fiber_sleep__double"></span><span class="target" id="apimodule_8h_1a0ab0816e3ddf7e11b448926569e6bc49"></span>void <code class="descname">fiber_sleep</code><big>(</big>double <em>s</em><big>)</big><a class="headerlink" href="#_CPPv211fiber_sleepd" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Put the current fiber to sleep for at least 's' seconds. </p>
+<p><dl class="docutils">
+<dt><strong>Note</strong></dt>
+<dd>this is a cancellation point (</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a3bc139877162b0c4a3652675aabc7b96"><span>fiber_is_cancelled</span></a>) </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">s</span></code> - <p>time to sleep</p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv218fiber_is_cancelledv">
+<span id="fiber_is_cancelled"></span><span class="target" id="apimodule_8h_1a3bc139877162b0c4a3652675aabc7b96"></span>bool <code class="descname">fiber_is_cancelled</code><big>(</big><big>)</big><a class="headerlink" href="#_CPPv218fiber_is_cancelledv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Check current fiber for cancellation (it must be checked manually). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv210fiber_timev">
+<span id="fiber_time__void"></span><span class="target" id="apimodule_8h_1a077a6068c998d2e548168be5e1a6008f"></span>double <code class="descname">fiber_time</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv210fiber_timev" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Report loop begin time as double (cheap). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv212fiber_time64v">
+<span id="fiber_time64__void"></span><span class="target" id="apimodule_8h_1a1fd6aa1cd70b59eeb1195e04f2f2acd2"></span>uint64_t <code class="descname">fiber_time64</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv212fiber_time64v" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Report loop begin time as 64-bit int. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215cord_slab_cachev">
+<span id="cord_slab_cache__void"></span><span class="target" id="apimodule_8h_1aa787c46d7d73640bf3d758fbb412e137"></span><em class="property">struct</em> slab_cache *<code class="descname">cord_slab_cache</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv215cord_slab_cachev" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv29coio_waitiid">
+<span id="coio_wait__i.i.double"></span><span class="target" id="apimodule_8h_1ab9c521a569fd78b25f355f3b7525ba9a"></span>int <code class="descname">coio_wait</code><big>(</big>int <em>fd</em>, int <em>event</em>, double <em>timeout</em><big>)</big><a class="headerlink" href="#_CPPv29coio_waitiid" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Wait until READ or WRITE event on socket (<em>fd</em>). </p>
+<p>Yields. <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">fd</span></code> - <p>- non-blocking socket file description </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">events</span></code> - <p>- requested events to wait. Combination of TNT_IO_READ | TNT_IO_WRITE bit flags. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">timeoout</span></code> - <p>- timeout in seconds. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>- timeout </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">&gt;0</span></code> - <p>- returned events. Combination of TNT_IO_READ | TNT_IO_WRITE bit flags. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv29coio_callPF7ssize_t7va_listEz">
+<span class="target" id="apimodule_8h_1af9433c7d42d7747f1f69b79a0d98df13"></span>ssize_t <code class="descname">coio_call</code><big>(</big>ssize_t (*<em>func</em>)<big>(</big>va_list<big>)</big>, ..., <big>)</big><a class="headerlink" href="#_CPPv29coio_callPF7ssize_t7va_listEz" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p>Create new eio task with specified function and arguments. Yield and wait until the task is complete or a timeout occurs.</p>
+<p>This function doesn't throw exceptions to avoid double error checking: in most cases it's also necessary to check the return value of the called function and perform necessary actions. If func sets errno, the errno is preserved across the call.</p>
+<p> <div class="highlight-python"><div class="highlight"><pre>static ssize_t openfile_cb(va_list ap)
+{
+         const char *filename = va_arg(ap);
+         int flags = va_arg(ap);
+         return open(filename, flags);
+}
+
+if (coio_call(openfile_cb, 0.10, &quot;/tmp/file&quot;, 0) == -1)
+   // handle errors.
+...
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>and errno = ENOMEM if failed to create a task </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">the</span></code> - <p>function return (errno is preserved).</p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216coio_getaddrinfoPKcPKcPK8addrinfoPP8addrinfod">
+<span id="coio_getaddrinfo__cCP.cCP.addrinfoCP.addrinfoPP.double"></span><span class="target" id="apimodule_8h_1a832b67e03175570d9f6fa17ffd77bf83"></span>int <code class="descname">coio_getaddrinfo</code><big>(</big><em class="property">const</em> char *<em>host</em>, <em class="property">const</em> char *<em>port</em>, <em class="property">const</em> <em class="property">struct</em> addrinfo *<em>hints</em>, <em class="property">struct</em> addrinfo **<em>res</em>, double <em>timeout</em><big>)</big><a class="headerlink" href="#_CPPv216coio_getaddrinfoPKcPKcPK8addrinfoPP8addrinfod" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Fiber-friendly version of getaddrinfo(3). </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd>getaddrinfo(). </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214luaL_pushcdataP9lua_State8uint32_t">
+<span id="luaL_pushcdata__lua_StateP.uint32_t"></span><span class="target" id="apimodule_8h_1a6016a29a15957c333f568d4059923fad"></span>void *<code class="descname">luaL_pushcdata</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, uint32_t <em>ctypeid</em><big>)</big><a class="headerlink" href="#_CPPv214luaL_pushcdataP9lua_State8uint32_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p>Push cdata of given <em>ctypeid</em> onto the stack. CTypeID must be used from FFI at least once. Allocated memory returned uninitialized. Only numbers and pointers are supported. <dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a09b8d32a69bc903b97ee3379b34fb2af"><span>luaL_checkcdata</span></a> </dd>
+<dt><strong>Return</strong></dt>
+<dd>memory associated with this cdata </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">L</span></code> - <p>Lua State </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">ctypeid</span></code> - <p>FFI's CTypeID of this cdata </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215luaL_checkcdataP9lua_StateiP8uint32_t">
+<span id="luaL_checkcdata__lua_StateP.i.uint32_tP"></span><span class="target" id="apimodule_8h_1a09b8d32a69bc903b97ee3379b34fb2af"></span>void *<code class="descname">luaL_checkcdata</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, int <em>idx</em>, uint32_t *<em>ctypeid</em><big>)</big><a class="headerlink" href="#_CPPv215luaL_checkcdataP9lua_StateiP8uint32_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Checks whether the function argument idx is a cdata. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a6016a29a15957c333f568d4059923fad"><span>luaL_pushcdata</span></a> </dd>
+<dt><strong>Return</strong></dt>
+<dd>memory associated with this cdata </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">L</span></code> - <p>Lua State </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">idx</span></code> - <p>stack index </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">ctypeid</span></code> - <p>FFI's CTypeID of this cdata </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215luaL_setcdatagcP9lua_Statei">
+<span id="luaL_setcdatagc__lua_StateP.i"></span><span class="target" id="apimodule_8h_1aa62fc5e919f74956a06a9b40fb24f691"></span>void <code class="descname">luaL_setcdatagc</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, int <em>idx</em><big>)</big><a class="headerlink" href="#_CPPv215luaL_setcdatagcP9lua_Statei" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Sets finalizer function on a cdata object. </p>
+<p>Equivalent to call ffi.gc(obj, function). Finalizer function must be on the top of the stack. <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">L</span></code> - <p>Lua State </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">idx</span></code> - <p>object </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv212luaL_ctypeidP9lua_StatePKc">
+<span id="luaL_ctypeid__lua_StateP.cCP"></span><span class="target" id="apimodule_8h_1a5d1f07b7fe39b8bd9b7a87f7c84d5d73"></span>uint32_t <code class="descname">luaL_ctypeid</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, <em class="property">const</em> char *<em>ctypename</em><big>)</big><a class="headerlink" href="#_CPPv212luaL_ctypeidP9lua_StatePKc" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return CTypeID (FFI) of given СDATA type. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><p class="first"><a class="reference internal" href="#apimodule_8h_1a6016a29a15957c333f568d4059923fad"><span>luaL_pushcdata</span></a> </p>
+<p class="last"><a class="reference internal" href="#apimodule_8h_1a09b8d32a69bc903b97ee3379b34fb2af"><span>luaL_checkcdata</span></a> </p>
+</dd>
+<dt><strong>Return</strong></dt>
+<dd>CTypeID </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">L</span></code> - <p>Lua State </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">ctypename</span></code> - <p>С type name as string (e.g. &quot;struct request&quot; or &quot;uint32_t&quot;) </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv29luaL_cdefP9lua_StatePKc">
+<span id="luaL_cdef__lua_StateP.cCP"></span><span class="target" id="apimodule_8h_1a498681c0c56f0aebe938004ab8947b0f"></span>int <code class="descname">luaL_cdef</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, <em class="property">const</em> char *<em>ctypename</em><big>)</big><a class="headerlink" href="#_CPPv29luaL_cdefP9lua_StatePKc" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Declare symbols for FFI. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd>ffi.cdef(def) </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">L</span></code> - <p>Lua State </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">ctypename</span></code> - <p>C definitions, e.g &quot;struct stat&quot; </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">LUA_ERRRUN</span><span class="pre">LUA_ERRMEM</span><span class="pre">LUA_ERRERR</span></code> - <p>otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215luaL_pushuint64P9lua_State8uint64_t">
+<span id="luaL_pushuint64__lua_StateP.uint64_t"></span><span class="target" id="apimodule_8h_1a6439d4dd158b27d2567e1bfd6243e084"></span>void <code class="descname">luaL_pushuint64</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, uint64_t <em>val</em><big>)</big><a class="headerlink" href="#_CPPv215luaL_pushuint64P9lua_State8uint64_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p>Push uint64_t onto the stack</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">L</span></code> - <p>is a Lua State </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">val</span></code> - <p>is a value to push </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214luaL_pushint64P9lua_State7int64_t">
+<span id="luaL_pushint64__lua_StateP.int64_t"></span><span class="target" id="apimodule_8h_1a1dcccfbc48bac7e8cf4802e839c2f198"></span>void <code class="descname">luaL_pushint64</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, int64_t <em>val</em><big>)</big><a class="headerlink" href="#_CPPv214luaL_pushint64P9lua_State7int64_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Push int64_t onto the stack. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">L</span></code> - <p>is a Lua State </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">val</span></code> - <p>is a value to push </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216luaL_checkuint64P9lua_Statei">
+<span id="luaL_checkuint64__lua_StateP.i"></span><span class="target" id="apimodule_8h_1ac5247fbc8230e2f49464e25e27b87d35"></span>uint64_t <code class="descname">luaL_checkuint64</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, int <em>idx</em><big>)</big><a class="headerlink" href="#_CPPv216luaL_checkuint64P9lua_Statei" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Checks whether the argument idx is a uint64 or a convertable string and returns this number. </p>
+<p><dl class="docutils">
+<dt><strong>Exceptions</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">error</span></code> - <p>if the argument can't be converted. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215luaL_checkint64P9lua_Statei">
+<span id="luaL_checkint64__lua_StateP.i"></span><span class="target" id="apimodule_8h_1a159fe92272b876c3fa7b130f026705bd"></span>int64_t <code class="descname">luaL_checkint64</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, int <em>idx</em><big>)</big><a class="headerlink" href="#_CPPv215luaL_checkint64P9lua_Statei" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Checks whether the argument idx is a int64 or a convertable string and returns this number. </p>
+<p><dl class="docutils">
+<dt><strong>Exceptions</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">error</span></code> - <p>if the argument can't be converted. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213luaL_touint64P9lua_Statei">
+<span id="luaL_touint64__lua_StateP.i"></span><span class="target" id="apimodule_8h_1a20e035148bc707412c054291f9b51855"></span>uint64_t <code class="descname">luaL_touint64</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, int <em>idx</em><big>)</big><a class="headerlink" href="#_CPPv213luaL_touint64P9lua_Statei" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Checks whether the argument idx is a uint64 or a convertable string and returns this number. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>the converted number or 0 of argument can't be converted. </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv212luaL_toint64P9lua_Statei">
+<span id="luaL_toint64__lua_StateP.i"></span><span class="target" id="apimodule_8h_1a31727f17a0a09ff7fb92ac3d2eaa2dce"></span>int64_t <code class="descname">luaL_toint64</code><big>(</big><em class="property">struct</em> lua_State *<em>L</em>, int <em>idx</em><big>)</big><a class="headerlink" href="#_CPPv212luaL_toint64P9lua_Statei" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Checks whether the argument idx is a int64 or a convertable string and returns this number. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>the converted number or 0 of argument can't be converted. </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv27box_txnv">
+<span id="box_txn__void"></span><span class="target" id="apimodule_8h_1af44f82b5dd34b12026c33baf63ba3fee"></span>bool <code class="descname">box_txn</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv27box_txnv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p>Return true if there is an active transaction. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_txn_beginv">
+<span id="box_txn_begin__void"></span><span class="target" id="apimodule_8h_1a88346fff21ac55ecf5e8e7e8750093ce"></span>int <code class="descname">box_txn_begin</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv213box_txn_beginv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Begin a transaction in the current fiber. </p>
+<p>A transaction is attached to caller fiber, therefore one fiber can have only one active transaction.</p>
+<p><dl class="docutils">
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>- success </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>- failed, perhaps a transaction has already been started </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214box_txn_commitv">
+<span id="box_txn_commit__void"></span><span class="target" id="apimodule_8h_1a541c69864552de6ae21c4edce2bbf949"></span>int <code class="descname">box_txn_commit</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv214box_txn_commitv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Commit the current transaction. </p>
+<p><dl class="docutils">
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>- success </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>- failed, perhaps a disk write failure. started </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216box_txn_rollbackv">
+<span id="box_txn_rollback__void"></span><span class="target" id="apimodule_8h_1abb1cf4b67d74c051237f5687863aa46c"></span>void <code class="descname">box_txn_rollback</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv216box_txn_rollbackv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Rollback the current transaction. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_txn_alloc6size_t">
+<span id="box_txn_alloc__s"></span><span class="target" id="apimodule_8h_1adf5cc88ba87d8e5afe81604385609191"></span>void *<code class="descname">box_txn_alloc</code><big>(</big>size_t <em>size</em><big>)</big><a class="headerlink" href="#_CPPv213box_txn_alloc6size_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Allocate memory on txn memory pool. </p>
+<p>The memory is automatically deallocated when the transaction is committed or rolled back.</p>
+<p><dl class="docutils">
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">NULL</span></code> - <p>out of memory </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv224box_tuple_format_defaultv">
+<span id="box_tuple_format_default__void"></span><span class="target" id="apimodule_8h_1a5a457c9503bb15df42c4854fbede340e"></span><a class="reference internal" href="#_CPPv218box_tuple_format_t" title="box_tuple_format_t">box_tuple_format_t</a> *<code class="descname">box_tuple_format_default</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv224box_tuple_format_defaultv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Tuple Format. </p>
+<p>Each Tuple has associated format (class). Default format is used to create tuples which are not attach to any particular space. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_tuple_newP18box_tuple_format_tPKcPKc">
+<span id="box_tuple_new__box_tuple_format_tP.cCP.cCP"></span><span class="target" id="apimodule_8h_1a442eb6797ae4d114d00dc68f2b1e361a"></span><a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<code class="descname">box_tuple_new</code><big>(</big><a class="reference internal" href="#_CPPv218box_tuple_format_t" title="box_tuple_format_t">box_tuple_format_t</a> *<em>format</em>, <em class="property">const</em> char *<em>data</em>, <em class="property">const</em> char *<em>end</em><big>)</big><a class="headerlink" href="#_CPPv213box_tuple_newP18box_tuple_format_tPKcPKc" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Allocate and initialize a new tuple from a raw MsgPack Array data. </p>
+<p><dl class="docutils">
+<dt><strong>Pre</strong></dt>
+<dd>data, end is valid MsgPack Array </dd>
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre><span class="n">box</span><span class="o">.</span><span class="n">tuple</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">format</span></code> - <p>tuple format. Use <a class="reference internal" href="#apimodule_8h_1a5a457c9503bb15df42c4854fbede340e"><span>box_tuple_format_default()</span></a> to create space-independent tuple. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">data</span></code> - <p>tuple data in MsgPack Array format ([field1, field2, ...]). </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">end</span></code> - <p>the end of <em>data</em> </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">NULL</span></code> - <p>on out of memory </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_tuple_refP11box_tuple_t">
+<span id="box_tuple_ref__box_tuple_tP"></span><span class="target" id="apimodule_8h_1a2211f2682d19f564c55f2888e35d6430"></span>int <code class="descname">box_tuple_ref</code><big>(</big><a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em><big>)</big><a class="headerlink" href="#_CPPv213box_tuple_refP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Increase the reference counter of tuple. </p>
+<p>Tuples are reference counted. All functions that return tuples guarantee that the last returned tuple is refcounted internally until the next call to API function that yields or returns another tuple.</p>
+<p>You should increase the reference counter before taking tuples for long processing in your code. Such tuples will not be garbage collected even if another fiber remove they from space. After processing please decrement the reference counter using <a class="reference internal" href="#apimodule_8h_1a22d7b12b1afbff0c3cc20726c10cc6cc"><span>box_tuple_unref()</span></a>, otherwise the tuple will leak.</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a22d7b12b1afbff0c3cc20726c10cc6cc"><span>box_tuple_unref()</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>a tuple </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215box_tuple_unrefP11box_tuple_t">
+<span id="box_tuple_unref__box_tuple_tP"></span><span class="target" id="apimodule_8h_1a22d7b12b1afbff0c3cc20726c10cc6cc"></span>void <code class="descname">box_tuple_unref</code><big>(</big><a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em><big>)</big><a class="headerlink" href="#_CPPv215box_tuple_unrefP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Decrease the reference counter of tuple. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a2211f2682d19f564c55f2888e35d6430"><span>box_tuple_ref()</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>a tuple </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv221box_tuple_field_countPK11box_tuple_t">
+<span id="box_tuple_field_count__box_tuple_tCP"></span><span class="target" id="apimodule_8h_1ac942ffcfbd726e256cbc00a1aa2254c8"></span>uint32_t <code class="descname">box_tuple_field_count</code><big>(</big><em class="property">const</em> <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em><big>)</big><a class="headerlink" href="#_CPPv221box_tuple_field_countPK11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the number of fields in tuple (the size of MsgPack Array). </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>a tuple </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215box_tuple_bsizePK11box_tuple_t">
+<span id="box_tuple_bsize__box_tuple_tCP"></span><span class="target" id="apimodule_8h_1a3d1a45a0f92eced6ca48636f507d43d6"></span>size_t <code class="descname">box_tuple_bsize</code><big>(</big><em class="property">const</em> <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em><big>)</big><a class="headerlink" href="#_CPPv215box_tuple_bsizePK11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the number of bytes used to store internal tuple data (MsgPack Array). </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>a tuple </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216box_tuple_to_bufPK11box_tuple_tPc6size_t">
+<span id="box_tuple_to_buf__box_tuple_tCP.cP.s"></span><span class="target" id="apimodule_8h_1ab7c93f6d017d8b4ecc583afa47f30ab9"></span>ssize_t <code class="descname">box_tuple_to_buf</code><big>(</big><em class="property">const</em> <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em>, char *<em>buf</em>, size_t <em>size</em><big>)</big><a class="headerlink" href="#_CPPv216box_tuple_to_bufPK11box_tuple_tPc6size_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Dump raw MsgPack data to the memory byffer <em>buf</em> of size <em>size</em>. </p>
+<p>Store tuple fields in the memory buffer. <dl class="docutils">
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">number</span></code> - <p>of bytes written on success. Upon successful return, the function returns the number of bytes written. If buffer size is not enough then the return value is the number of bytes which would have been written if enough space had been available. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216box_tuple_formatPK11box_tuple_t">
+<span id="box_tuple_format__box_tuple_tCP"></span><span class="target" id="apimodule_8h_1a7251d8843d7dce293514d5c19fdbc095"></span><a class="reference internal" href="#_CPPv218box_tuple_format_t" title="box_tuple_format_t">box_tuple_format_t</a> *<code class="descname">box_tuple_format</code><big>(</big><em class="property">const</em> <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em><big>)</big><a class="headerlink" href="#_CPPv216box_tuple_formatPK11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the associated format. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>tuple_format </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>tuple </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215box_tuple_fieldPK11box_tuple_t8uint32_t">
+<span id="box_tuple_field__box_tuple_tCP.uint32_t"></span><span class="target" id="apimodule_8h_1a4904cd61416ee655ead6225a70f1edb8"></span><em class="property">const</em> char *<code class="descname">box_tuple_field</code><big>(</big><em class="property">const</em> <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em>, uint32_t <em>field_id</em><big>)</big><a class="headerlink" href="#_CPPv215box_tuple_fieldPK11box_tuple_t8uint32_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the raw tuple field in MsgPack format. </p>
+<p>The buffer is valid until next call to box_tuple_* functions.</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>a tuple </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">field_id</span></code> - <p>zero-based index in MsgPack array. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">NULL</span></code> - <p>if i &gt;= box_tuple_field_count(tuple) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">msgpack</span></code> - <p>otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv218box_tuple_iteratorP11box_tuple_t">
+<span id="box_tuple_iterator__box_tuple_tP"></span><span class="target" id="apimodule_8h_1a1aabe2cc4f09abaa070664c6d7156cd1"></span><a class="reference internal" href="#_CPPv220box_tuple_iterator_t" title="box_tuple_iterator_t">box_tuple_iterator_t</a> *<code class="descname">box_tuple_iterator</code><big>(</big><a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em><big>)</big><a class="headerlink" href="#_CPPv218box_tuple_iteratorP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Allocate and initialize a new tuple iterator. </p>
+<p>The tuple iterator allow to iterate over fields at root level of MsgPack array.</p>
+<p>Example: <div class="highlight-python"><div class="highlight"><pre>box_tuple_iterator *it = box_tuple_iterator(tuple);
+if (it == NULL) {
+     // error handling using box_error_last()
+}
+const char *field;
+while (field = box_tuple_next(it)) {
+     // process raw MsgPack data
+}
+
+// rewind iterator to first position
+box_tuple_rewind(it);
+assert(box_tuple_position(it) == 0);
+
+// rewind iterator to first position
+field = box_tuple_seek(it, 3);
+assert(box_tuple_position(it) == 4);
+
+box_iterator_free(it);
+</pre></div>
+</div>
+</p>
+<p><dl class="docutils">
+<dt><strong>Post</strong></dt>
+<dd>box_tuple_position(it) == 0 </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv223box_tuple_iterator_freeP20box_tuple_iterator_t">
+<span id="box_tuple_iterator_free__box_tuple_iterator_tP"></span><span class="target" id="apimodule_8h_1acbbb37bc35f4c2eac665acb61f08da95"></span>void <code class="descname">box_tuple_iterator_free</code><big>(</big><a class="reference internal" href="#_CPPv220box_tuple_iterator_t" title="box_tuple_iterator_t">box_tuple_iterator_t</a> *<em>it</em><big>)</big><a class="headerlink" href="#_CPPv223box_tuple_iterator_freeP20box_tuple_iterator_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Destroy and free tuple iterator. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv218box_tuple_positionP20box_tuple_iterator_t">
+<span id="box_tuple_position__box_tuple_iterator_tP"></span><span class="target" id="apimodule_8h_1ac24865c6c4138cd6a252f32c55c812c6"></span>uint32_t <code class="descname">box_tuple_position</code><big>(</big><a class="reference internal" href="#_CPPv220box_tuple_iterator_t" title="box_tuple_iterator_t">box_tuple_iterator_t</a> *<em>it</em><big>)</big><a class="headerlink" href="#_CPPv218box_tuple_positionP20box_tuple_iterator_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return zero-based next position in iterator. </p>
+<p>That is, this function return the field id of field that will be returned by the next call to box_tuple_next(it). Returned value is zero after initialization or rewind and box_tuple_field_count(tuple) after the end of iteration.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>position. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">it</span></code> - <p>tuple iterator </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216box_tuple_rewindP20box_tuple_iterator_t">
+<span id="box_tuple_rewind__box_tuple_iterator_tP"></span><span class="target" id="apimodule_8h_1aaa998b89aa550c51d8576d3b766d1a67"></span>void <code class="descname">box_tuple_rewind</code><big>(</big><a class="reference internal" href="#_CPPv220box_tuple_iterator_t" title="box_tuple_iterator_t">box_tuple_iterator_t</a> *<em>it</em><big>)</big><a class="headerlink" href="#_CPPv216box_tuple_rewindP20box_tuple_iterator_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Rewind iterator to the initial position. </p>
+<p><dl class="docutils">
+<dt><strong>Post</strong></dt>
+<dd>box_tuple_position(it) == 0 </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">it</span></code> - <p>tuple iterator </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214box_tuple_seekP20box_tuple_iterator_t8uint32_t">
+<span id="box_tuple_seek__box_tuple_iterator_tP.uint32_t"></span><span class="target" id="apimodule_8h_1a0246bf0343e35cc0f3afbf285b51e836"></span><em class="property">const</em> char *<code class="descname">box_tuple_seek</code><big>(</big><a class="reference internal" href="#_CPPv220box_tuple_iterator_t" title="box_tuple_iterator_t">box_tuple_iterator_t</a> *<em>it</em>, uint32_t <em>field_no</em><big>)</big><a class="headerlink" href="#_CPPv214box_tuple_seekP20box_tuple_iterator_t8uint32_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Seek the tuple iterator. </p>
+<p>The returned buffer is valid until next call to box_tuple_* API. Requested field_no returned by next call to box_tuple_next(it).</p>
+<p><dl class="docutils">
+<dt><strong>Post</strong></dt>
+<dd><p class="first">box_tuple_position(it) == field_no if returned value is not NULL </p>
+<p class="last">box_tuple_position(it) == box_tuple_field_count(tuple) if returned value is NULL. </p>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">it</span></code> - <p>tuple iterator </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">field_no</span></code> - <p>field no - zero-based position in MsgPack array. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214box_tuple_nextP20box_tuple_iterator_t">
+<span id="box_tuple_next__box_tuple_iterator_tP"></span><span class="target" id="apimodule_8h_1a7b88a4ee472624416d875a906a82d99b"></span><em class="property">const</em> char *<code class="descname">box_tuple_next</code><big>(</big><a class="reference internal" href="#_CPPv220box_tuple_iterator_t" title="box_tuple_iterator_t">box_tuple_iterator_t</a> *<em>it</em><big>)</big><a class="headerlink" href="#_CPPv214box_tuple_nextP20box_tuple_iterator_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the next tuple field from tuple iterator. </p>
+<p>The returned buffer is valid until next call to box_tuple_* API.</p>
+<p><dl class="docutils">
+<dt><strong>Pre</strong></dt>
+<dd>box_tuple_position(it) is zerod-based id of returned field </dd>
+<dt><strong>Post</strong></dt>
+<dd>box_tuple_position(it) == box_tuple_field_count(tuple) if returned value is NULL. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">it</span></code> - <p>tuple iterator. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">NULL</span></code> - <p>if there are no more fields. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">MsgPack</span></code> - <p>otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216box_return_tupleP18box_function_ctx_tP11box_tuple_t">
+<span id="box_return_tuple__box_function_ctx_tP.box_tuple_tP"></span><span class="target" id="apimodule_8h_1a7fb00cd4eac4d388d58e9e5ef1ea1b3f"></span>int <code class="descname">box_return_tuple</code><big>(</big><a class="reference internal" href="#_CPPv218box_function_ctx_t" title="box_function_ctx_t">box_function_ctx_t</a> *<em>ctx</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> *<em>tuple</em><big>)</big><a class="headerlink" href="#_CPPv216box_return_tupleP18box_function_ctx_tP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return a tuple from stored C procedure. </p>
+<p>Returned tuple is automatically reference counted by Tarantool.</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">ctx</span></code> - <p>an opaque structure passed to the stored C procedure by Tarantool </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>a tuple to return </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (perhaps, out of memory; check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv220box_space_id_by_namePKc8uint32_t">
+<span id="box_space_id_by_name__cCP.uint32_t"></span><span class="target" id="apimodule_8h_1a4a816d0fc386d810b874b50db1f50293"></span>uint32_t <code class="descname">box_space_id_by_name</code><big>(</big><em class="property">const</em> char *<em>name</em>, uint32_t <em>len</em><big>)</big><a class="headerlink" href="#_CPPv220box_space_id_by_namePKc8uint32_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Find space id by name. </p>
+<p>This function performs SELECT request to _vspace system space. <dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a4abb8381625fb1364af63d58a0235b3a"><span>box_index_id_by_name</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">name</span></code> - <p>space name </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">len</span></code> - <p>length of <em>name</em> </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">BOX_ID_NIL</span></code> - <p>on error or if not found (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv220box_index_id_by_name8uint32_tPKc8uint32_t">
+<span id="box_index_id_by_name__uint32_t.cCP.uint32_t"></span><span class="target" id="apimodule_8h_1a4abb8381625fb1364af63d58a0235b3a"></span>uint32_t <code class="descname">box_index_id_by_name</code><big>(</big>uint32_t <em>space_id</em>, <em class="property">const</em> char *<em>name</em>, uint32_t <em>len</em><big>)</big><a class="headerlink" href="#_CPPv220box_index_id_by_name8uint32_tPKc8uint32_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Find index id by name. </p>
+<p>This function performs SELECT request to _vindex system space. <dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#apimodule_8h_1a4a816d0fc386d810b874b50db1f50293"><span>box_space_id_by_name</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">name</span></code> - <p>index name </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">len</span></code> - <p>length of <em>name</em> </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">BOX_ID_NIL</span></code> - <p>on error or if not found (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv210box_insert8uint32_tPKcPKcPP11box_tuple_t">
+<span id="box_insert__uint32_t.cCP.cCP.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1a08571f03c05abf96fd6e98a590d78822"></span>int <code class="descname">box_insert</code><big>(</big>uint32_t <em>space_id</em>, <em class="property">const</em> char *<em>tuple</em>, <em class="property">const</em> char *<em>tuple_end</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv210box_insert8uint32_tPKcPKcPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Execute an INSERT request. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id]:insert(tuple) 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>encoded tuple in MsgPack Array format ([ field1, field2, ...]) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">tuple_end</span></code> - <p>end of <em>tuple</em> </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a new tuple. Can be set to NULL to discard result. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv211box_replace8uint32_tPKcPKcPP11box_tuple_t">
+<span id="box_replace__uint32_t.cCP.cCP.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1a933b6e9cbf9d4fc05e3964b0949b5bd0"></span>int <code class="descname">box_replace</code><big>(</big>uint32_t <em>space_id</em>, <em class="property">const</em> char *<em>tuple</em>, <em class="property">const</em> char *<em>tuple_end</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv211box_replace8uint32_tPKcPKcPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Execute an REPLACE request. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id]:replace(tuple) 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>encoded tuple in MsgPack Array format ([ field1, field2, ...]) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">tuple_end</span></code> - <p>end of <em>tuple</em> </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a new tuple. Can be set to NULL to discard result. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv210box_delete8uint32_t8uint32_tPKcPKcPP11box_tuple_t">
+<span id="box_delete__uint32_t.uint32_t.cCP.cCP.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1a740bf8f0f5f912dfa78221c9fe5f21bb"></span>int <code class="descname">box_delete</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, <em class="property">const</em> char *<em>key</em>, <em class="property">const</em> char *<em>key_end</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv210box_delete8uint32_t8uint32_tPKcPKcPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Execute an DELETE request. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id].index[index_id]:delete(key) 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key</span></code> - <p>encoded key in MsgPack Array format ([part1, part2, ...]). </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key_end</span></code> - <p>the end of encoded <em>key</em>. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>an old tuple. Can be set to NULL to discard result. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv210box_update8uint32_t8uint32_tPKcPKcPKcPKciPP11box_tuple_t">
+<span id="box_update__uint32_t.uint32_t.cCP.cCP.cCP.cCP.i.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1a9badf4d5cc54e424a157439fcb58b96a"></span>int <code class="descname">box_update</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, <em class="property">const</em> char *<em>key</em>, <em class="property">const</em> char *<em>key_end</em>, <em class="property">const</em> char *<em>ops</em>, <em class="property">const</em> char *<em>ops_end</em>, int <em>index_base</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv210box_update8uint32_t8uint32_tPKcPKcPKcPKciPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Execute an UPDATE request. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><p class="first"> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id].index[index_id]:update(key, ops) 
+</pre></div>
+</div>
+</p>
+<p class="last"><a class="reference internal" href="#apimodule_8h_1a268a03389cd856206f0ddfc90f3cbf84"><span>box_upsert()</span></a> </p>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key</span></code> - <p>encoded key in MsgPack Array format ([part1, part2, ...]). </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key_end</span></code> - <p>the end of encoded <em>key</em>. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">ops</span></code> - <p>encoded operations in MsgPack Arrat format, e.g. [ [ '=', field_id, value ], ['!', 2, 'xxx'] ] </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">ops_end</span></code> - <p>the end of encoded <em>ops</em> </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_base</span></code> - <p>0 if field_ids in update operations are zero-based indexed (like C) or 1 if for one-based indexed field ids (like Lua). </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a new tuple. Can be set to NULL to discard result. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv210box_upsert8uint32_t8uint32_tPKcPKcPKcPKciPP11box_tuple_t">
+<span id="box_upsert__uint32_t.uint32_t.cCP.cCP.cCP.cCP.i.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1a268a03389cd856206f0ddfc90f3cbf84"></span>int <code class="descname">box_upsert</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, <em class="property">const</em> char *<em>tuple</em>, <em class="property">const</em> char *<em>tuple_end</em>, <em class="property">const</em> char *<em>ops</em>, <em class="property">const</em> char *<em>ops_end</em>, int <em>index_base</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv210box_upsert8uint32_t8uint32_tPKcPKcPKcPKciPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Execute an UPSERT request. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><p class="first"> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id].index[index_id]:update(key, ops) 
+</pre></div>
+</div>
+</p>
+<p class="last"><a class="reference internal" href="#apimodule_8h_1a9badf4d5cc54e424a157439fcb58b96a"><span>box_update()</span></a> </p>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">ops</span></code> - <p>encoded operations in MsgPack Arrat format, e.g. [ [ '=', field_id, value ], ['!', 2, 'xxx'] ] </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">ops_end</span></code> - <p>the end of encoded <em>ops</em> </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">tuple</span></code> - <p>encoded tuple in MsgPack Array format ([ field1, field2, ...]) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">tuple_end</span></code> - <p>end of <em>tuple</em> </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_base</span></code> - <p>0 if field_ids in update operations are zero-based indexed (like C) or 1 if for one-based indexed field ids (like Lua). </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a new tuple. Can be set to NULL to discard result. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv218box_index_iterator8uint32_t8uint32_tiPKcPKc">
+<span id="box_index_iterator__uint32_t.uint32_t.i.cCP.cCP"></span><span class="target" id="apimodule_8h_1aab8b69829c8d89799a9fb0e5d360e84b"></span><a class="reference internal" href="#_CPPv214box_iterator_t" title="box_iterator_t">box_iterator_t</a> *<code class="descname">box_index_iterator</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, int <em>type</em>, <em class="property">const</em> char *<em>key</em>, <em class="property">const</em> char *<em>key_end</em><big>)</big><a class="headerlink" href="#_CPPv218box_index_iterator8uint32_t8uint32_tiPKcPKc" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Allocate and initialize iterator for space_id, index_id. </p>
+<p>A returned iterator must be destroyed by <a class="reference internal" href="#apimodule_8h_1a6f7fe762b15009de313fdf915378429c"><span>box_iterator_free()</span></a>.</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><p class="first"><a class="reference internal" href="#apimodule_8h_1ae4361728e6abe6243e7f02b098e7b347"><span>box_iterator_next()</span></a> </p>
+<p class="last"><a class="reference internal" href="#apimodule_8h_1a6f7fe762b15009de313fdf915378429c"><span>box_iterator_free()</span></a> </p>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">type</span></code> - <p><a class="reference internal" href="#apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17e"><span>iterator type </span></a> </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key</span></code> - <p>encoded key in MsgPack Array format ([part1, part2, ...]). </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key_end</span></code> - <p>the end of encoded <em>key</em> </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">NULL</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">iterator</span></code> - <p>otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv217box_iterator_nextP14box_iterator_tPP11box_tuple_t">
+<span id="box_iterator_next__box_iterator_tP.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1ae4361728e6abe6243e7f02b098e7b347"></span>int <code class="descname">box_iterator_next</code><big>(</big><a class="reference internal" href="#_CPPv214box_iterator_t" title="box_iterator_t">box_iterator_t</a> *<em>iterator</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv217box_iterator_nextP14box_iterator_tPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Retrive the next item from the <em>iterator</em>. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">iterator</span></code> - <p>an iterator returned by <a class="reference internal" href="#apimodule_8h_1aab8b69829c8d89799a9fb0e5d360e84b"><span>box_index_iterator()</span></a>. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a tuple or NULL if there is no more data. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a> for details) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success. The end of data is not an error. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv217box_iterator_freeP14box_iterator_t">
+<span id="box_iterator_free__box_iterator_tP"></span><span class="target" id="apimodule_8h_1a6f7fe762b15009de313fdf915378429c"></span>void <code class="descname">box_iterator_free</code><big>(</big><a class="reference internal" href="#_CPPv214box_iterator_t" title="box_iterator_t">box_iterator_t</a> *<em>iterator</em><big>)</big><a class="headerlink" href="#_CPPv217box_iterator_freeP14box_iterator_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Destroy and deallocate iterator. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">iterator</span></code> - <p>an interator returned by <a class="reference internal" href="#apimodule_8h_1aab8b69829c8d89799a9fb0e5d360e84b"><span>box_index_iterator()</span></a> </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_index_len8uint32_t8uint32_t">
+<span id="box_index_len__uint32_t.uint32_t"></span><span class="target" id="apimodule_8h_1a698d8991fa015a4b490f078b29e8d929"></span>ssize_t <code class="descname">box_index_len</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em><big>)</big><a class="headerlink" href="#_CPPv213box_index_len8uint32_t8uint32_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>public </p>
+<p>Return the number of element in the index.</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">&gt;=</span></code> - <p>0 otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215box_index_bsize8uint32_t8uint32_t">
+<span id="box_index_bsize__uint32_t.uint32_t"></span><span class="target" id="apimodule_8h_1aaeda3d99d32c382bc5ac2bc8f0a09f48"></span>ssize_t <code class="descname">box_index_bsize</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em><big>)</big><a class="headerlink" href="#_CPPv215box_index_bsize8uint32_t8uint32_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the number of bytes used in memory by the index. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">&gt;=</span></code> - <p>0 otherwise </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216box_index_random8uint32_t8uint32_t8uint32_tPP11box_tuple_t">
+<span id="box_index_random__uint32_t.uint32_t.uint32_t.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1aa56e2bf2a5720259ea3997149ae53ca9"></span>int <code class="descname">box_index_random</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, uint32_t <em>rnd</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv216box_index_random8uint32_t8uint32_t8uint32_tPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return a random tuple from the index (useful for statistical analysis). </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id].index[index_id]:random(rnd) 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">rnd</span></code> - <p>random seed </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a tuple or NULL if index is empty </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_index_get8uint32_t8uint32_tPKcPKcPP11box_tuple_t">
+<span id="box_index_get__uint32_t.uint32_t.cCP.cCP.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1a5c9cedd4198d62ddfe6c77ef2bf89f56"></span>int <code class="descname">box_index_get</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, <em class="property">const</em> char *<em>key</em>, <em class="property">const</em> char *<em>key_end</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv213box_index_get8uint32_t8uint32_tPKcPKcPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Get a tuple from index by the key. </p>
+<p>Please note that this function works much more faster than box_select() or <a class="reference internal" href="#apimodule_8h_1aab8b69829c8d89799a9fb0e5d360e84b"><span>box_index_iterator()</span></a> + <a class="reference internal" href="#apimodule_8h_1ae4361728e6abe6243e7f02b098e7b347"><span>box_iterator_next()</span></a>.</p>
+<p><dl class="docutils">
+<dt><strong>Pre</strong></dt>
+<dd>key != NULL </dd>
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id].index[index_id]:get(key) 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key</span></code> - <p>encoded key in MsgPack Array format ([part1, part2, ...]). </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key_end</span></code> - <p>the end of encoded <em>key</em> </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a tuple or NULL if index is empty </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_index_min8uint32_t8uint32_tPKcPKcPP11box_tuple_t">
+<span id="box_index_min__uint32_t.uint32_t.cCP.cCP.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1a4fbd278987613571a9d6475de6103a4f"></span>int <code class="descname">box_index_min</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, <em class="property">const</em> char *<em>key</em>, <em class="property">const</em> char *<em>key_end</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv213box_index_min8uint32_t8uint32_tPKcPKcPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return a first (minimal) tuple matched the provided key. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id].index[index_id]:min(key) 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key</span></code> - <p>encoded key in MsgPack Array format ([part1, part2, ...]). If NULL then equvivalent to an empty array. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key_end</span></code> - <p>the end of encoded <em>key</em>. Must be NULL if <em>key</em> is NULL. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a tuple or NULL if index is empty </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_index_max8uint32_t8uint32_tPKcPKcPP11box_tuple_t">
+<span id="box_index_max__uint32_t.uint32_t.cCP.cCP.box_tuple_tPP"></span><span class="target" id="apimodule_8h_1a044e5f79addcfd9c7312fe66e7be7514"></span>int <code class="descname">box_index_max</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, <em class="property">const</em> char *<em>key</em>, <em class="property">const</em> char *<em>key_end</em>, <a class="reference internal" href="#_CPPv211box_tuple_t" title="box_tuple_t">box_tuple_t</a> **<em>result</em><big>)</big><a class="headerlink" href="#_CPPv213box_index_max8uint32_t8uint32_tPKcPKcPP11box_tuple_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return a last (maximal) tuple matched the provided key. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id].index[index_id]:max(key) 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key</span></code> - <p>encoded key in MsgPack Array format ([part1, part2, ...]). If NULL then equvivalent to an empty array. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key_end</span></code> - <p>the end of encoded <em>key</em>. Must be NULL if <em>key</em> is NULL. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">result</span></code> - <p>a tuple or NULL if index is empty </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215box_index_count8uint32_t8uint32_tiPKcPKc">
+<span id="box_index_count__uint32_t.uint32_t.i.cCP.cCP"></span><span class="target" id="apimodule_8h_1a3f06a7df9e461267455477bd84ce02ed"></span>ssize_t <code class="descname">box_index_count</code><big>(</big>uint32_t <em>space_id</em>, uint32_t <em>index_id</em>, int <em>type</em>, <em class="property">const</em> char *<em>key</em>, <em class="property">const</em> char *<em>key_end</em><big>)</big><a class="headerlink" href="#_CPPv215box_index_count8uint32_t8uint32_tiPKcPKc" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Count the number of tuple matched the provided key. </p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd> <div class="highlight-python"><div class="highlight"><pre>box.space[space_id].index[index_id]:count(key,
+   { iterator = type }) 
+</pre></div>
+</div>
+</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">space_id</span></code> - <p>space identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">index_id</span></code> - <p>index identifier </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">type</span></code> - <p>iterator type - enum <a class="reference internal" href="#apimodule_8h_1a2693ce4bd8fa71e8ac1e5272fc64d17e"><span>iterator_type</span></a> </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key</span></code> - <p>encoded key in MsgPack Array format ([part1, part2, ...]). If NULL then equvivalent to an empty array. </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">key_end</span></code> - <p>the end of encoded <em>key</em>. Must be NULL if <em>key</em> is NULL. </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">-1</span></code> - <p>on error (check <a class="reference internal" href="#apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"><span>box_error_last()</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">&gt;=0</span></code> - <p>on success </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214box_error_typePK11box_error_t">
+<span id="box_error_type__box_error_tCP"></span><span class="target" id="apimodule_8h_1a9b58e493b5515222c6bb9c0393d092ce"></span><em class="property">const</em> char *<code class="descname">box_error_type</code><big>(</big><em class="property">const</em> <a class="reference internal" href="#_CPPv211box_error_t" title="box_error_t">box_error_t</a> *<em>error</em><big>)</big><a class="headerlink" href="#_CPPv214box_error_typePK11box_error_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the error type, e.g. </p>
+<p>&quot;ClientError&quot;, &quot;SocketError&quot;, etc. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>not-null string </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">error</span></code> - <p></p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214box_error_codePK11box_error_t">
+<span id="box_error_code__box_error_tCP"></span><span class="target" id="apimodule_8h_1a800a57f7e18f0b9c3880d4e516589e73"></span>uint32_t <code class="descname">box_error_code</code><big>(</big><em class="property">const</em> <a class="reference internal" href="#_CPPv211box_error_t" title="box_error_t">box_error_t</a> *<em>error</em><big>)</big><a class="headerlink" href="#_CPPv214box_error_codePK11box_error_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return IPROTO error code. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>enum box_error_code </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">error</span></code> - <p>error </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv217box_error_messagePK11box_error_t">
+<span id="box_error_message__box_error_tCP"></span><span class="target" id="apimodule_8h_1aff2a8679174320da6a54edc6df4681ae"></span><em class="property">const</em> char *<code class="descname">box_error_message</code><big>(</big><em class="property">const</em> <a class="reference internal" href="#_CPPv211box_error_t" title="box_error_t">box_error_t</a> *<em>error</em><big>)</big><a class="headerlink" href="#_CPPv217box_error_messagePK11box_error_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the error message. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>not-null string </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">error</span></code> - <p>error </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214box_error_lastv">
+<span id="box_error_last__void"></span><span class="target" id="apimodule_8h_1af8f82c313ba49fc97782663ffba71f58"></span><a class="reference internal" href="#_CPPv211box_error_t" title="box_error_t">box_error_t</a> *<code class="descname">box_error_last</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv214box_error_lastv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Get the information about the last API call error. </p>
+<p>The Tarantool error handling works most like libc's errno. All API calls return -1 or NULL in the event of error. An internal pointer to box_error_t type is set by API functions to indicate what went wrong. This value is only significant if API call failed (returned -1 or NULL).</p>
+<p>Successed function can also touch last error in some cases. You don't have to clear last error before calling API functions. The returned object is valid only until next call to <strong>any</strong> API function.</p>
+<p>You must set the last error using <a class="reference internal" href="#apimodule_8h_1a180bc63c3663ba61da9fcb390f50a972"><span>box_error_raise()</span></a> in your stored C procedures if you want to return custom error message. You can re-throw the last API error to IPROTO client by keeping the current value and returning -1 to Tarantool from your stored procedure.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>last error. </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215box_error_clearv">
+<span id="box_error_clear__void"></span><span class="target" id="apimodule_8h_1a1c2143635d7ff4aeb2ced40ffa033527"></span>void <code class="descname">box_error_clear</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv215box_error_clearv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Clear the last error. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215box_error_raise8uint32_tPKcz">
+<span id="box_error_raise__uint32_t.cCP.z"></span><span class="target" id="apimodule_8h_1a180bc63c3663ba61da9fcb390f50a972"></span>int <code class="descname">box_error_raise</code><big>(</big>uint32_t <em>code</em>, <em class="property">const</em> char *<em>format</em>, ...<big>)</big><a class="headerlink" href="#_CPPv215box_error_raise8uint32_tPKcz" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Set the last error. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>-1 for convention use</dd>
+<dt><strong>See</strong></dt>
+<dd>enum <a class="reference internal" href="#apimodule_8h_1a800a57f7e18f0b9c3880d4e516589e73"><span>box_error_code</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">code</span></code> - <p>IPROTO error code (enum <a class="reference internal" href="#apimodule_8h_1a800a57f7e18f0b9c3880d4e516589e73"><span>box_error_code</span></a>) </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">format</span></code> - <p>(const char * ) - printf()-like format string </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">...</span></code> - <p>- format arguments </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213box_latch_newv">
+<span id="box_latch_new__void"></span><span class="target" id="apimodule_8h_1a7c106ac756a1b7fa422a72e71b379b0a"></span><a class="reference internal" href="#_CPPv211box_latch_t" title="box_latch_t">box_latch_t</a> *<code class="descname">box_latch_new</code><big>(</big>void<big>)</big><a class="headerlink" href="#_CPPv213box_latch_newv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Allocate and initialize the new latch. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>latch </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216box_latch_deleteP11box_latch_t">
+<span id="box_latch_delete__box_latch_tP"></span><span class="target" id="apimodule_8h_1a83a897e7386e946cd5ffd2ea1cb47a52"></span>void <code class="descname">box_latch_delete</code><big>(</big><a class="reference internal" href="#_CPPv211box_latch_t" title="box_latch_t">box_latch_t</a> *<em>latch</em><big>)</big><a class="headerlink" href="#_CPPv216box_latch_deleteP11box_latch_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Destroy and free the latch. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">latch</span></code> - <p>latch </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214box_latch_lockP11box_latch_t">
+<span id="box_latch_lock__box_latch_tP"></span><span class="target" id="apimodule_8h_1aef397199dd9a19cb7b9362233a1d4a98"></span>void <code class="descname">box_latch_lock</code><big>(</big><a class="reference internal" href="#_CPPv211box_latch_t" title="box_latch_t">box_latch_t</a> *<em>latch</em><big>)</big><a class="headerlink" href="#_CPPv214box_latch_lockP11box_latch_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Lock a latch. </p>
+<p>Waits indefinitely until the current fiber can gain access to the latch.</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">latch</span></code> - <p>a latch </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv217box_latch_trylockP11box_latch_t">
+<span id="box_latch_trylock__box_latch_tP"></span><span class="target" id="apimodule_8h_1a294e53c819e91f172428d580a29f434f"></span>int <code class="descname">box_latch_trylock</code><big>(</big><a class="reference internal" href="#_CPPv211box_latch_t" title="box_latch_t">box_latch_t</a> *<em>latch</em><big>)</big><a class="headerlink" href="#_CPPv217box_latch_trylockP11box_latch_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Try to lock a latch. </p>
+<p>Return immediately if the latch is locked. <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">latch</span></code> - <p>a latch </p>
+</li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">0</span></code> - <p>- success </p>
+</li>
+<li><code class="first docutils literal"><span class="pre">1</span></code> - <p>- the latch is locked. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv216box_latch_unlockP11box_latch_t">
+<span id="box_latch_unlock__box_latch_tP"></span><span class="target" id="apimodule_8h_1a11dea9d7a0347d38956ed59f739c68ca"></span>void <code class="descname">box_latch_unlock</code><big>(</big><a class="reference internal" href="#_CPPv211box_latch_t" title="box_latch_t">box_latch_t</a> *<em>latch</em><big>)</big><a class="headerlink" href="#_CPPv216box_latch_unlockP11box_latch_t" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Unlock a latch. </p>
+<p>The fiber calling this function must own the latch.</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><code class="first docutils literal"><span class="pre">latch</span></code> - <p>a ltach </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef container">
+<p class="breathe-sectiondef-title rubric">Variables</p>
+<dl class="member">
+<dt id="_CPPv24_say">
+<span id="_say__sayfunc_t"></span><span class="target" id="apimodule_8h_1a05b20a688d53370fa8051d33a0ba0003"></span><a class="reference internal" href="#_CPPv29sayfunc_t" title="sayfunc_t">sayfunc_t</a> <code class="descname">_say</code><a class="headerlink" href="#_CPPv24_say" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Internal function used to implement <a class="reference internal" href="#apimodule_8h_1a2b3e4833d863a0756e8820ac07ad8b68"><span>say()</span></a> macros. </p>
+</dd></dl>
+
+</div>
+</div>
+
+
+        </article>
+
+
+<div class="b-page_over-tail">
+
+    
+    <a href="other.html" class="b-prev">Miscellaneous</a>
+    
+    
+    <a href="../dev_guide/index.html" class="b-next">Contributing</a>
+    
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  
+
+      </div>
+    </div>
+
+    <!-- FOOTER > -->
+    <footer class="b-footer">
+      <div class="b-footer-wrapper">
+        <nav class="b-footer_menu">
+          
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          <div class="b-footer-other">
+            <a href="http://stable.tarantool.org">1.5 web site and downloads</a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+  <!-- < FOOTER -->
+  </body>
+</html>
+

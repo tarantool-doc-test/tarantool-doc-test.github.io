@@ -1,0 +1,580 @@
+
+
+
+
+
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Getting started</title>
+    <link rel="shortcut icon" href="/theme/favicon.ico" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.6.7-521-g0d75d50',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/jquery.pin.min.js"></script>
+    <script type="text/javascript" src="_static/headers.js"></script>
+    <link rel="stylesheet" href="/theme/design.css">
+    <link rel="stylesheet" href="/theme/pygmentize.css">
+    <link rel="stylesheet" href="_static/sphinx_design.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+     
+    <!--[if lt IE 9]>
+      <script src="/js/ie8.js"></script>
+      <link rel="stylesheet" href="/theme/ie8.css" />
+    <![endif]-->
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22120502-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+  var _tmr = _tmr || [];
+  _tmr.push({id: "2284916", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w) {
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+    ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window);
+</script>
+<noscript>
+  <div style="position:absolute;left:-10000px;">
+    <img src="//top-fwz1.mail.ru/counter?id=2284916;js=na" style="border:0;"
+         height="1" width="1" alt="Рейтинг@Mail.ru" />
+  </div>
+</noscript>
+<!-- //Rating@Mail.ru counter -->
+
+
+  </head>
+  
+  <body class="p-cols_design">
+  
+    <div class="b-wrapper">
+      <!-- HEADER > -->
+      <header class="b-header">
+        <div class="b-header-wrapper">
+          <nav class="b-header_menu">
+            
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          </nav>
+        </div>
+      </header>
+      <!-- < HEADER -->
+
+      <div class="b-content b-clearbox">
+        
+  
+  <section class="b-lightgray_block b-documentation_top b-clearbox p-documentation_in">
+  
+    <div class="b-block-wrapper">
+      <h2 class="b-section-title">Getting started</h2>
+      
+    </div>
+  </section>
+  <div class="b-cols_content b-clearbox">
+    <div class="b-cols_content_left">
+      
+      
+<form id="searchbox" role="search" class="search b-search" action="search.html" method="get">
+  <input class="b-search-text" name="q" type="text"/ placeholder="Search the manual">
+  <input class="b-search-but" type="submit" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+
+      
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-and-installing-a-binary-package">Downloading and installing a binary package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-tarantool-and-making-your-first-database">Starting Tarantool and making your first database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-another-tarantool-instance-and-connecting-remotely">Starting another Tarantool instance and connecting remotely</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="book/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_guide/index.html">Contributing</a></li>
+</ul>
+
+    </div>
+    <div class="b-cols_content_right">
+      <div class="b-cols_content_right-slot">
+  
+
+<div class="b-page_header">
+  <ul class="b-path-list">
+    <li class="b-path-list-item">
+      <a href="/doc/" class="b-path-list-item-url">Documentation</a>
+    </li>
+  
+    <li class="b-path-list-item"><span class="b-path_current">Getting started</span></li>
+  </ul>
+</div>
+
+<article class="b-article">
+          
+          
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Ссылка на этот заголовок">¶</a></h1>
+<p>This chapter shows how to download, how to install, and how to start Tarantool
+for the first time.</p>
+<p>For production, if possible, you should download a binary (executable) package.
+This will ensure that you have the same build of the same version that the
+developers have. That makes analysis easier if later you need to report a problem,
+and avoids subtle problems that might happen if you used different tools or
+different parameters when building from source. The section about binaries is
+“<a class="reference internal" href="#id1">Downloading and installing a binary package</a>”.</p>
+<p>For development, you will want to download a source package and make the binary
+by yourself using a C/C++ compiler and common tools. Although this is a bit harder,
+it gives more control. And the source packages include additional files, for example
+the Tarantool test suite. The section about source is “<a class="reference internal" href="dev_guide/building_from_source.html#building-from-source"><span>Building from source</span></a>”.</p>
+<p>If the installation has already been done, then you should try it out. So we've
+provided some instructions that you can use to make a temporary “sandbox”. In a
+few minutes you can start the server and type in some database-manipulation
+statements. The section about sandbox is “<a class="reference internal" href="#starting-tarantool-and-making-your-first-database">Starting Tarantool and making your first database</a>”.</p>
+<div class="section" id="downloading-and-installing-a-binary-package">
+<span id="id1"></span><h2>Downloading and installing a binary package<a class="headerlink" href="#downloading-and-installing-a-binary-package" title="Ссылка на этот заголовок">¶</a></h2>
+<p>The repositories for the “stable” release are at <a class="reference external" href="http://tarantool.org/dist/stable">tarantool.org/dist/stable</a>.
+The repositories for the “master” release are at <a class="reference external" href="http://tarantool.org/dist/master">tarantool.org/dist/master</a>.
+Since this is the manual for the “master” release, all instructions use
+<a class="reference external" href="http://tarantool.org/dist/master">tarantool.org/dist/master</a>.</p>
+<p>An automatic build system creates, tests and publishes packages for every
+push into the master branch. Therefore if you looked at
+<a class="reference external" href="http://tarantool.org/dist/master">tarantool.org/dist/master</a> you would see that there are source files and
+subdirectories for the packages that will be described in this section.</p>
+<p>To download and install the package that's appropriate for your environment,
+start a shell (terminal) and enter one of the following sets of command-line
+instructions.</p>
+<p>More advice for binary downloads is at <a class="reference external" href="http://tarantool.org/download.html">http://tarantool.org/download.html</a>.</p>
+<div class="section" id="debian-gnu-linux">
+<h3>Debian GNU/Linux<a class="headerlink" href="#debian-gnu-linux" title="Ссылка на этот заголовок">¶</a></h3>
+<p>There is always an up-to-date Debian repository at
+<a class="reference external" href="http://tarantool.org/dist/master/debian">http://tarantool.org/dist/master/debian</a>. The repository contains builds for
+Debian unstable &quot;Sid&quot;, stable &quot;Wheezy&quot;, forthcoming &quot;Jessie&quot;. Add the
+tarantool.org repository to your apt sources list. $release is an environment
+variable which will contain the Debian version code e.g. &quot;Wheezy&quot;:</p>
+<div class="highlight-bash"><div class="highlight"><pre>wget http://tarantool.org/dist/public.key
+sudo apt-key add ./public.key
+<span class="nv">release</span><span class="o">=</span><span class="sb">`</span>lsb_release -c -s<span class="sb">`</span>
+<span class="c"># append two lines to a list of source repositories</span>
+<span class="nb">echo</span> <span class="s2">&quot;deb http://tarantool.org/dist/master/debian/ </span><span class="nv">$release</span><span class="s2"> main&quot;</span> <span class="p">|</span> <span class="se">\</span>
+sudo tee -a /etc/apt/sources.list.d/tarantool.list
+<span class="nb">echo</span> <span class="s2">&quot;deb-src http://tarantool.org/dist/master/debian/ </span><span class="nv">$release</span><span class="s2"> main&quot;</span> <span class="p">|</span> <span class="se">\</span>
+sudo tee -a /etc/apt/sources.list.d/tarantool.list
+<span class="c"># install</span>
+sudo apt-get update
+sudo apt-get install tarantool
+</pre></div>
+</div>
+</div>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Ссылка на этот заголовок">¶</a></h3>
+<p>There is always an up-to-date Ubuntu repository at
+<a class="reference external" href="http://tarantool.org/dist/master/ubuntu">http://tarantool.org/dist/master/ubuntu</a>. The repository contains builds for
+Ubuntu 12.04 &quot;precise&quot;, 13.10 &quot;saucy&quot;, and 14.04 &quot;trusty&quot;. Add the tarantool.org
+repository to your apt sources list. $release is an environment variable which
+will contain the Ubuntu version code e.g. &quot;precise&quot;. If you want the version
+that comes with Ubuntu, start with the lines that follow the '# install' comment:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~
+wget http://tarantool.org/dist/public.key
+sudo apt-key add ./public.key
+<span class="nv">release</span><span class="o">=</span><span class="sb">`</span>lsb_release -c -s<span class="sb">`</span>
+<span class="c"># append two lines to a list of source repositories</span>
+<span class="nb">echo</span> <span class="s2">&quot;deb http://tarantool.org/dist/master/ubuntu/ </span><span class="nv">$release</span><span class="s2"> main&quot;</span> <span class="p">|</span> <span class="se">\</span>
+sudo tee -a /etc/apt/sources.list.d/tarantool.list
+<span class="nb">echo</span> <span class="s2">&quot;deb-src http://tarantool.org/dist/master/ubuntu/ </span><span class="nv">$release</span><span class="s2"> main&quot;</span> <span class="p">|</span> <span class="se">\</span>
+sudo tee -a /etc/apt/sources.list.d/tarantool.list
+<span class="c"># install</span>
+sudo apt-get update
+sudo apt-get install tarantool
+</pre></div>
+</div>
+</div>
+<div class="section" id="centos">
+<h3>CentOS<a class="headerlink" href="#centos" title="Ссылка на этот заголовок">¶</a></h3>
+<p>These instructions are applicable for CentOS version 6 or 7, and RHEL version
+6 or 7. Pick the CentOS repository which fits your CentOS/RHEL version and
+your x86 platform:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://tarantool.org/dist/master/centos/6/os/i386">http://tarantool.org/dist/master/centos/6/os/i386</a> for version 6, x86-32</li>
+<li><a class="reference external" href="http://tarantool.org/dist/master/centos/6/os/x86_64">http://tarantool.org/dist/master/centos/6/os/x86_64</a> for version 6, x86-64</li>
+<li><a class="reference external" href="http://tarantool.org/dist/master/centos/7/os/x86_64">http://tarantool.org/dist/master/centos/7/os/x86_64</a> for version 7, x86-64</li>
+</ul>
+<p>Add the following section to your yum repository list
+(<code class="docutils literal"><span class="pre">/etc/yum.repos.d/tarantool.repo</span></code>) (in these instructions <code class="docutils literal"><span class="pre">$releasever</span></code>
+i.e. CentOS release version must be either 6 or 7 and <code class="docutils literal"><span class="pre">$basearch</span></code> i.e. base
+architecture must be either i386 or x86_64):</p>
+<pre class="highlight literal-block">
+# [tarantool]
+name=CentOS-$releasever - Tarantool
+baseurl=http://tarantool.org/dist/master/centos/<em>$releasever</em>/os/<em>$basearch</em>/
+enabled=1
+gpgcheck=0
+</pre>
+<p>For example, if you have CentOS version 6 and x86-64, you can add the new section thus:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;[tarantool]&quot;</span> <span class="p">|</span> <span class="se">\</span>
+sudo tee /etc/yum.repos.d/tarantool.repo
+<span class="nb">echo</span> <span class="s2">&quot;name=CentOS-6 - Tarantool&quot;</span><span class="p">|</span> sudo tee -a /etc/yum.repos.d/tarantool.repo
+<span class="nb">echo</span> <span class="s2">&quot;baseurl=http://tarantool.org/dist/master/centos/6/os/x86_64/&quot;</span> <span class="p">|</span> <span class="se">\</span>
+sudo tee -a /etc/yum.repos.d/tarantool.repo
+<span class="nb">echo</span> <span class="s2">&quot;enabled=1&quot;</span> <span class="p">|</span> sudo tee -a /etc/yum.repos.d/tarantool.repo
+<span class="nb">echo</span> <span class="s2">&quot;gpgcheck=0&quot;</span> <span class="p">|</span> sudo tee -a /etc/yum.repos.d/tarantool.repo
+</pre></div>
+</div>
+<p>Then install with <code class="code docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">tarantool</span></code>.</p>
+</div>
+<div class="section" id="fedora">
+<h3>Fedora<a class="headerlink" href="#fedora" title="Ссылка на этот заголовок">¶</a></h3>
+<p>These instructions are applicable for Fedora 19, 20 or rawhide. Pick the Fedora
+repository, for example <a class="reference external" href="http://tarantool.org/dist/master/fedora/20/x86_64">http://tarantool.org/dist/master/fedora/20/x86_64</a> for
+version 20, x86-64. Add the following section to your yum repository list
+(<code class="docutils literal"><span class="pre">/etc/yum.repos.d/tarantool.repo</span></code>) (in these instructions
+<code class="docutils literal"><span class="pre">$releasever</span></code> i.e. Fedora release version must be 19, 20 or rawhide and
+<code class="docutils literal"><span class="pre">$basearch</span></code> i.e. base architecture must be x86_64):</p>
+<pre class="highlight literal-block">
+[tarantool]
+name=Fedora-$releasever - Tarantool
+baseurl=http://tarantool.org/dist/master/fedora/<em>$releasever</em>/<em>$basearch</em>/
+enabled=1
+gpgcheck=0
+</pre>
+<p>For example, if you have Fedora version 20, you can add the new section thus:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;[tarantool]&quot;</span> <span class="p">|</span> <span class="se">\</span>
+sudo tee /etc/yum.repos.d/tarantool.repo
+<span class="nb">echo</span> <span class="s2">&quot;name=Fedora-20 - Tarantool&quot;</span><span class="p">|</span> sudo tee -a /etc/yum.repos.d/tarantool.repo
+<span class="nb">echo</span> <span class="s2">&quot;baseurl=http://tarantool.org/dist/master/fedora/20/x86_64/&quot;</span> <span class="p">|</span> <span class="se">\</span>
+sudo tee -a /etc/yum.repos.d/tarantool.repo
+<span class="nb">echo</span> <span class="s2">&quot;enabled=1&quot;</span> <span class="p">|</span> sudo tee -a /etc/yum.repos.d/tarantool.repo
+<span class="nb">echo</span> <span class="s2">&quot;gpgcheck=0&quot;</span> <span class="p">|</span> sudo tee -a /etc/yum.repos.d/tarantool.repo
+</pre></div>
+</div>
+<p>Then install with <code class="code docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">tarantool</span></code>.</p>
+</div>
+<div class="section" id="gentoo">
+<h3>Gentoo<a class="headerlink" href="#gentoo" title="Ссылка на этот заголовок">¶</a></h3>
+<p>There is a tarantool portage overlay. Use layman to add the overlay to your system:</p>
+<div class="highlight-bash"><div class="highlight"><pre>layman -S
+layman -a tarantool
+emerge dev-db/tarantool -av
+</pre></div>
+</div>
+</div>
+<div class="section" id="freebsd">
+<h3>FreeBSD<a class="headerlink" href="#freebsd" title="Ссылка на этот заголовок">¶</a></h3>
+<p>With your browser go to the FreeBSD ports page
+<a class="reference external" href="http://www.freebsd.org/ports/index.html">http://www.freebsd.org/ports/index.html</a>. Enter the search term: tarantool.
+Choose the package you want.</p>
+</div>
+<div class="section" id="mac-os-x">
+<h3>Mac OS X<a class="headerlink" href="#mac-os-x" title="Ссылка на этот заголовок">¶</a></h3>
+<p>This is actually a “homebrew” recipe so it's not a true binary download,
+some source code is involved. First upgrade Clang (the C compiler) to version 3.2
+or later using Command Line Tools for Xcode disk image version 4.6+ from Apple
+Developer web-site. Then download the recipe file from
+<a class="reference external" href="http://tarantool.org/dist/master/tarantool.rb">tarantool.org/dist/master/tarantool.rb</a>. Make the file executable, execute it,
+and the script in the file should handle the necessary steps with cmake, make,
+and make install.</p>
+</div>
+</div>
+<div class="section" id="starting-tarantool-and-making-your-first-database">
+<span id="dup-first-database"></span><h2>Starting Tarantool and making your first database<a class="headerlink" href="#starting-tarantool-and-making-your-first-database" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Here is how to create a simple test database after installing.</p>
+<ol class="arabic">
+<li><p class="first">Create a new directory. It's just for tests, you can delete it when the tests are over.</p>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir ~/tarantool_sandbox
+<span class="nb">cd</span> ~/tarantool_sandbox
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start the server. The server name is tarantool.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># if you downloaded a binary with apt-get or yum, say this:</span>
+/usr/bin/tarantool
+<span class="c"># if you downloaded and untarred a binary tarball to ~/tarantool, say this:</span>
+~/tarantool/bin/tarantool
+<span class="c"># if you built from a source download, say this:</span>
+~/tarantool/src/tarantool
+</pre></div>
+</div>
+<p>The server starts in interactive mode and outputs a command prompt.
+To turn on the database, <a class="reference internal" href="book/box/box_introspection.html#lua-module.box.cfg" title="box.cfg"><code class="xref lua lua-mod docutils literal"><span class="pre">configure</span></code></a> it:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span><span class="n">listen</span> <span class="o">=</span> <span class="mi">3301</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>(this minimal example is sufficient).</p>
+<p>If all goes well, you will see the server displaying progress as it
+initializes, something like this:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{</span><span class="n">listen</span> <span class="o">=</span> <span class="mi">3301</span><span class="p">}</span>
+<span class="go">2014-08-07 09:41:41.077 ... version 1.6.3-439-g7e1011b</span>
+<span class="go">2014-08-07 09:41:41.077 ... log level 5</span>
+<span class="go">2014-08-07 09:41:41.078 ... mapping 1073741824 bytes for a shared arena...</span>
+<span class="go">2014-08-07 09:41:41.079 ... initialized</span>
+<span class="go">2014-08-07 09:41:41.081 ... initializing an empty data directory</span>
+<span class="go">2014-08-07 09:41:41.095 ... creating &#39;./00000000000000000000.snap.inprogress&#39;</span>
+<span class="go">2014-08-07 09:41:41.095 ... saving snapshot &#39;./00000000000000000000.snap.inprogress&#39;</span>
+<span class="go">2014-08-07 09:41:41.127 ... done</span>
+<span class="go">2014-08-07 09:41:41.128 ... primary: bound to 0.0.0.0:3301</span>
+<span class="go">2014-08-07 09:41:41.128 ... ready to accept requests</span>
+</pre></div>
+</div>
+<p>Now that the server is up, you could start up a different shell
+and connect to its primary port with</p>
+<div class="highlight-bash"><div class="highlight"><pre>telnet <span class="m">0</span> 3301
+</pre></div>
+</div>
+<p>but for example purposes it is simpler to just leave the server
+running in &quot;interactive mode&quot;. On production machines the
+interactive mode is just for administrators, but because it's
+convenient for learning it will be used for most examples in
+this manual. Tarantool is waiting for the user to type instructions.</p>
+<p>To create the first space and the first <a class="reference internal" href="book/box/index.html#box-index"><span>index</span></a>, try this:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">tester&#39;</span><span class="p">)</span>
+<span class="gp">tarantool&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">create_index</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">primary&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">hash&#39;</span><span class="p">,</span> <span class="n">parts</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">NUM&#39;</span><span class="p">}})</span>
+</pre></div>
+</div>
+<p>To insert three “tuples” (our name for “records”) into the first “space” of the database try this:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">({</span><span class="mi">1</span><span class="p">})</span>
+<span class="gp">tarantool&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">({</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Music&#39;</span><span class="p">})</span>
+<span class="gp">tarantool&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Length&#39;</span><span class="p">,</span> <span class="mi">93</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>To select a tuple from the first space of the database, using the first defined key, try this:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="nb">select</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Your terminal screen should now look like this:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">tester&#39;</span><span class="p">)</span>
+<span class="go">2014-06-10 12:04:18.158 ... creating &#39;./00000000000000000002.xlog.inprogress&#39;</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="n">create_index</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">primary&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">hash&#39;</span><span class="p">,</span> <span class="n">parts</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">NUM&#39;</span><span class="p">}})</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Music&#39;</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">:</span><span class="n">insert</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Length&#39;</span><span class="p">,</span> <span class="mi">93</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="nn">...</span>
+<span class="gp">tarantool&gt; </span><span class="n">s</span><span class="p">:</span><span class="nb">select</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">3</span><span class="p-Indicator">,</span> <span class="s">&#39;Length&#39;</span><span class="p-Indicator">,</span> <span class="nv">93</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+<span class="go">tarantool&gt;</span>
+</pre></div>
+</div>
+<p>Now, to prepare for the example in the next section, try this:</p>
+<div class="highlight-tarantoolsession"><div class="highlight"><pre><span class="gp">tarantool&gt; </span><span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">grant</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">guest&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">read,write,execute&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">universe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="starting-another-tarantool-instance-and-connecting-remotely">
+<h2>Starting another Tarantool instance and connecting remotely<a class="headerlink" href="#starting-another-tarantool-instance-and-connecting-remotely" title="Ссылка на этот заголовок">¶</a></h2>
+<p>In the previous section the first request was with <code class="docutils literal"><span class="pre">box.cfg{listen</span> <span class="pre">=</span> <span class="pre">3301}</span></code>.
+The &quot;listen&quot; value can be any form of URI (uniform resource identifier);
+in this case it's just a local port: port 3301.
+It's possible to send requests to the listen URI via (a) telnet,
+(b) a connector (which will be the subject of Chapter 8),
+or (c) another instance of Tarantool. Let's try (c).</p>
+<p>1. Switch to another terminal.
+On Linux, for example, this means starting another instance of a Bash shell.
+There is no need to use cd to switch to the ~/tarantool_sandbox directory.</p>
+<ol class="arabic" start="2">
+<li><p class="first">Start the second instance of Tarantool. The server name is tarantool.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="c"># if you downloaded a binary with apt-get or yum, say this:</span>
+/usr/bin/tarantool
+<span class="c"># if you downloaded and untarred a binary tarball to ~/tarantool, say this:</span>
+~/tarantool/bin/tarantool
+<span class="c"># if you built from a source download, say this:</span>
+~/tarantool/src/tarantool
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Try these requests:</p>
+<blockquote>
+<div><div class="highlight-lua"><div class="highlight"><pre><span class="n">console</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">console&#39;</span><span class="p">)</span>
+<span class="n">console</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">localhost:3301&#39;</span><span class="p">)</span>
+<span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<p>The requests are saying &quot;use the <a class="reference internal" href="reference/console.html#package-console"><span>console package</span></a>
+to connect to the Tarantool server that's listening on <code class="docutils literal"><span class="pre">localhost:3301</span></code>, send
+a request to that server, and display the result.&quot; The result in this case is
+one of the tuples that was inserted earlier. Your terminal screen should now
+look like this:</p>
+<div class="highlight-lua"><div class="highlight"><pre><span class="o">&lt;...</span> <span class="o">...&gt;</span>
+<span class="n">tarantool</span><span class="o">&gt;</span> <span class="n">console</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">console&#39;</span><span class="p">)</span>
+<span class="c1">---</span>
+<span class="o">...</span>
+<span class="n">tarantool</span><span class="o">&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">localhost:3301&#39;</span><span class="p">)</span>
+<span class="o">&lt;...&gt;</span> <span class="p">[</span><span class="mi">32628</span><span class="p">]</span> <span class="n">main</span><span class="o">/</span><span class="mi">101</span><span class="o">/</span><span class="n">interactive</span> <span class="n">I</span><span class="o">&gt;</span> <span class="n">connected</span> <span class="n">to</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">3301</span>
+<span class="c1">---</span>
+<span class="o">...</span>
+<span class="n">localhost</span><span class="p">:</span><span class="mi">3301</span><span class="o">&gt;</span> <span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">tester</span><span class="p">:</span><span class="nb">select</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+<span class="c1">---</span>
+<span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">Music&#39;</span><span class="p">]</span>
+<span class="o">...</span>
+<span class="n">localhost</span><span class="p">:</span><span class="mi">3301</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You can repeat box.space...:insert{} and box.space...:select{}
+indefinitely, on either Tarantool instance.
+When the testing is over: To drop the space: s:drop().
+To stop tarantool: Ctrl+C. To stop tarantool (an alternative):
+os.exit(). To stop tarantool (from another terminal):
+sudo pkill -f tarantool.
+To destroy the test: rm -r ~/tarantool_sandbox.</p>
+<p>To review ... If you followed all the instructions
+in this chapter, then so far you have: installed Tarantool
+from either a binary or a source repository,
+started up the Tarantool server, inserted and selected tuples.</p>
+</div>
+</div>
+
+
+        </article>
+
+
+<div class="b-page_over-tail">
+
+    
+    <a href="faq.html" class="b-prev">FAQ</a>
+    
+    
+    <a href="book/index.html" class="b-next">User Guide</a>
+    
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  
+
+      </div>
+    </div>
+
+    <!-- FOOTER > -->
+    <footer class="b-footer">
+      <div class="b-footer-wrapper">
+        <nav class="b-footer_menu">
+          
+  <ul class="b-menu">
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org" class="b-menu-item-url">Overview</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url p-active">Documentation</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+        
+      </li>
+    
+      <li class="b-menu-item">
+        
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+        
+      </li>
+    
+  </ul>
+
+          <div class="b-footer-other">
+            <a href="http://stable.tarantool.org">1.5 web site and downloads</a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+  <!-- < FOOTER -->
+  </body>
+</html>
+

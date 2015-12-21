@@ -1,0 +1,298 @@
+﻿<!doctype html>
+
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Tarantool - A NoSQL database running in a Lua application server</title>
+    <link rel="shortcut icon" href="/theme/favicon.ico" />
+    <link rel="stylesheet"    href="/theme/design.css" />
+    <link rel="stylesheet"    href="/theme/pygmentize.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--script src="/js/select.js"></script-->
+    <!--[if lt IE 9]>
+      <script src="scripts/ie8.js"></script>
+      <link rel="stylesheet" href="/theme/new/ie8.css" />
+    <![endif]-->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="js/index_tabs.js"></script>
+<script src="js/highcharts.js"></script>
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22120502-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+var _tmr = _tmr || [];
+_tmr.push({id: "2284916", type: "pageView", start: (new Date()).getTime()});
+(function (d, w) {
+   var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+   ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+   var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+   if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window);
+</script><noscript><div style="position:absolute;left:-10000px;">
+<img src="//top-fwz1.mail.ru/counter?id=2284916;js=na" style="border:0;" height="1" width="1" alt="Рейтинг@Mail.ru" />
+</div></noscript>
+<!-- //Rating@Mail.ru counter -->
+
+  </head>
+  <body class="p-main">
+    <div class="b-wrapper">
+      <!-- HEADER > -->
+      <header class="b-header">
+        <div class="b-header-wrapper">
+          <nav class="b-header_menu">
+              <ul class="b-menu">
+      <li class="b-menu-item">
+        <a href="http://tarantool.org" class="b-menu-item-url p-active">Overview</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url">Documentation</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+      </li>
+  </ul>
+
+          </nav>
+        </div>
+      </header>
+      <!-- < HEADER -->
+
+      <div class="b-content b-clearbox">
+<section class="b-gray_block b-mainhead">
+  <div class="b-block-wrapper">
+    <a  href="https://github.com/tarantool/tarantool/" class="b-follow">Follow on</a>
+    <h1 class="b-Tarantool_title"     >Tarantool</h1>
+    <h2 class="b-Tarantool_title-note">Get your data in RAM. Get compute close to data. Enjoy the performance.</h2>
+    <p  class="b-Tarantool_title-text"></p>
+  </div>
+</section>
+
+<section class="b-block b-features">
+  <div class="b-block-wrapper">
+    <h2 class="b-section-title">Features</h2>
+    <ul class="b-features-list">
+      <li class="b-features-list-item">A drop-in replacement for Lua 5.1, based on LuaJIT 2.1; <br /> simply use <tt class="docutils literal"><span class="pre">#!/usr/bin/tarantool</span></tt> instead of <tt class="docutils literal"><span class="pre">#!/usr/bin/lua</span></tt> in your script</li>
+      <li class="b-features-list-item">Lua packages for non-blocking I/O, fibers and HTTP</li>
+      <li class="b-features-list-item"><a class="reference external" href="http://msgpack.org/">MessagePack</a> data format and MessagePack based client-server protocol</li>
+      <li class="b-features-list-item">a built-in database with two data engines: 100% in-memory with optional persistence and a <a class="reference external" href="http://sphia.org">2-level disk-based B-tree</a>, to use with large data sets</li>
+      <li class="b-features-list-item">secondary key and index iterators support</li>
+      <li class="b-features-list-item">asynchronous master-master replication</li>
+      <li class="b-features-list-item">authentication and access control</li>
+    </ul>
+  </div>
+</section>
+
+<section class="b-gray_block b-support">
+  <div class="b-block-wrapper">
+    <h2 class="b-section-title">Support</h2>
+    <ul class="b-support-list">
+      <li class="b-support-list-item">We are happy to provide help on <a class="reference external" href="https://groups.google.com/forum/#!forum/tarantool">tarantool&#64;groups.google.com</a>.</li>
+      <li class="b-support-list-item">If you need immediate help, try to ping maintainers on <a class="reference external" href="http://webchat.freenode.net/?channels=tarantool">#tarantool</a> channel at <a class="reference external" href="irc://irc.freenode.net">irc.freenode.net</a>.</li>
+      <li class="b-support-list-item">Terms of commercial 24x7 support are available upon request, please send an inquiry to <a class="reference external" href="mailto:support&#64;tarantool.org">support&#64;tarantool.org</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="b-block b-dash">
+  <div class="b-block-wrapper">
+    <div class="b-cols p-2col">
+      <div class="b-cols-item">
+        <h2 class="b-section-title">News & events</h2>
+        <ul class="b-news-list">
+          <li class="b-news-list-item">
+            <div class="b-date"><span>17.11</span>2015</div>
+            <h3 class="b-news-list-item-title">
+              <a href="https://groups.google.com/forum/#!topic/tarantool/kN60cpRRAyE" class="b-news-list-item-title-url" target="_blank">
+                Tarantool 1.6.7 is released
+                <span class="b-news-list-item-title-url-alt b-ellipsis">groups.google.com</span>
+              </a>
+            </h3>
+          </li>
+          <li class="b-news-list-item">
+            <div class="b-date"><span>28.08</span>2015</div>
+            <h3 class="b-news-list-item-title">
+              <a href="https://groups.google.com/forum/#!topic/tarantool/4-RwTCVp2uQ" class="b-news-list-item-title-url" target="_blank">
+                Tarantool 1.6.6 is released
+                <span class="b-news-list-item-title-url-alt b-ellipsis">groups.google.com</span>
+              </a>
+            </h3>
+          </li>
+        </ul>
+        <ul class="b-social_block">
+          <li class="b-social_block-item">
+            <a href="https://twitter.com/kostja_osipov" class="b-social_ico i-tw"></a>
+          </li>
+          <li class="b-social_block-item">
+            <a href="https://www.linkedin.com/groups/Tarantool-5131662" class="b-social_ico i-in"></a>
+          </li>
+          <li class="b-social_block-item">
+            <a href="http://www.quora.com/Tarantool" class="b-social_ico i-q"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="b-cols-item_empty">&nbsp;</div>
+      <div class="b-cols-item">
+        <a class="twitter-timeline"
+           href="https://twitter.com/hashtag/tarantool"
+           data-widget-id="560794185742442496">#tarantool Tweets
+        </a>
+        <script>
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="b-gray_block b-example">
+  <div class="b-block-wrapper">
+    <h2 class="b-section-title">Example</h2>
+    <div class="b-cols p-example">
+      <div class="b-cols-item">
+        <div class="b-example-code">
+          <div class="highlight"><pre><span class="cp">#!/usr/bin/env tarantool</span>
+
+<span class="n">box</span><span class="p">.</span><span class="n">cfg</span><span class="p">{}</span>
+<span class="n">hosts</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">space</span><span class="p">.</span><span class="n">hosts</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">hosts</span> <span class="k">then</span>
+    <span class="n">hosts</span> <span class="o">=</span> <span class="n">box</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">create_space</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">hosts&#39;</span><span class="p">)</span>
+    <span class="n">hosts</span><span class="p">:</span><span class="n">create_index</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">primary&#39;</span><span class="p">,</span>
+            <span class="p">{</span><span class="n">parts</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s">STR&#39;</span><span class="p">}})</span>
+<span class="k">end</span>
+
+<span class="kd">local</span> <span class="k">function</span> <span class="nf">handler</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">host</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">peer</span><span class="p">.</span><span class="n">host</span>
+    <span class="kd">local</span> <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">host</span><span class="p">;</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="n">hosts</span><span class="p">:</span><span class="n">inc</span><span class="p">(</span><span class="n">host</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">:</span><span class="n">render</span><span class="p">{</span> <span class="n">json</span> <span class="o">=</span> <span class="n">response</span> <span class="p">}</span>
+<span class="k">end</span>
+
+<span class="n">httpd</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">http.server&#39;</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">httpd</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">)</span>
+<span class="n">server</span><span class="p">:</span><span class="n">route</span><span class="p">({</span> <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">/&#39;</span> <span class="p">},</span> <span class="n">handler</span><span class="p">)</span>
+<span class="n">server</span><span class="p">:</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+
+        </div>
+      </div>
+      <div class="b-cols-item-empty">&nbsp;</div>
+      <div class="b-cols-item">
+        <div class="b-example-player">
+          <iframe src="//www.youtube.com/embed/R9UHoZDFLWg" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="b-block b-benchmark">
+  <div class="b-block-wrapper">
+    <h2 class="b-section-title">Our benchmarks (YCSB)</h2>
+    <div class="b-block-wrapper_bench">
+      <div class="b-benchmark-catalog">
+        <ul class="b-switcher">
+          <li class="b-switcher-item"><a href="#" class="b-switcher-item-url p-active">A</a></li>
+          <li class="b-switcher-item"><a href="#" class="b-switcher-item-url">B</a></li>
+          <li class="b-switcher-item"><a href="#" class="b-switcher-item-url">C</a></li>
+          <li class="b-switcher-item"><a href="#" class="b-switcher-item-url">D</a></li>
+          <li class="b-switcher-item"><a href="#" class="b-switcher-item-url">E</a></li>
+          <li class="b-switcher-item"><a href="#" class="b-switcher-item-url">F</a></li>
+        </ul>
+      </div>
+      <div class="b-benchmark-type">
+        <ul class="b-switcher">
+          <li class="b-switcher-item">
+            <a href="#" class="b-switcher-item-url p-active">Throughput</a>
+          </li>
+          <li class="b-switcher-item">
+            <a href="#" class="b-switcher-item-url">Latency</a>
+          </li>
+        </ul>
+      </div>
+      <h3 class="b-benchmark-type-title">Workload A</h3>
+    </div>
+    <div class="b-benchmark-grapf"><div id="b-benchmark-grapf-image"></div></div>
+    <div class="b-benchmark-more"> <a href="/benchmark.html">Learn more</a></div>
+  </div>
+</section>
+
+<section class="b-gray_block b-customers">
+  <div class="b-block-wrapper">
+    <h2 class="b-section-title">Our users</h2>
+    <div class="b-cols">
+      <div class="b-cols-item">
+        <a href="http://mail.ru" class="b-cust_logo i-mailru"></a>
+      </div>
+      <div class="b-cols-item-empty">&nbsp;</div>
+      <div class="b-cols-item">
+        <a href="http://badoo.com" class="b-cust_logo i-badoo"></a>
+      </div>
+      <!--div class="b-cols-item-empty">&nbsp;</div>
+      <div class="b-cols-item">
+        <a href="http://sbrf.ru" class="b-cust_logo i-sberbank"></a>
+      </div-->
+      <div class="b-cols-item-empty">&nbsp;</div>
+      <div class="b-cols-item">
+        <a href="http://avito.ru" class="b-cust_logo i-avito"></a>
+      </div>
+    </div>
+  </div>
+</section>
+      </div>
+    </div>
+
+    <!-- FOOTER > -->
+    <footer class="b-footer">
+      <div class="b-footer-wrapper">
+        <nav class="b-footer_menu">
+            <ul class="b-menu">
+      <li class="b-menu-item">
+        <a href="http://tarantool.org" class="b-menu-item-url p-active">Overview</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://try.tarantool.org" class="b-menu-item-url">Try</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://tarantool.org/doc/" class="b-menu-item-url">Documentation</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://tarantool.org/download.html" class="b-menu-item-url">Download</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://tarantool.org/careers.html" class="b-menu-item-url">Careers</a>
+      </li>
+      <li class="b-menu-item">
+        <a href="http://rocks.tarantool.org" class="b-menu-item-url">Rocks</a>
+      </li>
+  </ul>
+
+          <div class="b-footer-other">
+            <a href="http://stable.tarantool.org">1.5 web site and downloads</a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+  <!-- < FOOTER -->
+  </body>
+</html>
+
